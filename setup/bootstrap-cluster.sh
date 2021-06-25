@@ -35,10 +35,9 @@ installFlux() {
   fi
   flux bootstrap github \
     --owner=pixelmontogo \
-    --repository=k8s-gitops \
+    --repository=gitops-k8s \
     --branch main \
     --private=false \
-    --validation=none \
     --personal
 
   FLUX_INSTALLED=$?

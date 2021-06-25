@@ -19,10 +19,14 @@ spec:
   values:
     configInline:
       address-pools:
-        - name: default
+        - name: canada
           protocol: layer2
           addresses:
-            - 54.36.241.25-54.36.241.29
+            - 51.222.234.146-51.222.234.149
+        - name: germany
+          protocol: layer2
+          addresses:
+            - 141.95.31.91-141.95.31.93
     networkPolicy:
       enabled: true
     prometheusRule:

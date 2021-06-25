@@ -5,7 +5,7 @@ metadata:
   name: letsencrypt-test
 spec:
   acme:
-    email: pixelmontogo@jhlws.com
+    email: webmaster@pixelmontogo.com
     server: https://acme-staging-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: letsencrypt-test
@@ -14,7 +14,7 @@ spec:
       - selector: {}
         dns01:
           cloudflare:
-            email: pixelmontogo@jhlws.com
+            email: webmaster@pixelmontogo.com
             apiTokenSecretRef:
               name: cloudflare-api-key
               key: api-key
@@ -25,7 +25,7 @@ metadata:
   name: letsencrypt-prod
 spec:
   acme:
-    email: pixelmontogo@jhlws.com
+    email: webmaster@pixelmontogo.com
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: letsencrypt-prod
@@ -34,7 +34,7 @@ spec:
       - selector: {}
         dns01:
           cloudflare:
-            email: pixelmontogo@jhlws.com
+            email: webmaster@pixelmontogo.com
             apiTokenSecretRef:
               name: cloudflare-api-key
               key: api-key
@@ -50,5 +50,5 @@ spec:
     name: letsencrypt-prod
     kind: ClusterIssuer
   dnsNames:
-    - pixelmontogo.com
-    - "*.pixelmontogo.com"
+    - pixelmonreforged.com
+    - "*.pixelmonreforged.com"

@@ -2,11 +2,11 @@
 
 ## :book:&nbsp; Overview
 
-Leverage [Flux2](https://github.com/fluxcd/flux2) to automate cluster state sync with this repository
+Leverages [Flux2](https://github.com/fluxcd/flux2) to automate cluster state sync with this repository
 
 ## :gear:&nbsp; Setup
 
-See [setup](setup/README.md) for more detail about setup & bootstrapping a new cluster
+See [setup](setup/README.md) for more details about setup & bootstrapping a new cluster
 
 ## :wrench:&nbsp; Workloads (by namespace)
 
@@ -15,8 +15,8 @@ See [setup](setup/README.md) for more detail about setup & bootstrapping a new c
 * [kube-system](kube-system/)
 * [longhorn-system](/longhorn-system)
 * [minecraft](minecraft/)
+* [minecraft-dev](minecraft/)
 * [monitoring](monitoring/)
-* [velero](velero/)
 
 ## :robot:&nbsp; Automation
 

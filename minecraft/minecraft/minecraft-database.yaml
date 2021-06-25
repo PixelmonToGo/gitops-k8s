@@ -6,6 +6,12 @@ metadata:
   namespace: minecraft
 spec:
   interval: 5m
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
   chart:
     spec:
       # renovate: registryUrl=https://charts.bitnami.com/bitnami
@@ -26,13 +32,14 @@ spec:
     primary:
       affinity:
         nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
+          preferredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
               - matchExpressions:
-                  - key: kubernetes.io/hostname
+                  - key: pixelmontogo.com/region
                     operator: In
                     values:
-                      - ns31354176
+                      - germany
+                      - france
       persistence:
         enabled: true
         storageClass: longhorn

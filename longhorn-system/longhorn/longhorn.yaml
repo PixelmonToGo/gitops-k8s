@@ -29,11 +29,11 @@ spec:
       backupTargetSecret: minio-secret
     ingress:
       enabled: true
-      host: longhorn.pixelmontogo.com
+      host: longhorn.pixelmonreforged.com
       tlsSecret: longhorn-cert
       tls: true
       annotations:
         kubernetes.io/ingress.class: nginx
         cert-manager.io/cluster-issuer: letsencrypt-prod
-        nginx.ingress.kubernetes.io/auth-url: https://login.pixelmontogo.com/oauth2/auth
-        nginx.ingress.kubernetes.io/auth-signin: https://login.pixelmontogo.com/oauth2/start
+        nginx.ingress.kubernetes.io/auth-url: https://login.pixelmonreforged.com/oauth2/auth
+        nginx.ingress.kubernetes.io/auth-signin: https://login.pixelmonreforged.com/oauth2/start

@@ -183,7 +183,6 @@ loadSecretsToVault() {
   kvault "monitoring/kube-prometheus-stack/kube-prometheus-stack-helm-values.txt"
   kvault "monitoring/minio/minio-helm-values.txt"
   kvault "monitoring/thanos/thanos-helm-values.txt"
-  kvault "monitoring/uptimerobot/uptimerobot-helm-values.txt"
 }
 
 #loadSecretsToVault-oneoff() {

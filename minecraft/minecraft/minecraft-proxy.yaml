@@ -2,28 +2,36 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: minecraft-proxy-bravo
+  name: minecraft-proxy
   namespace: minecraft
 spec:
   interval: 5m
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
   chart:
     spec:
-      chart: ./releases/minecraft-proxy-2.2.0.tgz
+      chart: minecraft-proxy
+      version: 2.2.0
       sourceRef:
-        kind: GitRepository
-        name: ptg-minecraft-server-charts
+        kind: HelmRepository
+        name: minecraft-server-charts
         namespace: flux-system
       interval: 5m
   values:
     affinity:
       nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
+        preferredDuringSchedulingIgnoredDuringExecution:
           nodeSelectorTerms:
             - matchExpressions:
-                - key: kubernetes.io/hostname
+                - key: pixelmontogo.com/region
                   operator: In
                   values:
-                    - ns31354176
+                    - germany
+                    - france
     nameOverride: prod
     image: itzg/bungeecord
     imageTag: java8
@@ -31,11 +39,13 @@ spec:
       storageClass: longhorn
       dataDir:
         enabled: true
+    serviceAnnotations:
+      external-dns.alpha.kubernetes.io/hostname: proxy.pixelmonreforged.com
+      metallb.universe.tf/address-pool: germany
     minecraftProxy:
       type: VELOCITY
       velocityVersion: 1.1.5
       serviceType: LoadBalancer
-      loadBalancerIP: 54.36.241.28
       externalTrafficPolicy: Local
       memory: 2G
       extraPorts:
