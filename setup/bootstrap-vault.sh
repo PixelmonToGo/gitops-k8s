@@ -156,7 +156,8 @@ EOF
   vault write auth/kubernetes/config \
     token_reviewer_jwt="$SA_JWT_TOKEN" \
     kubernetes_host="$K8S_HOST" \
-    kubernetes_ca_cert="$SA_CA_CRT"
+    kubernetes_ca_cert="$SA_CA_CRT" \
+    disable_iss_validation=true
 
   # Create a role named, 'vault-secrets-operator' to map Kubernetes Service Account to Vault policies and default token TTL
   vault write auth/kubernetes/role/vault-secrets-operator \
@@ -183,7 +184,6 @@ loadSecretsToVault() {
   kvault "monitoring/kube-prometheus-stack/kube-prometheus-stack-helm-values.txt"
   kvault "monitoring/minio/minio-helm-values.txt"
   kvault "monitoring/thanos/thanos-helm-values.txt"
-  kvault "monitoring/uptimerobot/uptimerobot-helm-values.txt"
 }
 
 #loadSecretsToVault-oneoff() {

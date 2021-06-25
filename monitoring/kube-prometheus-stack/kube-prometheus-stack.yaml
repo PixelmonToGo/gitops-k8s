@@ -84,15 +84,15 @@ spec:
         enabled: true
         annotations:
           kubernetes.io/ingress.class: "nginx"
-          nginx.ingress.kubernetes.io/auth-url: "https://login.pixelmontogo.com/oauth2/auth"
-          nginx.ingress.kubernetes.io/auth-signin: https://login.pixelmontogo.com/oauth2/start
-        hosts: [prom-alert.pixelmontogo.com]
+          nginx.ingress.kubernetes.io/auth-url: "https://login.pixelmonreforged.com/oauth2/auth"
+          nginx.ingress.kubernetes.io/auth-signin: https://login.pixelmonreforged.com/oauth2/start
+        hosts: [prom-alert.pixelmonreforged.com]
         paths:
           - /
         pathType: ImplementationSpecific
         tls:
           - hosts:
-              - prom-alert.pixelmontogo.com
+              - prom-alert.pixelmonreforged.com
       config:
         global:
           resolve_timeout: 5m
@@ -142,15 +142,15 @@ spec:
         enabled: true
         annotations:
           kubernetes.io/ingress.class: "nginx"
-          nginx.ingress.kubernetes.io/auth-url: "https://login.pixelmontogo.com/oauth2/auth"
-          nginx.ingress.kubernetes.io/auth-signin: https://login.pixelmontogo.com/oauth2/start
-        hosts: [prom-server.pixelmontogo.com]
+          nginx.ingress.kubernetes.io/auth-url: "https://login.pixelmonreforged.com/oauth2/auth"
+          nginx.ingress.kubernetes.io/auth-signin: https://login.pixelmonreforged.com/oauth2/start
+        hosts: [prom-server.pixelmonreforged.com]
         paths:
           - /
         pathType: ImplementationSpecific
         tls:
           - hosts:
-              - prom-server.pixelmontogo.com
+              - prom-server.pixelmonreforged.com
       prometheusSpec:
         externalLabels:
           cluster: "default"

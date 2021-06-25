@@ -7,7 +7,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: minecraft-forge-charmander-minecraft-prometheus
+      app: minecraft-forge-charmander-prod-prometheus
   namespaceSelector:
     matchNames:
       - minecraft
@@ -16,21 +16,21 @@ spec:
       interval: 15s
       scrapeTimeout: 10s
       honorLabels: true
-# ---
-# apiVersion: monitoring.coreos.com/v1
-# kind: ServiceMonitor
-# metadata:
-#   name: minecraft-lobby-kanto
-#   namespace: minecraft
-# spec:
-#   selector:
-#     matchLabels:
-#       app: minecraft-lobby-kanto-minecraft-prometheus
-#   namespaceSelector:
-#     matchNames:
-#       - minecraft
-#   endpoints:
-#     - port: prometheus
-#       interval: 15s
-#       scrapeTimeout: 10s
-#       honorLabels: true
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: minecraft-forge-squirtle
+  namespace: minecraft
+spec:
+  selector:
+    matchLabels:
+      app: minecraft-forge-squirtle-prod-prometheus
+  namespaceSelector:
+    matchNames:
+      - minecraft
+  endpoints:
+    - port: prometheus
+      interval: 15s
+      scrapeTimeout: 10s
+      honorLabels: true

@@ -24,18 +24,18 @@ spec:
     ingress:
       enabled: true
       path: /oauth2
-      hosts: [login.pixelmontogo.com]
+      hosts: [login.pixelmonreforged.com]
       tls:
         - hosts:
-            - login.pixelmontogo.com
+            - login.pixelmonreforged.com
     extraArgs:
       provider: oidc
       oidc-issuer-url: https://pixelmontogo.eu.auth0.com/
       skip-provider-button:
       pass-authorization-header:
       email-domain: "*"
-      cookie-domain: .pixelmontogo.com
-      whitelist-domain: .pixelmontogo.com
+      cookie-domain: .pixelmonreforged.com
+      whitelist-domain: .pixelmonreforged.com
   valuesFrom:
     - kind: Secret
       name: "oauth2-proxy-helm-values"

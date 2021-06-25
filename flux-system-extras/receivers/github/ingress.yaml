@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   rules:
-    - host: "flux-receiver.pixelmontogo.com"
+    - host: "flux-receiver.pixelmonreforged.com"
       http:
         paths:
           - path: /
@@ -18,4 +18,4 @@ spec:
                   number: 80
   tls:
     - hosts:
-        - "flux-receiver.pixelmontogo.com"
+        - "flux-receiver.pixelmonreforged.com"

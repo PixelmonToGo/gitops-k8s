@@ -6,6 +6,12 @@ metadata:
   namespace: minecraft
 spec:
   interval: 5m
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
   chart:
     spec:
       chart: minecraft
@@ -17,15 +23,18 @@ spec:
       interval: 5m
   values:
     # ref: https://github.com/itzg/minecraft-server-charts/blob/master/charts/minecraft/values.yaml
+    nameOverride: prod
     affinity:
       nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-            - matchExpressions:
-                - key: kubernetes.io/hostname
+        preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            preference:
+              matchExpressions:
+                - key: pixelmontogo.com/region
                   operator: In
                   values:
-                    - ns31354176
+                    - germany
+                    - france
       podAntiAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
           - weight: 100
@@ -35,10 +44,10 @@ spec:
                   - key: app
                     operator: In
                     values:
-                      - minecraft-forge-squirtle-minecraft
+                      - minecraft-forge-squirtle-prod
               topologyKey: kubernetes.io/hostname
     image: itzg/minecraft-server
-    imageTag: java8-openj9
+    imageTag: 2021.16.0-java8-openj9
     persistence:
       storageClass: longhorn
       dataDir:
@@ -50,7 +59,6 @@ spec:
       limits:
         memory: 25Gi
     extraEnv:
-      USE_AIKAR_FLAGS: "FALSE"
       OVERRIDE_SERVER_PROPERTIES: "TRUE"
       NETWORK_COMPRESSION_THRESHOLD: "-1"
     minecraftServer:
@@ -88,12 +96,14 @@ spec:
           ingress:
             enabled: false
         - name: voice
+          annotations:
+            external-dns.alpha.kubernetes.io/hostname: charmander-vc.pixelmonreforged.com
+            metallb.universe.tf/address-pool: germany
           containerPort: 24454
           protocol: UDP
           service:
             enabled: true
             type: LoadBalancer
-            loadBalancerIP: 54.36.241.26
             port: 24454
           ingress:
             enabled: false

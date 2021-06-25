@@ -19,7 +19,7 @@ spec:
     # ref: https://github.com/itzg/minecraft-server-charts/blob/master/charts/minecraft/values.yaml
     nameOverride: dev
     image: itzg/minecraft-server
-    imageTag: 2021.11.0-java8
+    imageTag: 2021.16.0-java8-openj9
     persistence:
       storageClass: longhorn
       dataDir:
@@ -31,13 +31,12 @@ spec:
       limits:
         memory: 20Gi
     extraEnv:
-      USE_AIKAR_FLAGS: "TRUE"
       OVERRIDE_SERVER_PROPERTIES: "TRUE"
     minecraftServer:
       eula: "TRUE"
       onlineMode: false
       version: "1.12.2"
-      jvmOpts: "-Dfml.readTimeout=300 -Dfml.queryResult=confirm"
+      jvmOpts: "-Dfml.readTimeout=300"
       forgeVersion: "14.23.5.2854"
       gameMode: "1"
       forcegameMode: false
@@ -67,15 +66,3 @@ spec:
             port: 9225
           ingress:
             enabled: false
-        # - name: voice
-        #   protocol: UDP
-        #   containerPort: 24454
-        #   service:
-        #     enabled: true
-        #     annotations:
-        #       metallb.universe.tf/allow-shared-ip: dev-proxy
-        #     type: LoadBalancer
-        #     loadBalancerIP: 54.36.241.26
-        #     port: 24454
-        #   ingress:
-        #     enabled: false
