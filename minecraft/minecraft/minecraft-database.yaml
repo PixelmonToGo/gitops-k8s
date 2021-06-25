@@ -33,8 +33,9 @@ spec:
       affinity:
         nodeAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
+            - weight: 1
+              preference:
+                matchExpressions:
                   - key: pixelmontogo.com/region
                     operator: In
                     values:
