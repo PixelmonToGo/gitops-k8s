@@ -70,6 +70,9 @@ spec:
         1-node-exporter:
           url: https://grafana.com/api/dashboards/11074/revisions/9/download
           datasource: Prometheus
+        calico-felix:
+          url: https://grafana.com/api/dashboards/12175/revisions/5/download
+          datasource: Prometheus
         cpu-frequency:
           url: https://raw.githubusercontent.com/pixelmontogo/gitops-k8s/master/monitoring/grafana/dashboards/cpu_frequency.json
           datasource: Prometheus
