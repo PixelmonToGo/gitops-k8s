@@ -18,17 +18,6 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    image:
-      longhorn:
-        engine:
-          repository: longhornio/longhorn-engine
-          tag: v1.1.2-rc1
-        manager:
-          repository: longhornio/longhorn-manager
-          tag: v1.1.2-rc1
-        ui:
-          repository: longhornio/longhorn-ui
-          tag: v1.1.2-rc1
     persistence:
       defaultClassReplicaCount: 2
     defaultSettings:
