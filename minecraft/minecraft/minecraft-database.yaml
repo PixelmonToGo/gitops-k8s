@@ -52,6 +52,7 @@ spec:
                     values:
                       - minecraft-forge-charmander-prod
               topologyKey: kubernetes.io/hostname
+      extraFlags: "--max_connections=500"
       persistence:
         enabled: true
         storageClass: longhorn
