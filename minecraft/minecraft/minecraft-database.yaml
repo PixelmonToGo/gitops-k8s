@@ -41,6 +41,17 @@ spec:
                     values:
                       - germany
                       - france
+      podAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - minecraft-forge-charmander-prod
+              topologyKey: kubernetes.io/hostname
       persistence:
         enabled: true
         storageClass: longhorn

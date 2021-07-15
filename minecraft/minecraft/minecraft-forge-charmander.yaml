@@ -34,7 +34,7 @@ spec:
                   operator: In
                   values:
                     - germany
-                    - france
+                    # - france
       podAntiAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
           - weight: 100
