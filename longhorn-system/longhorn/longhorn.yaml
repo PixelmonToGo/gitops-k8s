@@ -22,7 +22,9 @@ spec:
       defaultClassReplicaCount: 2
     defaultSettings:
       defaultDataPath: /longhorn
-      defaultReplicaCount: 2
+      defaultReplicaCount: 3
+      defaultDataLocality: best-effort
+      nodeDownPodDeletionPolicy: delete-both-statefulset-and-deployment-pod
       createDefaultDiskLabeledNodes: true
       storageMinimalAvailablePercentage: "10"
       backupTarget: s3://longhorn@us-east-1/
