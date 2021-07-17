@@ -6,6 +6,12 @@ metadata:
   namespace: minecraft-dev
 spec:
   interval: 5m
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
   chart:
     spec:
       chart: minecraft
@@ -18,6 +24,18 @@ spec:
   values:
     # ref: https://github.com/itzg/minecraft-server-charts/blob/master/charts/minecraft/values.yaml
     nameOverride: dev
+    affinity:
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - minecraft-forge-charmander-prod
+              topologyKey: kubernetes.io/hostname
     image: itzg/minecraft-server
     imageTag: 2021.16.0-java8-openj9
     persistence:
@@ -27,30 +45,32 @@ spec:
         Size: 100Gi
     resources:
       requests:
-        memory: 16Gi
+        memory: 21Gi
       limits:
-        memory: 20Gi
+        memory: 25Gi
     extraEnv:
       OVERRIDE_SERVER_PROPERTIES: "TRUE"
+      NETWORK_COMPRESSION_THRESHOLD: "-1"
     minecraftServer:
       eula: "TRUE"
       onlineMode: false
       version: "1.12.2"
-      jvmOpts: "-Dfml.readTimeout=300"
+      jvmOpts: "-Xmns3G -Xmnx7G -Xgcpolicy:balanced -Xdisableexplicitgc -Dfml.readTimeout=300"
       forgeVersion: "14.23.5.2854"
-      gameMode: "1"
+      gameMode: "0"
       forcegameMode: false
-      type: CATSERVER
+      type: FORGE
       pvp: false
       forceReDownload: true
       difficulty: "0"
-      levelType: DEFAULT
+      levelType: OTG
+      worldSaveName: TravelersDreamCompact
       playerIdleTimeout: 300
       maxWorldSize: 29999984
       maxPlayers: 120
       viewDistance: 4
       maxTickTime: -1
-      memory: 4G
+      memory: 14G
       motd: "forge-charmander"
       serviceType: ClusterIP
       rcon:
