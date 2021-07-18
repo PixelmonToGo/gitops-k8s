@@ -50,6 +50,8 @@ spec:
       limits:
         memory: 25Gi
     extraEnv:
+      REPLACE_ENV_VARIABLES: "TRUE"
+      REPLACE_ENV_VARIABLES_EXCLUDE_PATHS: "/data/pixelmon /data/config/aquadaycare/decorations"
       CFG_VC_HOST: "squirtle-vc-dev.pixelmonreforged.com"
       OVERRIDE_SERVER_PROPERTIES: "TRUE"
       NETWORK_COMPRESSION_THRESHOLD: "-1"
