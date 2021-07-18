@@ -103,13 +103,13 @@ spec:
           ingress:
             enabled: false
         - name: voice
-          annotations:
-            external-dns.alpha.kubernetes.io/hostname: squirtle-vc.pixelmonreforged.com
-            metallb.universe.tf/address-pool: germany
           containerPort: 24454
           protocol: UDP
           service:
             enabled: true
+            annotations:
+              external-dns.alpha.kubernetes.io/hostname: squirtle-vc.pixelmonreforged.com
+              metallb.universe.tf/address-pool: germany
             type: LoadBalancer
             port: 24454
           ingress:
