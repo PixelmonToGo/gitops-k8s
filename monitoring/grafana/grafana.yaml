@@ -50,7 +50,7 @@ spec:
       - grafana-piechart-panel
       - grafana-clock-panel
       - vonage-status-panel
-      - grafana-worldmap-panel
+      - https://github.com/panodata/grafana-map-panel/releases/download/0.15.0/grafana-map-panel-0.15.0.zip;grafana-map-panel
     serviceMonitor:
       enabled: true
     dashboardProviders:
@@ -91,6 +91,15 @@ spec:
         minecraft:
           url: https://raw.githubusercontent.com/pixelmontogo/gitops-k8s/master/monitoring/grafana/dashboards/minecraft-server.json
           datasource: Prometheus
+        minecraft-network:
+          url: https://raw.githubusercontent.com/pixelmontogo/gitops-k8s/master/monitoring/grafana/dashboards/minecraft-network.json
+          datasource: Loki
+        minecraft-pregen:
+          url: https://raw.githubusercontent.com/pixelmontogo/gitops-k8s/master/monitoring/grafana/dashboards/minecraft-pregen.json
+          datasource: Loki
+        minecraft-voice:
+          url: https://raw.githubusercontent.com/pixelmontogo/gitops-k8s/master/monitoring/grafana/dashboards/minecraft-voice.json
+          datasource: Loki
         minio-overview:
           url: https://raw.githubusercontent.com/pixelmontogo/gitops-k8s/master/monitoring/grafana/dashboards/minio_overview.json
           datasource: Prometheus
