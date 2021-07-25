@@ -34,7 +34,7 @@ spec:
                   operator: In
                   values:
                     - germany
-                    # - france
+                    - france
       podAntiAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
           - weight: 100
@@ -47,7 +47,7 @@ spec:
                       - minecraft-forge-squirtle-prod
               topologyKey: kubernetes.io/hostname
     image: itzg/minecraft-server
-    imageTag: 2021.16.0-java8-openj9
+    imageTag: 2021.17.0-java8-openj9
     persistence:
       storageClass: longhorn
       dataDir:
@@ -55,21 +55,23 @@ spec:
         Size: 100Gi
     resources:
       requests:
-        memory: 21Gi
-      limits:
         memory: 25Gi
+      limits:
+        memory: 26Gi
     extraEnv:
       OVERRIDE_SERVER_PROPERTIES: "TRUE"
       NETWORK_COMPRESSION_THRESHOLD: "-1"
+      TUNE_NURSERY_SIZES: "TRUE"
+      TUNE_VIRTUALIZED: "TRUE"
     livenessProbe:
-      initialDelaySeconds: 180
+      initialDelaySeconds: 240
     readinessProbe:
-      initialDelaySeconds: 120
+      initialDelaySeconds: 240
     minecraftServer:
       eula: "TRUE"
       onlineMode: false
       version: "1.12.2"
-      jvmOpts: "-Xmns3G -Xmnx7G -Xgcpolicy:balanced -Xdisableexplicitgc -Dfml.readTimeout=300"
+      jvmOpts: "-Xgcpolicy:balanced -Xdisableexplicitgc -Dfml.readTimeout=300"
       forgeVersion: "14.23.5.2854"
       gameMode: "0"
       forcegameMode: false
