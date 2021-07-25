@@ -42,9 +42,9 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
-        "w": 7,
-        "x": 0,
+        "h": 3,
+        "w": 4,
+        "x": 8,
         "y": 0
       },
       "id": 5,
@@ -66,7 +66,7 @@
       "pluginVersion": "8.0.5",
       "targets": [
         {
-          "expr": "count_over_time({job=\"minecraft/minecraft-proxy-prod\"}[$__interval] |~\"has connected\")",
+          "expr": "sum(count_over_time({job=\"minecraft/minecraft-proxy-prod\"} |~\"has connected\"[$__interval]))",
           "instant": false,
           "legendFormat": "",
           "range": true,
@@ -100,9 +100,9 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
-        "w": 7,
-        "x": 7,
+        "h": 3,
+        "w": 4,
+        "x": 12,
         "y": 0
       },
       "id": 6,
@@ -124,7 +124,7 @@
       "pluginVersion": "8.0.5",
       "targets": [
         {
-          "expr": "count_over_time({job=\"minecraft/minecraft-proxy-prod\"}[$__interval] |~\"has disconnected\")",
+          "expr": "sum(count_over_time({job=\"minecraft/minecraft-proxy-prod\"}[$__interval] |~\"has disconnected\"))",
           "instant": false,
           "legendFormat": "",
           "range": true,
@@ -137,10 +137,10 @@
     {
       "datasource": "Loki",
       "gridPos": {
-        "h": 9,
-        "w": 24,
+        "h": 14,
+        "w": 12,
         "x": 0,
-        "y": 7
+        "y": 3
       },
       "id": 2,
       "options": {
@@ -153,7 +153,7 @@
       },
       "targets": [
         {
-          "expr": "{job=\"minecraft/minecraft-proxy-prod\"}",
+          "expr": "{job=\"minecraft/minecraft-proxy-prod\"} !=\"INFO]\"",
           "refId": "A"
         }
       ],
@@ -163,12 +163,12 @@
     {
       "datasource": "Loki",
       "gridPos": {
-        "h": 9,
-        "w": 24,
-        "x": 0,
-        "y": 16
+        "h": 14,
+        "w": 12,
+        "x": 12,
+        "y": 3
       },
-      "id": 9,
+      "id": 10,
       "options": {
         "dedupStrategy": "none",
         "enableLogDetails": false,
@@ -179,31 +179,75 @@
       },
       "targets": [
         {
-          "expr": "{job=\"minecraft/minecraft-forge-charmander-prod\"} |=\"[mask]\" |~\"has logged in from\"",
+          "expr": "{job=\"minecraft/minecraft-forge-charmander-prod\"}",
           "refId": "A"
         }
       ],
-      "title": "Charmander Logs",
+      "title": "Proxy Logs",
       "type": "logs"
     },
     {
-      "autoZoom": true,
-      "datasource": null,
-      "defaultLayer": "OpenStreetMap",
+      "circleMaxSize": 30,
+      "circleMinSize": "4",
+      "colors": [
+        "rgb(7, 0, 255)",
+        "rgb(157, 0, 230)",
+        "rgb(216, 0, 200)",
+        "rgb(255, 0, 166)",
+        "rgb(255, 0, 132)",
+        "rgb(255, 0, 98)",
+        "rgb(255, 0, 65)",
+        "rgb(255, 0, 27)",
+        "rgb(255, 74, 0)",
+        "rgb(255, 121, 0)",
+        "rgb(255, 156, 0)",
+        "rgb(244, 186, 0)",
+        "rgb(218, 211, 0)",
+        "rgb(188, 234, 0)",
+        "rgb(152, 255, 0)"
+      ],
+      "datasource": "Loki",
+      "decimals": 0,
+      "esMetric": "Count",
       "gridPos": {
-        "h": 8,
-        "w": 12,
+        "h": 18,
+        "w": 24,
         "x": 0,
-        "y": 25
+        "y": 17
       },
-      "id": 8,
-      "lineColor": "red",
-      "maxDataPoints": 500,
-      "pointColor": "royalblue",
-      "scrollWheelZoom": false,
-      "showLayerChanger": true,
-      "title": "Panel Title",
-      "type": "pr0ps-trackmap-panel"
+      "hideEmpty": false,
+      "hideZero": false,
+      "id": 9,
+      "initialZoom": "2",
+      "locationData": "countries",
+      "mapCenter": "(0°, 0°)",
+      "mapCenterLatitude": 0,
+      "mapCenterLongitude": 0,
+      "maxDataPoints": 1,
+      "mouseWheelZoom": true,
+      "showLegend": true,
+      "stickyLabels": false,
+      "tableQueryOptions": {
+        "geohashField": "geohash",
+        "latitudeField": "latitude",
+        "longitudeField": "longitude",
+        "metricField": "metric",
+        "queryType": "geohash"
+      },
+      "targets": [
+        {
+          "expr": "count without (IP) (sum by (IP, geoip_country_code) (count_over_time({job=\"minecraft/minecraft-forge-charmander-prod\"} |=\"[mask]\" |~\"logged in from\" | regexp `logged in from \\\"(?P<IP>.*)\\\".*location \\\"(?P<geoip_country_code>[A-Z][A-Z])\\\"`[$__interval])))",
+          "legendFormat": "{{geoip_country_code}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "2,3,5,8,13,21,34,55,89,144,233,377,610,987",
+      "title": "Charmander Logs",
+      "type": "grafana-worldmap-panel",
+      "unitPlural": "players",
+      "unitSingle": "",
+      "unitSingular": "player",
+      "valueName": "total"
     }
   ],
   "refresh": false,
@@ -214,7 +258,7 @@
     "list": []
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-7d",
     "to": "now"
   },
   "timepicker": {
@@ -231,5 +275,5 @@
   "timezone": "",
   "title": "1 PTG Network",
   "uid": "M-Y447Wnz",
-  "version": 3
+  "version": 10
 }

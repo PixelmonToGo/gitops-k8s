@@ -61,6 +61,10 @@ spec:
     extraEnv:
       OVERRIDE_SERVER_PROPERTIES: "TRUE"
       NETWORK_COMPRESSION_THRESHOLD: "-1"
+    livenessProbe:
+      initialDelaySeconds: 180
+    readinessProbe:
+      initialDelaySeconds: 120
     minecraftServer:
       eula: "TRUE"
       onlineMode: false
