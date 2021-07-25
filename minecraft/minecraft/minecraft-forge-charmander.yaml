@@ -26,16 +26,13 @@ spec:
     nameOverride: prod
     affinity:
       nodeAffinity:
-        preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 1
-            preference:
-              matchExpressions:
-                - key: pixelmontogo.com/region
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: kubernetes.io/hostname
                   operator: In
                   values:
-                    - england
-                    # - germany
-                    # - france
+                    - bravo-i2-eri1
       podAntiAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
           - weight: 100
@@ -53,21 +50,21 @@ spec:
       storageClass: longhorn
       dataDir:
         enabled: true
-        Size: 100Gi
+        Size: 200Gi
     resources:
       requests:
         memory: 25Gi
       limits:
-        memory: 26Gi
+        memory: 28Gi
     extraEnv:
       OVERRIDE_SERVER_PROPERTIES: "TRUE"
       NETWORK_COMPRESSION_THRESHOLD: "-1"
       TUNE_NURSERY_SIZES: "TRUE"
       TUNE_VIRTUALIZED: "TRUE"
     livenessProbe:
-      initialDelaySeconds: 240
+      initialDelaySeconds: 360
     readinessProbe:
-      initialDelaySeconds: 240
+      initialDelaySeconds: 200
     minecraftServer:
       eula: "TRUE"
       onlineMode: false
@@ -109,7 +106,6 @@ spec:
             enabled: true
             annotations:
               external-dns.alpha.kubernetes.io/hostname: charmander-vc.pixelmonreforged.com
-              metallb.universe.tf/address-pool: germany
             type: LoadBalancer
             port: 24454
           ingress:
