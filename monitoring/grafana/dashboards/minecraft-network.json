@@ -137,8 +137,8 @@
     {
       "datasource": "Loki",
       "gridPos": {
-        "h": 14,
-        "w": 12,
+        "h": 7,
+        "w": 24,
         "x": 0,
         "y": 3
       },
@@ -163,10 +163,10 @@
     {
       "datasource": "Loki",
       "gridPos": {
-        "h": 14,
-        "w": 12,
-        "x": 12,
-        "y": 3
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 10
       },
       "id": 10,
       "options": {
@@ -179,16 +179,16 @@
       },
       "targets": [
         {
-          "expr": "{job=\"minecraft/minecraft-forge-charmander-prod\"}",
+          "expr": "{job=\"minecraft/minecraft-forge-charmander-prod\"} |~\"std(out|err) F .[0-9]{2}:[0-9]{2}:[0-9]{2}\" !=\"/INFO]\" !=\"Can't keep up!\" !=\"Tried to over-fill a container\" !=\"logged in from\"",
           "refId": "A"
         }
       ],
-      "title": "Proxy Logs",
+      "title": "Charmander Logs",
       "type": "logs"
     },
     {
-      "circleMaxSize": 30,
-      "circleMinSize": "4",
+      "circleMaxSize": "50",
+      "circleMinSize": "10",
       "colors": [
         "rgb(7, 0, 255)",
         "rgb(157, 0, 230)",
@@ -213,7 +213,7 @@
         "h": 18,
         "w": 24,
         "x": 0,
-        "y": 17
+        "y": 18
       },
       "hideEmpty": false,
       "hideZero": false,
@@ -242,7 +242,7 @@
         }
       ],
       "thresholds": "2,3,5,8,13,21,34,55,89,144,233,377,610,987",
-      "title": "Charmander Logs",
+      "title": "Charmander Geo",
       "type": "grafana-worldmap-panel",
       "unitPlural": "players",
       "unitSingle": "",
@@ -250,7 +250,7 @@
       "valueName": "total"
     }
   ],
-  "refresh": false,
+  "refresh": "5s",
   "schemaVersion": 30,
   "style": "dark",
   "tags": [],
@@ -258,11 +258,14 @@
     "list": []
   },
   "time": {
-    "from": "now-7d",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {
     "refresh_intervals": [
+      "5s",
+      "15s",
+      "30s",
       "1m",
       "5m",
       "15m",
@@ -275,5 +278,5 @@
   "timezone": "",
   "title": "1 PTG Network",
   "uid": "M-Y447Wnz",
-  "version": 10
+  "version": 16
 }

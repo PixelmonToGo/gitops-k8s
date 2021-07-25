@@ -66,7 +66,7 @@
       "pluginVersion": "8.0.5",
       "targets": [
         {
-          "expr": "avg_over_time({job=\"minecraft/minecraft-forge-charmander-prod\"} |=\"Distance Calculations\" | regexp `.*average was\\: (?P<voice_avg>.*) overall` | unwrap voice_avg [1m]) without (pod, filename)",
+          "expr": "avg_over_time({job=\"minecraft/minecraft-forge-charmander-prod\"} |=\"Distance Calculations\" | regexp `.*average was\\: (?P<voice_avg>.*) overall` | unwrap voice_avg [1m]) without (pod, filename, pod_template_hash)",
           "instant": false,
           "legendFormat": "",
           "range": true,
@@ -124,7 +124,7 @@
       "pluginVersion": "8.0.5",
       "targets": [
         {
-          "expr": "max_over_time({job=\"minecraft/minecraft-forge-charmander-prod\"} |=\"Distance Calculations\" | regexp `.*average was\\: (?P<voice_avg>.*) overall` | unwrap voice_avg [1m]) without (pod, filename)",
+          "expr": "max_over_time({job=\"minecraft/minecraft-forge-charmander-prod\"} |=\"Distance Calculations\" | regexp `.*average was\\: (?P<voice_avg>.*) overall` | unwrap voice_avg [1m]) without (pod, filename, pod_template_hash)",
           "instant": false,
           "legendFormat": "",
           "range": true,
@@ -182,7 +182,7 @@
       "pluginVersion": "8.0.5",
       "targets": [
         {
-          "expr": "avg_over_time({job=\"minecraft/minecraft-forge-charmander-prod\"} |=\"Distance Calculations\" | regexp `.*overall was\\: (?P<voice_tot>.*)$` | unwrap voice_tot [1m]) without (pod, filename)",
+          "expr": "avg_over_time({job=\"minecraft/minecraft-forge-charmander-prod\"} |=\"Distance Calculations\" | regexp `.*overall was\\: (?P<voice_tot>.*)$` | unwrap voice_tot [1m]) without (pod, filename, pod_template_hash)",
           "instant": false,
           "legendFormat": "",
           "range": true,
@@ -240,7 +240,7 @@
       "pluginVersion": "8.0.5",
       "targets": [
         {
-          "expr": "max_over_time({job=\"minecraft/minecraft-forge-charmander-prod\"} |=\"Distance Calculations\" | regexp `.*overall was\\: (?P<voice_tot>.*)$` | unwrap voice_tot [1m]) without (pod, filename)",
+          "expr": "max_over_time({job=\"minecraft/minecraft-forge-charmander-prod\"} |=\"Distance Calculations\" | regexp `.*overall was\\: (?P<voice_tot>.*)$` | unwrap voice_tot [1m]) without (pod, filename, pod_template_hash)",
           "instant": false,
           "legendFormat": "",
           "range": true,
@@ -323,7 +323,7 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "ms"
         },
         "overrides": []
       },
@@ -341,21 +341,22 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "multi"
         }
       },
       "pluginVersion": "8.0.5",
       "targets": [
         {
-          "expr": "max_over_time({job=\"minecraft/minecraft-forge-charmander-prod\"} |=\"Distance Calculations\" | regexp `.*average was\\: (?P<voice_avg>.*) overall` | unwrap voice_avg [1m])",
+          "expr": "max_over_time({job=\"minecraft/minecraft-forge-charmander-prod\"} |=\"Distance Calculations\" | regexp `.*average was\\: (?P<voice_avg>.*) overall` | unwrap voice_avg [1m]) without (pod, filename, pod_template_hash)",
           "instant": false,
-          "legendFormat": "",
+          "legendFormat": "{{voice_avg}}",
           "range": true,
           "refId": "A"
         },
         {
-          "expr": "max_over_time({job=\"minecraft/minecraft-forge-charmander-prod\"} |=\"Distance Calculations\" | regexp `.*overall was\\: (?P<voice_tot>.*)$` | unwrap voice_tot [1m])",
+          "expr": "max_over_time({job=\"minecraft/minecraft-forge-charmander-prod\"} |=\"Distance Calculations\" | regexp `.*overall was\\: (?P<voice_tot>.*)$` | unwrap voice_tot [1m]) without (pod, filename, pod_template_hash)",
           "hide": false,
+          "legendFormat": "{{voice_tot}}",
           "refId": "B"
         }
       ],
@@ -387,5 +388,5 @@
   "timezone": "",
   "title": "1 PTG Voice",
   "uid": "2OdXcWWnk",
-  "version": 5
+  "version": 9
 }
