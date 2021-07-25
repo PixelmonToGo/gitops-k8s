@@ -6,6 +6,14 @@ metadata:
   namespace: monitoring
 spec:
   interval: 5m
+  install:
+    crds: Create
+    remediation:
+      retries: 3
+  upgrade:
+    crds: CreateReplace
+    remediation:
+      retries: 3
   chart:
     spec:
       # renovate: registryUrl=https://prometheus-community.github.io/helm-charts
