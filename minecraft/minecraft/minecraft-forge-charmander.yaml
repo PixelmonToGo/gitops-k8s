@@ -33,8 +33,9 @@ spec:
                 - key: pixelmontogo.com/region
                   operator: In
                   values:
-                    - germany
-                    - france
+                    - england
+                    # - germany
+                    # - france
       podAntiAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
           - weight: 100
