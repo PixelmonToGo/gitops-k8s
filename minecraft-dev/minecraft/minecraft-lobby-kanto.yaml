@@ -48,6 +48,7 @@ spec:
       forcegameMode: true
       type: PAPER
       pvp: false
+      allowNether: false
       forceReDownload: false
       difficulty: "0"
       maxPlayers: 120
