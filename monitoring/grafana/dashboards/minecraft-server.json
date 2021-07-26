@@ -16,7 +16,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 8,
-  "iteration": 1626801485286,
+  "iteration": 1627336613533,
   "links": [],
   "panels": [
     {
@@ -151,7 +151,7 @@
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
-            "min"
+            "mean"
           ],
           "fields": "",
           "values": false
@@ -163,7 +163,8 @@
       "pluginVersion": "8.0.5",
       "targets": [
         {
-          "expr": "mc_tps{container=~\"$container\"}",
+          "exemplar": true,
+          "expr": "mc_tps{container=~\"$container\"} > 1",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -172,7 +173,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Lowest TPS",
+      "title": "Average TPS",
       "transformations": [
         {
           "id": "reduce",
@@ -843,5 +844,5 @@
   "timezone": "",
   "title": "1 PTG Minecraft",
   "uid": "0Jz2eBg7k",
-  "version": 10
+  "version": 12
 }
