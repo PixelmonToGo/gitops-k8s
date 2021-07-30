@@ -16,7 +16,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 8,
-  "iteration": 1627336613533,
+  "iteration": 1627341698936,
   "links": [],
   "panels": [
     {
@@ -251,7 +251,7 @@
       "options": {
         "legend": {
           "calcs": [],
-          "displayMode": "hidden",
+          "displayMode": "list",
           "placement": "bottom"
         },
         "tooltip": {
@@ -261,8 +261,10 @@
       "pluginVersion": "8.0.5",
       "targets": [
         {
-          "expr": "mc_loaded_chunks_total{container=~\"$container\"}",
+          "exemplar": true,
+          "expr": "sum(mc_loaded_chunks_total{container=~\"$container\"}) by (world)",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{world}}",
           "metric": "mc_loaded_chunks_total",
@@ -483,9 +485,11 @@
       "pluginVersion": "8.0.5",
       "targets": [
         {
+          "exemplar": true,
           "expr": "sum (mc_entities_total{container=~\"$container\"}) by (world)",
           "format": "time_series",
           "hide": false,
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{world}}_total",
           "metric": "mc_entities_total",
@@ -844,5 +848,5 @@
   "timezone": "",
   "title": "1 PTG Minecraft",
   "uid": "0Jz2eBg7k",
-  "version": 12
+  "version": 14
 }
