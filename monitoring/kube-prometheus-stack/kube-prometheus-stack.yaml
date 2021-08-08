@@ -26,49 +26,6 @@ spec:
       interval: 5m
   timeout: 20m
   values:
-    additionalPrometheusRulesMap:
-      minecraft:
-        groups:
-          - name: offline
-            rules:
-              - alert: UserOffline
-                expr: time() - max_over_time(timestamp(changes(mc_player_online{container="minecraft-survival-minecraft"}[5m]) > 0)[60d:1m]) > 604800
-                for: 15m
-                labels:
-                  severity: info
-                annotations:
-                  summary: "{{ $labels.name }} is inactive"
-                  description: "{{ $labels.name }} has not logged in for over 7 days"
-      uptimerobot:
-        groups:
-          - name: public
-            rules:
-              - alert: MinecraftDown
-                expr: uptimerobot_status{c1_name="Minecraft"} > 0
-                for: 15m
-                labels:
-                  severity: critical
-                annotations:
-                  summary: "Minecraft is unreachable"
-                  description: "Minecraft has been unreachable from the internet for more than 30 minutes"
-              - alert: DynmapDown
-                expr: uptimerobot_status{c1_name="Dynmap"} > 0
-                for: 30m
-                labels:
-                  severity: critical
-                annotations:
-                  summary: "Dynmap is unreachable"
-                  description: "Dynmap has been unreachable from the internet for more than 30 minutes"
-          - name: services
-            rules:
-              - alert: ServicesDown
-                expr: uptimerobot_status > 0
-                for: 5m
-                labels:
-                  severity: warning
-                annotations:
-                  summary: "{{ $labels.c1_name }} is unreachable"
-                  description: "{{ $labels.c1_name }} is unreachable from the internet for more than 5 minutes"
     server:
       resources:
         requests:
