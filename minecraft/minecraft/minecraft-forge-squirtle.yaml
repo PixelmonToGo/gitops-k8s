@@ -52,7 +52,7 @@ spec:
       storageClass: longhorn
       dataDir:
         enabled: true
-        Size: 100Gi
+        Size: 125Gi
     resources:
       requests:
         memory: 21Gi
