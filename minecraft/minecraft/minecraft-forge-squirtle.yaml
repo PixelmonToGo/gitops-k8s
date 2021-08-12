@@ -67,7 +67,7 @@ spec:
     livenessProbe:
       initialDelaySeconds: 240
     readinessProbe:
-      initialDelaySeconds: 240
+      initialDelaySeconds: 120
     minecraftServer:
       eula: "TRUE"
       onlineMode: false
