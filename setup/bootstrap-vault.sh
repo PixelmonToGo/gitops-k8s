@@ -175,6 +175,7 @@ loadSecretsToVault() {
   vault kv put secrets/kube-system/external-dns/cloudflare-api-key cloudflare_api_token="$CLOUDFLARE_API_KEY"
   vault kv put secrets/longhorn-system/longhorn/minio-secret AWS_ACCESS_KEY_ID="$MINIO_ACCESS_KEY" AWS_SECRET_ACCESS_KEY="$MINIO_SECRET_KEY" AWS_ENDPOINTS="$MINIO_URL"
   vault kv put secrets/flux-system/github-webhook-token token="$GITHUB_FLUX_RECEIVER_TOKEN"
+  vault kv put secrets/flux-system/github-api-token token="$GITHUB_TOKEN"
 
   ####################
   # helm chart values
