@@ -22,7 +22,7 @@ spec:
         - name: canada
           protocol: layer2
           addresses:
-            - 51.222.234.146-51.222.234.149
+            - 51.222.234.147-51.222.234.149
         - name: germany
           protocol: layer2
           addresses:
