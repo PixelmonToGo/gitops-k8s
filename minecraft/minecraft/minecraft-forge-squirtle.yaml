@@ -62,6 +62,8 @@ spec:
       REPLACE_ENV_VARIABLES: "TRUE"
       REPLACE_ENV_VARIABLES_EXCLUDE_PATHS: "/data/pixelmon /data/config/aquadaycare/decorations"
       CFG_VC_HOST: "squirtle-vc.pixelmonreforged.com"
+      CFG_GTS_DB: "squirtleglobaltrade"
+      CFG_ECONOMY_DB: "squirtleeconomylite"
       OVERRIDE_SERVER_PROPERTIES: "TRUE"
       NETWORK_COMPRESSION_THRESHOLD: "-1"
     livenessProbe:
