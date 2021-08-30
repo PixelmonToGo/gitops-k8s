@@ -67,9 +67,9 @@ spec:
       OVERRIDE_SERVER_PROPERTIES: "TRUE"
       NETWORK_COMPRESSION_THRESHOLD: "-1"
     livenessProbe:
-      initialDelaySeconds: 240
+      initialDelaySeconds: 360
     readinessProbe:
-      initialDelaySeconds: 120
+      initialDelaySeconds: 200
     minecraftServer:
       eula: "TRUE"
       onlineMode: false

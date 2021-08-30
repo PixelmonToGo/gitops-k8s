@@ -40,6 +40,10 @@ spec:
       storageClass: longhorn
       dataDir:
         enabled: true
+    resources:
+      requests:
+        memory: 2Gi
+        cpu: 1000m
     serviceAnnotations:
       external-dns.alpha.kubernetes.io/hostname: proxy.pixelmonreforged.com
       metallb.universe.tf/address-pool: germany
