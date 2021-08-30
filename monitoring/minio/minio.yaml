@@ -26,7 +26,7 @@ spec:
                   operator: In
                   values:
                     - minio
-              topologyKey: kubernetes.io/hostname
+            topologyKey: kubernetes.io/hostname
     image:
       repository: jessestuart/minio
       tag: RELEASE.2020-08-08T04-50-06Z
