@@ -24,14 +24,13 @@ spec:
   values:
     affinity:
       nodeAffinity:
-        preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 1
-            preference:
-              matchExpressions:
-                - key: pixelmontogo.com/region
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: kubernetes.io/hostname
                   operator: In
                   values:
-                    - canada
+                    - echo-i2-lim3
     nameOverride: dev
     image: itzg/bungeecord
     imageTag: java8
