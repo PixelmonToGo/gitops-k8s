@@ -19,6 +19,9 @@ spec:
   values:
     controller:
       replicaCount: 1
+      dnsConfig:
+        nameservers:
+          - 9.9.9.9
       config:
         custom-http-errors: 404,401,403,500,503
         hsts-max-age: "31449600"
