@@ -1,0 +1,7 @@
+version = 1
+
+[approve]
+auto_approve_usernames = ["renovate"]
+
+[update]
+ignored_usernames = ["renovate"]

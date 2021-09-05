@@ -45,6 +45,7 @@
     // Automerge updates
     {
       matchUpdateTypes: ["minor", "patch", "pin", "digest"],
+      labels: ["automerge"],
       automerge: true,
     },
     {
