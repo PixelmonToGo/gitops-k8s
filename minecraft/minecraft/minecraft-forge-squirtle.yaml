@@ -66,6 +66,7 @@ spec:
       CFG_ECONOMY_DB: "squirtleeconomylite"
       OVERRIDE_SERVER_PROPERTIES: "TRUE"
       NETWORK_COMPRESSION_THRESHOLD: "-1"
+      SPAWN_PROTECTION: "0"
     livenessProbe:
       initialDelaySeconds: 360
     readinessProbe:
