@@ -56,3 +56,11 @@ spec:
             port: 8192
           ingress:
             enabled: false
+        - name: prometheus
+          containerPort: 9100
+          service:
+            enabled: true
+            port: 9100
+            type: ClusterIP
+          ingress:
+            enabled: false
