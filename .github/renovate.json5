@@ -7,7 +7,7 @@
   prCreation: "not-pending",
   stabilityDays: 1,
   commitMessageSuffix: "[ci-skip]",
-  commitBody: "Signed-off-by: James Lewis <jhlwscom@users.noreply.github.com>",
+  commitBody: "Signed-off-by: Solar <ptgbot@users.noreply.github.com>",
   // Do not notify on closed unmerged PRs
   suppressNotifications: ["prIgnoreNotification"],
   // Do not rebase PRs
@@ -48,6 +48,12 @@
       labels: ["automerge"],
       automerge: true,
     },
+    // Send major updates to pullrequest.com
+    {
+      matchUpdateTypes: ["major"],
+      commitMessageSuffix: "[pr][ci-skip]"
+    },
+    // Hold user-facing distruptions for review
     {
       matchPackagePatterns: ["^minecraft"],
       automerge: false,
