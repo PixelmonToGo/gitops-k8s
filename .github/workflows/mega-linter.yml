@@ -1,0 +1,43 @@
+---
+name: Mega-Linter
+
+on:
+  push:
+  pull_request:
+    branches: [master, main]
+
+env:
+  APPLY_FIXES: none
+
+jobs:
+  cancel_duplicates:
+    name: Cancel duplicate jobs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: fkirc/skip-duplicate-actions@master
+        with:
+          github_token: ${{ secrets.PAT }}
+
+  build:
+    name: Mega-Linter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PAT }}
+          fetch-depth: 0
+      - name: Mega-Linter
+        id: ml
+        uses: nvuillam/mega-linter@v4
+        env:
+          VALIDATE_ALL_CODEBASE: true
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+      - name: Archive production artifacts
+        if: ${{ success() }} || ${{ failure() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: Mega-Linter reports
+          path: |
+            report
+            mega-linter.log
