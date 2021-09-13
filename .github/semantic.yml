@@ -1,0 +1,7 @@
+allowMergeCommits: false
+allowRevertCommits: false
+titleOnly: true
+types:
+  - feat
+  - fix
+  - chore
