@@ -1,0 +1,75 @@
+---
+name: Mega-Linter
+
+on:
+  push:
+  pull_request:
+    branches: [master, main]
+
+env:
+  APPLY_FIXES: none
+
+jobs:
+  cancel_duplicates:
+    name: Cancel duplicate jobs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: fkirc/skip-duplicate-actions@master
+        with:
+          github_token: ${{ secrets.PAT }}
+
+  build:
+    name: Mega-Linter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PAT }}
+          fetch-depth: 0
+      - name: Mega-Linter
+        id: ml
+        uses: nvuillam/mega-linter@v4
+        env:
+          ALLOW_FIXES: true
+          DISABLE: COPYPASTE,SPELL
+          FILEIO_REPORTER: false
+          FLAVOR_SUGGESTIONS: false
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+          SHOW_ELAPSED_TIME: true
+          VALIDATE_ALL_CODEBASE: true
+      - name: Archive production artifacts
+        if: ${{ success() }} || ${{ failure() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: Mega-Linter reports
+          path: |
+            report
+            mega-linter.log
+      - name: Add reports directory to gitignore
+        if: ${{ success() }} || ${{ failure() }}
+        run: |
+          grep -qxF 'report/' .gitignore || echo -n 'report/' >> .gitignore
+      - name: Create Pull Request with applied fixes
+        id: cpr
+        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository)
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
+          commit-message: "chore: apply linters automatic fixes"
+          title: "chore: apply linters automatic fixes"
+          labels: bot
+      - name: Create PR output
+        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'pull_request' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository)
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+      - name: Prepare commit
+        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/master' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository)
+        run: sudo chown -Rc $UID .git/
+      - name: Commit and push applied linter fixes
+        if: steps.ml.outputs.has_updated_sources == 1 && (env.APPLY_FIXES_EVENT == 'all' || env.APPLY_FIXES_EVENT == github.event_name) && env.APPLY_FIXES_MODE == 'commit' && github.ref != 'refs/heads/master' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository)
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          branch: ${{ github.event.pull_request.head.ref || github.head_ref || github.ref }}
+          commit_message: "chore: apply linters fixes"
