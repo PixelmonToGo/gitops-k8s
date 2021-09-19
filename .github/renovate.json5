@@ -51,11 +51,11 @@
     // Send major updates to pullrequest.com
     {
       matchUpdateTypes: ["major"],
-      commitMessageSuffix: "[pr][ci-skip]"
+      commitMessageSuffix: "[pr][ci-skip]",
     },
     // Hold user-facing distruptions for review
     {
-      matchPackagePatterns: ["^minecraft"],
+      matchPackagePatterns: ["^minecraft", "mariadb"],
       automerge: false,
     },
     // Add labels according to package and update types
