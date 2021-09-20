@@ -50,7 +50,7 @@ spec:
     image: itzg/minecraft-server
     imageTag: 2021.16.0-java8-openj9
     persistence:
-      storageClass: longhorn
+      storageClass: longhorn-emea
       dataDir:
         enabled: true
         Size: 125Gi
