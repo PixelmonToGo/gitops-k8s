@@ -23,6 +23,8 @@ spec:
     replicaCount: 1
     ingress:
       enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx
       path: /oauth2
       hosts: [login.pixelmonreforged.com]
       tls:
