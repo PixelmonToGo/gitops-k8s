@@ -7,6 +7,14 @@ metadata:
 spec:
   releaseName: longhorn
   interval: 5m
+  install:
+    crds: Create
+    remediation:
+      retries: 3
+  upgrade:
+    crds: CreateReplace
+    remediation:
+      retries: 3
   chart:
     spec:
       # renovate: registryUrl=https://charts.longhorn.io
