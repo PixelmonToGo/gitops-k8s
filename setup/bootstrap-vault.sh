@@ -184,6 +184,7 @@ loadSecretsToVault() {
   kvault "minecraft/minecraft/minecraft-forge-charmeleon-helm-values.txt"
   kvault "minecraft/minecraft/minecraft-forge-squirtle-helm-values.txt"
   kvault "minecraft-dev/minecraft/minecraft-forge-squirtle-helm-values.txt"
+  kvault "monitoring/datadog/datadog-helm-values.txt"
   kvault "monitoring/grafana/grafana-helm-values.txt"
   kvault "monitoring/kube-prometheus-stack/kube-prometheus-stack-helm-values.txt"
   kvault "monitoring/minio/minio-helm-values.txt"
