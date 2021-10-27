@@ -28,11 +28,12 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: helm-release-annotations
-          title: "[renovate] create helmrelease annotations [ci-skip]"
+          title: "chore(deps): create helmrelease annotations [ci-skip][pr]"
           signoff: true
           committer: "${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>"
           author: "${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>"
           commit-message: "chore(deps): create renovatebot helmrelease annotations"
           body: |
-            Signed-off-by: James Lewis <jhlwscom@users.noreply.github.com>
+            Signed-off-by: Solar <ptgbot@users.noreply.github.com>
           labels: renovate/helm-release-annotations
+
