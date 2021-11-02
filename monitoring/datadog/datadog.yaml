@@ -17,10 +17,19 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    # agents:
-    #   image:
-    #     repository: ghcr.io/architectsmp/datadog-agent
-    #     tag: latest
+    agents:
+      volumes:
+        - hostPath:
+            path: /var/lib/rancher/k3s/server/tls/etcd
+          name: etcd-certs
+      volumeMounts:
+        - name: etcd-certs
+          mountPath: /host/etc/kubernetes/pki/etcd
+          readOnly: true
+      tolerations:
+      - effect: NoSchedule
+        key: node-role.kubernetes.io/master
+        operator: Exists
     datadog:
       apm:
         enabled: true
@@ -28,7 +37,37 @@ spec:
         enabled: true
         metricsProvider:
           enabled: true
+      clusterName: ptg
+      confd:
+        etcd.yaml: |-
+          ad_identifiers:
+            - etcd
+          instances:
+            - prometheus_url: https://%%host%%:2379/metrics
+              tls_ca_cert: /host/etc/kubernetes/pki/etcd/server-ca.crt
+              tls_cert: /host/etc/kubernetes/pki/etcd/server-client.crt
+              tls_private_key: /host/etc/kubernetes/pki/etcd/server-client.key
+        kube_scheduler.yaml: |-
+          ad_identifiers:
+            - kube-scheduler
+          instances:
+            - prometheus_url: https://%%host%%:10259/metrics
+              ssl_verify: false
+              bearer_token_auth: true
+        kube_controller_manager.yaml: |-
+          ad_identifiers:
+            - kube-controller-manager
+          instances:
+            - prometheus_url: https://%%host%%:10257/metrics
+              ssl_verify: false
+              bearer_token_auth: true
       criSocketPath: /var/run/k3s/containerd/containerd.sock
+      ignoreAutoConfig:
+      - etcd
+      - kube_scheduler
+      - kube_controller_manager
+      kubelet:
+        tlsVerify: false
       logs:
         enabled: true
         containerCollectAll: true
