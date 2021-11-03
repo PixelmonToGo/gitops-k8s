@@ -55,6 +55,7 @@ spec:
       CFG_VC_HOST: "squirtle-vc-dev.pixelmonreforged.com"
       CFG_GTS_DB: "squirtleglobaltrade"
       CFG_ECONOMY_DB: "squirtleeconomylite"
+      CFG_REFORGED_GTS_DB: "squirtlereforgedgts"
       OVERRIDE_SERVER_PROPERTIES: "TRUE"
       NETWORK_COMPRESSION_THRESHOLD: "-1"
       SPAWN_PROTECTION: "0"
