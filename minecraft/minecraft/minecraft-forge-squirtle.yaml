@@ -44,7 +44,7 @@ spec:
                   - key: app
                     operator: In
                     values:
-                      - minecraft-forge-charmander-prod
+                      - minecraft-forge-charmeleon-prod
               topologyKey: kubernetes.io/hostname
     image: itzg/minecraft-server
     imageTag: 2021.23.1-java8-openj9
