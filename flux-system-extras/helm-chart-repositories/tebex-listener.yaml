@@ -1,0 +1,15 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: tebex-listener
+  namespace: flux-system
+spec:
+  interval: 19m
+  url: https://github.com/jhlwscom/tebex-listener.git
+  ref:
+    branch: main
+  ignore: |
+    # exclude all
+    /*
+    # include chart directory
+    !/chart/    

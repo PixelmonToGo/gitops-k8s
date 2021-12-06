@@ -1,0 +1,17 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: tebex-listener
+  namespace: monitoring
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: ./chart
+      version: 0.1.0
+      sourceRef:
+        kind: GitRepository
+        name: tebex-listener
+        namespace: flux-system
+      interval: 5m
