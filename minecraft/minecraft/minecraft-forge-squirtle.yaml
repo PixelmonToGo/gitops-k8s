@@ -69,7 +69,7 @@ spec:
       SPAWN_PROTECTION: "0"
       ALLOW_FLIGHT: "true"
     livenessProbe:
-      initialDelaySeconds: 360
+      initialDelaySeconds: 1200
     readinessProbe:
       initialDelaySeconds: 200
     minecraftServer:
