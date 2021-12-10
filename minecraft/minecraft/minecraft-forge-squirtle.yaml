@@ -47,7 +47,7 @@ spec:
                       - minecraft-forge-charmander-prod
               topologyKey: kubernetes.io/hostname
     image: itzg/minecraft-server
-    imageTag: 2021.16.0-java8-openj9
+    imageTag: 2021.23.1-java8-openj9
     persistence:
       storageClass: longhorn
       dataDir:
@@ -69,7 +69,7 @@ spec:
       SPAWN_PROTECTION: "0"
       ALLOW_FLIGHT: "true"
     livenessProbe:
-      initialDelaySeconds: 360
+      initialDelaySeconds: 1200
     readinessProbe:
       initialDelaySeconds: 200
     minecraftServer:
