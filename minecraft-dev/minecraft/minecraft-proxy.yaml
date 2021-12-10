@@ -47,6 +47,7 @@ spec:
       serviceType: LoadBalancer
       externalTrafficPolicy: Local
       memory: 512M
+      jvmOpts: "-Dlog4j2.formatMsgNoLookups=true"
       extraPorts:
         - name: vote
           containerPort: 8192
