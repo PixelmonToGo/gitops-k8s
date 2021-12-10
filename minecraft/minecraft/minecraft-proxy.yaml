@@ -52,6 +52,7 @@ spec:
       velocityVersion: 1.1.5
       serviceType: LoadBalancer
       externalTrafficPolicy: Local
+      jvmOpts: "-Dlog4j2.formatMsgNoLookups=true"
       memory: 2G
       extraPorts:
         - name: vote
