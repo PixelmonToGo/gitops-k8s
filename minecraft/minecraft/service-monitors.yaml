@@ -2,12 +2,12 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: minecraft-forge-charmander
+  name: minecraft-forge-charmeleon
   namespace: minecraft
 spec:
   selector:
     matchLabels:
-      app: minecraft-forge-charmander-prod-prometheus
+      app: minecraft-forge-charmeleon-prod-prometheus
   namespaceSelector:
     matchNames:
       - minecraft
