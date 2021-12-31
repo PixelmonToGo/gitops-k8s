@@ -34,9 +34,21 @@
         "image: (?<depName>.*?)\n *imageTag: (?<currentValue>.*)\n",
       ],
       datasourceTemplate: "docker",
-    }
+    },
   ],
   packageRules: [
+    // Discriminate dev environment
+    {
+      groupName: "minecraft-dev",
+      matchPaths: ["minecraft-dev/**"],
+      stabilityDays: 2,
+    },
+    {
+      automerge: false,
+      groupName: "minecraft",
+      matchPaths: ["minecraft/**"],
+      stabilityDays: 7,
+    },
     // Setup datasources
     {
       datasources: ["helm"],
