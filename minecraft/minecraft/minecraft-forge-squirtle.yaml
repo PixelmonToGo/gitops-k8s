@@ -26,16 +26,15 @@ spec:
     nameOverride: prod
     affinity:
       nodeAffinity:
-        preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 1
-            preference:
-              matchExpressions:
-                - key: pixelmontogo.com/region
-                  operator: In
-                  values:
-                    - germany
-                    - france
-                    - england
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: pixelmontogo.com/region
+              operator: In
+              values:
+                - england
+                - france
+                - germany
       podAntiAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
           - weight: 100
