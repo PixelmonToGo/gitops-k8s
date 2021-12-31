@@ -5,7 +5,6 @@ auto_approve_usernames = ["renovate"]
 
 [merge]
 automerge_label = ["automerge", "renovate/helm-release", "renovate/image-release", "flux/update"]
-blocking_labels = ["dependency/major"]
-merge.blocking_title_regex = ".*(mariadb|minecraft).*"
+blocking_labels = ["dependency/major", "minecraft"]
 notify_on_conflict = false
 

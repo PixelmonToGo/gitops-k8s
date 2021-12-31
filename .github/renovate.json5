@@ -40,12 +40,14 @@
     // Discriminate dev environment
     {
       groupName: "minecraft-dev",
+      labels: ["minecraft"],
       matchPaths: ["minecraft-dev/**"],
       stabilityDays: 2,
     },
     {
       automerge: false,
       groupName: "minecraft",
+      labels: ["minecraft"],
       matchPaths: ["minecraft/**"],
       stabilityDays: 7,
     },
