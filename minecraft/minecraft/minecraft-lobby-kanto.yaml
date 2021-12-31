@@ -34,7 +34,7 @@ spec:
                     - alpha-i2-sbg3
     nameOverride: prod
     image: itzg/minecraft-server
-    imageTag: 2021.23.1-java8-openj9
+    imageTag: 2021.27.0-java8-openj9
     persistence:
       storageClass: longhorn
       dataDir:
