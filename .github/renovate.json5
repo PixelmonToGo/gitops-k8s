@@ -62,7 +62,7 @@
     },
     // Hold user-facing distruptions for review
     {
-      matchPackagePatterns: ["^minecraft", "^mariadb"],
+      matchPackagePatterns: ["minecraft", "^mariadb"],
       automerge: false,
     },
     // Add labels according to package and update types
