@@ -61,7 +61,7 @@ spec:
         memory: 25Gi
     extraEnv:
       REPLACE_ENV_VARIABLES: "TRUE"
-      REPLACE_ENV_VARIABLES_EXCLUDE_PATHS: "/data/pixelmon /data/config/aquadaycare/decorations"
+      REPLACE_ENV_VARIABLES_EXCLUDE_PATHS: "/data/config/aquadaycare/decorations /data/config/aquadaycare/players /data/config/aquagyms/players /data/atlantis/players /data/config/griefdefender/worlds /data/config/sponge/worlds /data/custom-models /data/nucleus /data/pixelmon /data/world"
       CFG_VC_HOST: "charmeleon-vc.pixelmonreforged.com"
       CFG_GTS_DB: "globaltrade"
       CFG_ECONOMY_DB: "economylite"
