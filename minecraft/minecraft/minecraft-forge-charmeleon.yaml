@@ -48,7 +48,7 @@ spec:
                       - minecraft-forge-squirtle-prod
               topologyKey: kubernetes.io/hostname
     image: itzg/minecraft-server
-    imageTag: 2021.23.1-java8-openj9
+    imageTag: 2021.27.0-java8-openj9
     persistence:
       storageClass: longhorn-emea
       dataDir:
