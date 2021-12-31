@@ -70,9 +70,9 @@ spec:
       SPAWN_PROTECTION: "0"
       ALLOW_FLIGHT: "true"
     livenessProbe:
-      initialDelaySeconds: 1800
+      initialDelaySeconds: 2700
     readinessProbe:
-      initialDelaySeconds: 1800
+      initialDelaySeconds: 280
     minecraftServer:
       eula: "TRUE"
       onlineMode: false
