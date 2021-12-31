@@ -25,13 +25,16 @@ spec:
     # ref: https://github.com/itzg/minecraft-server-charts/blob/master/charts/minecraft/values.yaml
     affinity:
       nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-            - matchExpressions:
-                - key: kubernetes.io/hostname
+        preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            preference:
+              matchExpressions:
+                - key: pixelmontogo.com/region
                   operator: In
                   values:
-                    - alpha-i2-sbg3
+                    - england
+                    - france
+                    - germany
     nameOverride: prod
     image: itzg/minecraft-server
     imageTag: 2021.27.0-java8-openj9
