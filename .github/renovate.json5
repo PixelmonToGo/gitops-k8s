@@ -28,6 +28,13 @@
       ],
       datasourceTemplate: "helm",
     },
+    {
+      fileMatch: ["./.+\\.yaml$"],
+      matchStrings: [
+        "image: (?<depName>.*?)\n *imageTag: (?<currentValue>.*)\n",
+      ],
+      datasourceTemplate: "docker",
+    }
   ],
   packageRules: [
     // Setup datasources
