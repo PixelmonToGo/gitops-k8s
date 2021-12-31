@@ -56,7 +56,7 @@ spec:
         Size: 125Gi
     resources:
       requests:
-        memory: 21Gi
+        memory: 8Gi
       limits:
         memory: 25Gi
     extraEnv:
