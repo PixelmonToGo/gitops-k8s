@@ -9,4 +9,3 @@ spec:
     - values.yaml
   path: secrets/minecraft/minecraft/minecraft-forge-pikachu-helm-values
   type: Opaque
-diff --git a/minecraft/minecraft/minecraft-forge-pikachu-helm-values.txt b/minecraft/minecraft/minecraft-forge-pikachu-helm-values.txt

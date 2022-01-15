@@ -115,4 +115,3 @@ spec:
   valuesFrom:
     - kind: Secret
       name: "minecraft-forge-pikachu-helm-values"
-diff --git a/minecraft/minecraft/minecraft-forge-pikachu-helm-values.yaml b/minecraft/minecraft/minecraft-forge-pikachu-helm-values.yaml
