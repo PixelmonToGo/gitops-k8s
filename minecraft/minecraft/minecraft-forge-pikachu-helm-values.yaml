@@ -1,0 +1,11 @@
+---
+apiVersion: ricoberger.de/v1alpha1
+kind: VaultSecret
+metadata:
+  name: minecraft-forge-pikachu-helm-values
+  namespace: minecraft
+spec:
+  keys:
+    - values.yaml
+  path: secrets/minecraft/minecraft/minecraft-forge-pikachu-helm-values
+  type: Opaque
