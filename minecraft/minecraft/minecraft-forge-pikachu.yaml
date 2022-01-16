@@ -24,7 +24,7 @@ spec:
       interval: 5m
   values:
     # ref: https://github.com/itzg/minecraft-server-charts/blob/master/charts/minecraft/values.yaml
-    nameOverride: dev
+    nameOverride: prod
     affinity:
       podAntiAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
