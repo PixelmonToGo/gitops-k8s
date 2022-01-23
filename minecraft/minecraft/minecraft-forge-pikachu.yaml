@@ -114,7 +114,7 @@ spec:
           containerPort: 24454
           protocol: UDP
           service:
-            enabled: false
+            enabled: true
             annotations:
               external-dns.alpha.kubernetes.io/hostname: pikachu-vc-dev.pixelmonreforged.com
               # metallb.universe.tf/address-pool: germany

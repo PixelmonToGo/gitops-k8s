@@ -111,7 +111,7 @@ spec:
           containerPort: 24454
           protocol: UDP
           service:
-            enabled: true
+            enabled: false
             annotations:
               external-dns.alpha.kubernetes.io/hostname: squirtle-vc.pixelmonreforged.com
             type: LoadBalancer
