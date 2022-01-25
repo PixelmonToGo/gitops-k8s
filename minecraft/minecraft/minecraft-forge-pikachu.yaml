@@ -63,7 +63,7 @@ spec:
     extraEnv:
       REPLACE_ENV_VARIABLES: "TRUE"
       REPLACE_ENV_VARIABLES_EXCLUDE_PATHS: "/data/pixelmon /data/config/aquadaycare/decorations"
-      CFG_VC_HOST: "pikachu-vc-dev.pixelmonreforged.com"
+      CFG_VC_HOST: "pikachu-vc.pixelmonreforged.com"
       CFG_GTS_DB: "pikachuglobaltrade"
       CFG_ECONOMY_DB: "pikachueconomylite"
       CFG_REFORGED_GTS_DB: "pikachureforgedgts"
@@ -116,7 +116,7 @@ spec:
           service:
             enabled: true
             annotations:
-              external-dns.alpha.kubernetes.io/hostname: pikachu-vc-dev.pixelmonreforged.com
+              external-dns.alpha.kubernetes.io/hostname: pikachu-vc.pixelmonreforged.com
               # metallb.universe.tf/address-pool: germany
             type: LoadBalancer
             port: 24454
