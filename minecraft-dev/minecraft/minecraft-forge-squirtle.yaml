@@ -39,7 +39,7 @@ spec:
                       - minecraft-forge-charmander-dev
               topologyKey: kubernetes.io/hostname
     image: itzg/minecraft-server
-    imageTag: 2022.1.1-java8-openj9
+    imageTag: java8-openj9
     persistence:
       storageClass: longhorn
       dataDir:
@@ -51,6 +51,7 @@ spec:
       limits:
         memory: 25Gi
     extraEnv:
+      GENERIC_PACKS_SUFFIX: "forge-v9.0.0.zip"
       REPLACE_ENV_VARIABLES: "TRUE"
       REPLACE_ENV_VARIABLES_EXCLUDE_PATHS: "/data/pixelmon /data/config/aquadaycare/decorations"
       CFG_VC_HOST: "squirtle-vc-dev.pixelmonreforged.com"
