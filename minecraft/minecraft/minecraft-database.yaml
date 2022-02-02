@@ -46,6 +46,7 @@ spec:
                     values:
                       - germany
                       - france
+                      - england
       podAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
           - weight: 100
