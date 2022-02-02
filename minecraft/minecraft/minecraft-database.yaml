@@ -28,9 +28,9 @@ spec:
       serviceMonitor:
         enabled: true
         namespace: monitoring
-    image:
-      repository: bitnami/mariadb
-      tag: 10.5.12-debian-10-r74
+    # image:
+    #   repository: bitnami/mariadb
+    #   tag: 10.5.12-debian-10-r74
     auth:
       rootPassword: pixelmontogo
       database: pixelmontogo
