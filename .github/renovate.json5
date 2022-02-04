@@ -12,7 +12,6 @@
   suppressNotifications: ["prIgnoreNotification"],
   // Do not rebase PRs
   rebaseWhen: "conflicted",
-  assignees: ["@jhlwscom"],
   "helm-values": {
     fileMatch: ["./.+\\.yaml$"],
   },
