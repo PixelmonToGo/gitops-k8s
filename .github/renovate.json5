@@ -1,116 +1,149 @@
 {
-  enabled: true,
-  timezone: "UTC",
-  schedule: "after 5pm and before 10pm",
-  dependencyDashboard: true,
-  dependencyDashboardAutoclose: true,
-  prCreation: "not-pending",
-  stabilityDays: 1,
-  commitMessageSuffix: "[ci-skip]",
-  commitBody: "Signed-off-by: Solar <ptgbot@users.noreply.github.com>",
+  "extends": [
+    ":enableRenovate",
+    ":semanticCommits",
+    ":enablePreCommit"
+  ],
+  "platform": "github",
+  "username": "ptgbot",
+  "repositories": ["PixelmonToGo/gitops-k8s"],
+  "onboarding": false,
+  "requireConfig": false,
+  "gitAuthor": "Solar <ptgbot@users.noreply.github.com>",
+  "timezone": "UTC",
+  "schedule": "after 5pm and before 10pm",
+  "dependencyDashboard": true,
+  "prCreation": "not-pending",
+  "stabilityDays": 1,
+  "commitMessageSuffix": "[ci-skip]",
+  "commitBody": "Signed-off-by: Solar <ptgbot@users.noreply.github.com>",
   // Do not notify on closed unmerged PRs
-  suppressNotifications: ["prIgnoreNotification"],
+  "suppressNotifications": ["prIgnoreNotification"],
   // Do not rebase PRs
-  rebaseWhen: "conflicted",
+  "rebaseWhen": "conflicted",
   "helm-values": {
-    fileMatch: ["./.+\\.yaml$"],
+    "fileMatch": ["./.+\\.yaml$"],
   },
-  kubernetes: {
-    fileMatch: ["\\.yaml$"],
-    ignorePaths: ["flux-system/", ".github"],
+  "kubernetes": {
+    "fileMatch": ["\\.yaml$"],
+    "ignorePaths": ["flux-system/", ".github"],
   },
-  regexManagers: [
+  "regexManagers": [
     {
-      fileMatch: ["./.+\\.yaml$"],
-      matchStrings: [
+      "fileMatch": ["./.+\\.yaml$"],
+      "matchStrings": [
         "registryUrl=(?<registryUrl>.*?)\n *chart: (?<depName>.*?)\n *version: (?<currentValue>.*)\n",
       ],
-      datasourceTemplate: "helm",
+      "datasourceTemplate": "helm",
     },
     {
-      fileMatch: ["./.*\\.yaml$"],
-      matchStrings: [
+      "fileMatch": ["./.*\\.yaml$"],
+      "matchStrings": [
         "GENERIC_PACKS_SUFFIX: \"?forge-(?<currentValue>.*).zip\"?\n"
       ],
-      depNameTemplate: "PixelmonToGo/minecraft-config",
-      datasourceTemplate: "github-releases",
+      "depNameTemplate": "PixelmonToGo/minecraft-config",
+      "datasourceTemplate": "github-releases"
     },
     {
-      fileMatch: ["./.+\\.yaml$"],
-      matchStrings: [
-        "image: (?<depName>.*?)\n *imageTag: (?<currentValue>.*)\n",
+      "fileMatch": ["./.+\\.yaml$"],
+      "matchStrings": [
+        "image": (?<depName>.*?)\n *imageTag: (?<currentValue>.*)\n",
       ],
-      datasourceTemplate: "docker",
+      "datasourceTemplate": "docker",
     },
   ],
-  packageRules: [
+  "packageRules": [
     // Setup datasources
     {
-      datasources: ["helm"],
-      commitMessageTopic: "Helm chart {{depName}}",
+      "datasources": ["helm"],
+      "commitMessageTopic": "Helm chart {{depName}}",
     },
     {
-      datasources: ["docker"],
-      commitMessageTopic: "Docker image {{depName}}",
-      commitMessageExtra: "to {{#if isSingleVersion}}v{{{toVersion}}}{{else}}{{{newValue}}}{{/if}}",
-      updateTypes: ["major", "minor", "patch"],
-      enabled: true,
+      "datasources": ["docker"],
+      "commitMessageTopic": "Docker image {{depName}}",
+      "commitMessageExtra": "to {{#if isSingleVersion}}v{{{toVersion}}}{{else}}{{{newValue}}}{{/if}}",
+      "updateTypes": ["major", "minor", "patch"],
+      "enabled": true,
     },
     // Automerge updates
     {
-      matchUpdateTypes: ["minor", "patch", "pin", "digest"],
-      labels: ["automerge"],
-      automerge: true,
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "labels": ["automerge"],
+      "automerge": true,
     },
     // Discriminate dev environment
     {
-      groupName: "minecraft-dev",
-      labels: ["minecraft"],
-      matchPaths: ["minecraft-dev/**"],
-      stabilityDays: 2,
+      "groupName": "minecraft-dev",
+      "labels": ["minecraft"],
+      "matchPaths": ["minecraft-dev/**"],
+      "excludePackagePatterns": ["minecraft-config"],
+      "stabilityDays": 3,
     },
     {
-      automerge: false,
-      groupName: "minecraft",
-      labels: ["minecraft"],
-      matchPaths: ["minecraft/**"],
-      stabilityDays: 7,
+      "automerge": false,
+      "groupName": "minecraft",
+      "labels": ["minecraft"],
+      "matchPaths": ["minecraft/**"],
+      "excludePackagePatterns": ["minecraft-config"],
+      "stabilityDays": 7,
+    },
+    {
+      "automerge": false,
+      "labels": ["minecraft"],
+      "groupName": "minecraft-config-dev",
+      "matchDatasources": ["github-releases"],
+      "matchPaths": ["minecraft-dev/**"],
+      "separateMajorMinor": true,
+      "separateMinorPatch": true,
+      "separateMultipleMajor": true,
+      "stabilityDays": 0,
+    },
+    {
+      "automerge": false,
+      "labels": ["minecraft"],
+      "groupName": "minecraft-config",
+      "matchDatasources": ["github-releases"],
+      "matchPaths": ["minecraft/**"],
+      "separateMajorMinor": true,
+      "separateMinorPatch": true,
+      "separateMultipleMajor": true,
+      "stabilityDays": 0
     },
     // Send major updates to pullrequest.com
     {
-      matchUpdateTypes: ["major"],
-      commitMessageSuffix: "[pr][ci-skip]",
+      "matchUpdateTypes": ["major"],
+      "commitMessageSuffix": "[pr][ci-skip]",
     },
     // Add labels according to package and update types
     {
-      datasources: ["docker"],
-      updateTypes: ["major"],
-      labels: ["renovate/image-release", "dependency/major"],
+      "datasources": ["docker"],
+      "updateTypes": ["major"],
+      "labels": ["renovate/image-release", "dependency/major"],
     },
     {
-      datasources: ["docker"],
-      updateTypes: ["minor"],
-      labels: ["renovate/image-release", "dependency/minor"],
+      "datasources": ["docker"],
+      "updateTypes": ["minor"],
+      "labels": ["renovate/image-release", "dependency/minor"],
     },
     {
-      datasources: ["docker"],
-      updateTypes: ["patch"],
-      labels: ["renovate/image-release", "dependency/patch"],
+      "datasources": ["docker"],
+      "updateTypes": ["patch"],
+      "labels": ["renovate/image-release", "dependency/patch"],
     },
     {
-      datasources: ["helm"],
-      updateTypes: ["major"],
-      labels: ["renovate/helm-release", "dependency/major"],
+      "datasources": ["helm"],
+      "updateTypes": ["major"],
+      "labels": ["renovate/helm-release", "dependency/major"],
     },
     {
-      datasources: ["helm"],
-      updateTypes: ["minor"],
-      labels: ["renovate/helm-release", "dependency/minor"],
+      "datasources": ["helm"],
+      "updateTypes": ["minor"],
+      "labels": ["renovate/helm-release", "dependency/minor"],
     },
     {
-      datasources: ["helm"],
-      updateTypes: ["patch"],
-      labels: ["renovate/helm-release", "dependency/patch"],
+      "datasources": ["helm"],
+      "updateTypes": ["patch"],
+      "labels": ["renovate/helm-release", "dependency/patch"],
     },
   ],
 }
