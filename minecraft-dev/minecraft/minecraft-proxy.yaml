@@ -23,18 +23,9 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    affinity:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-            - matchExpressions:
-                - key: kubernetes.io/hostname
-                  operator: In
-                  values:
-                    - echo-i2-lim3
     nameOverride: dev
     image: itzg/bungeecord
-    imageTag: java8
+    imageTag: java8-2022.1.0
     persistence:
       storageClass: longhorn
       dataDir:
@@ -44,7 +35,7 @@ spec:
       metallb.universe.tf/address-pool: canada
     minecraftProxy:
       type: VELOCITY
-      velocityVersion: 1.1.5
+      velocityVersion: 3.1.1
       serviceType: LoadBalancer
       externalTrafficPolicy: Local
       memory: 512M

@@ -24,21 +24,7 @@ spec:
       interval: 5m
   values:
     # ref: https://github.com/itzg/minecraft-server-charts/blob/master/charts/minecraft/values.yaml
-    nonce: temp
     nameOverride: dev
-    affinity:
-      podAntiAffinity:
-        preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 100
-            podAffinityTerm:
-              labelSelector:
-                matchExpressions:
-                  - key: app
-                    operator: In
-                    values:
-                      - minecraft-forge-charmeleon-prod
-                      - minecraft-forge-charmander-dev
-              topologyKey: kubernetes.io/hostname
     image: itzg/minecraft-server
     imageTag: java8-openj9
     persistence:
@@ -72,7 +58,7 @@ spec:
       eula: "TRUE"
       onlineMode: false
       version: "1.12.2"
-      jvmOpts: "-Xmns3G -Xmnx7G -Xgcpolicy:balanced -Xdisableexplicitgc -Dfml.readTimeout=300 -Dmixin.debug=true -Dfml.queryResult=confirm"
+      jvmOpts: "-Xmns3G -Xmnx7G -Xgcpolicy:balanced -Xdisableexplicitgc -Dfml.readTimeout=300 -Dmixin.debug=true"
       forgeVersion: "14.23.5.2860"
       gameMode: "0"
       forcegameMode: false

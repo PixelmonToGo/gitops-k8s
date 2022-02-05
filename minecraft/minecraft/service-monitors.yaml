@@ -2,24 +2,6 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: minecraft-forge-charmeleon
-  namespace: minecraft
-spec:
-  selector:
-    matchLabels:
-      app: minecraft-forge-charmeleon-prod-prometheus
-  namespaceSelector:
-    matchNames:
-      - minecraft
-  endpoints:
-    - port: prometheus
-      interval: 15s
-      scrapeTimeout: 10s
-      honorLabels: true
----
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
   name: minecraft-forge-pikachu
   namespace: minecraft
 spec:
@@ -38,12 +20,12 @@ spec:
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: minecraft-forge-squirtle
+  name: minecraft-proxy
   namespace: minecraft
 spec:
   selector:
     matchLabels:
-      app: minecraft-forge-squirtle-prod-prometheus
+      app: minecraft-proxy-prod-prometheus
   namespaceSelector:
     matchNames:
       - minecraft
