@@ -74,7 +74,7 @@
     // Discriminate dev environment
     {
       "groupName": "minecraft-dev",
-      "labels": ["minecraft"],
+      "labels": ["renovate/minecraft-dev"],
       "matchPaths": ["minecraft-dev/**"],
       "excludePackagePatterns": ["minecraft-config"],
       "stabilityDays": 3,
@@ -82,7 +82,7 @@
     {
       "automerge": false,
       "groupName": "minecraft",
-      "labels": ["minecraft"],
+      "labels": ["renovate/minecraft"],
       "matchPaths": ["minecraft/**"],
       "excludePackagePatterns": ["minecraft-config"],
       "stabilityDays": 7,
