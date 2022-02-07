@@ -33,6 +33,7 @@ spec:
     serviceAnnotations:
       external-dns.alpha.kubernetes.io/hostname: proxy-dev.pixelmonreforged.com
       metallb.universe.tf/address-pool: canada
+    strategyType: Recreate
     minecraftProxy:
       type: VELOCITY
       velocityVersion: 3.1.1
