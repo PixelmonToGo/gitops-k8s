@@ -36,18 +36,6 @@ spec:
                 - england
                 - france
                 - germany
-      podAntiAffinity:
-        preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 100
-            podAffinityTerm:
-              labelSelector:
-                matchExpressions:
-                  - key: app
-                    operator: In
-                    values:
-                      - minecraft-forge-charmeleon-prod
-                      - minecraft-forge-squirtle-prod
-              topologyKey: kubernetes.io/hostname
     image: itzg/minecraft-server
     imageTag: 2022.1.1-java8-openj9
     persistence:
@@ -61,6 +49,7 @@ spec:
       limits:
         memory: 25Gi
     extraEnv:
+      GENERIC_PACKS_SUFFIX: "forge-v9.0.0.zip"
       REPLACE_ENV_VARIABLES: "TRUE"
       REPLACE_ENV_VARIABLES_EXCLUDE_PATHS: "/data/pixelmon /data/config/aquadaycare/decorations"
       CFG_VC_HOST: "pikachu-vc.pixelmonreforged.com"
@@ -80,7 +69,7 @@ spec:
       eula: "TRUE"
       onlineMode: false
       version: "1.12.2"
-      jvmOpts: "-Xmns3G -Xmnx7G -Xgcpolicy:balanced -Xdisableexplicitgc -Dfml.readTimeout=300 -Dmixin.debug=true -Dfml.queryResult=confirm"
+      jvmOpts: "-Xmns3G -Xmnx7G -Xgcpolicy:balanced -Xdisableexplicitgc -Dfml.readTimeout=300 -Dmixin.debug=true"
       forgeVersion: "14.23.5.2860"
       gameMode: "0"
       forcegameMode: false
