@@ -17,9 +17,9 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    image:
-      repository: bitnami/mariadb
-      tag: 10.6.5-debian-10-r74
+    # image:
+    #   repository: bitnami/mariadb
+    #   tag: 10.6.5-debian-10-r74
     auth:
       rootPassword: pixelmontogo
       database: pixelmontogo
