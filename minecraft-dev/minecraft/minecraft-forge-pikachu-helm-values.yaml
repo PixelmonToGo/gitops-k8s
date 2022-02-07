@@ -2,10 +2,10 @@
 apiVersion: ricoberger.de/v1alpha1
 kind: VaultSecret
 metadata:
-  name: minecraft-forge-squirtle-helm-values
+  name: minecraft-forge-pikachu-helm-values
   namespace: minecraft-dev
 spec:
   keys:
     - values.yaml
-  path: secrets/minecraft-dev/minecraft/minecraft-forge-squirtle-helm-values
+  path: secrets/minecraft-dev/minecraft/minecraft-forge-pikachu-helm-values
   type: Opaque

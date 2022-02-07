@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: minecraft-forge-squirtle
+  name: minecraft-forge-pikachu
   namespace: minecraft-dev
 spec:
   interval: 5m
@@ -25,10 +25,21 @@ spec:
   values:
     # ref: https://github.com/itzg/minecraft-server-charts/blob/master/charts/minecraft/values.yaml
     nameOverride: dev
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: pixelmontogo.com/region
+              operator: In
+              values:
+                - england
+                - france
+                - germany
     image: itzg/minecraft-server
-    imageTag: java8-openj9
+    imageTag: 2022.3.0-java8-openj9
     persistence:
-      storageClass: longhorn
+      storageClass: longhorn-emea
       dataDir:
         enabled: true
         Size: 100Gi
@@ -41,11 +52,11 @@ spec:
       GENERIC_PACKS_SUFFIX: "forge-v9.0.2.zip"
       REPLACE_ENV_VARIABLES: "TRUE"
       REPLACE_ENV_VARIABLES_EXCLUDE_PATHS: "/data/pixelmon /data/config/aquadaycare/decorations"
-      CFG_VC_HOST: "squirtle-vc-dev.pixelmonreforged.com"
-      CFG_GTS_DB: "squirtleglobaltrade"
-      CFG_ECONOMY_DB: "squirtleeconomylite"
-      CFG_REFORGED_GTS_DB: "squirtlereforgedgts"
-      CFG_WONDERTRADE_DB: "squirtlewondertrade"
+      CFG_VC_HOST: "pikachu-vc-dev.pixelmonreforged.com"
+      CFG_GTS_DB: "pikachuglobaltrade"
+      CFG_ECONOMY_DB: "pikachueconomylite"
+      CFG_REFORGED_GTS_DB: "pikachureforgedgts"
+      CFG_WONDERTRADE_DB: "pikachuwondertrade"
       OVERRIDE_SERVER_PROPERTIES: "TRUE"
       NETWORK_COMPRESSION_THRESHOLD: "-1"
       SPAWN_PROTECTION: "0"
@@ -73,7 +84,7 @@ spec:
       viewDistance: 4
       maxTickTime: -1
       memory: 14G
-      motd: "forge-squirtle"
+      motd: "forge-pikachu"
       serviceType: ClusterIP
       rcon:
         enabled: true
@@ -94,7 +105,7 @@ spec:
           service:
             enabled: true
             annotations:
-              external-dns.alpha.kubernetes.io/hostname: squirtle-vc-dev.pixelmonreforged.com
+              external-dns.alpha.kubernetes.io/hostname: pikachu-vc-dev.pixelmonreforged.com
               # metallb.universe.tf/address-pool: germany
             type: LoadBalancer
             port: 24454
@@ -102,4 +113,4 @@ spec:
             enabled: false
   valuesFrom:
     - kind: Secret
-      name: "minecraft-forge-squirtle-helm-values"
+      name: "minecraft-forge-pikachu-helm-values"
