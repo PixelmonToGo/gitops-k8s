@@ -11,7 +11,6 @@
   "requireConfig": false,
   "gitAuthor": "Solar <ptgbot@users.noreply.github.com>",
   "timezone": "UTC",
-  "schedule": "after 5pm and before 10pm",
   "dependencyDashboard": true,
   "prCreation": "not-pending",
   "stabilityDays": 1,
