@@ -12,7 +12,6 @@
   "gitAuthor": "Solar <ptgbot@users.noreply.github.com>",
   "timezone": "UTC",
   "dependencyDashboard": true,
-  "prCreation": "not-pending",
   "stabilityDays": 1,
   "commitMessageSuffix": "[ci-skip]",
   "commitBody": "Signed-off-by: Solar <ptgbot@users.noreply.github.com>",
