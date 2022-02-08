@@ -87,7 +87,7 @@
     },
     {
       "automerge": false,
-      "labels": ["minecraft"],
+      "labels": ["renovate/minecraft-dev"],
       "groupName": "minecraft-config-dev",
       "matchDatasources": ["github-releases"],
       "matchPaths": ["minecraft-dev/**"],
@@ -98,7 +98,7 @@
     },
     {
       "automerge": false,
-      "labels": ["minecraft"],
+      "labels": ["renovate/minecraft"],
       "groupName": "minecraft-config",
       "matchDatasources": ["github-releases"],
       "matchPaths": ["minecraft/**"],
