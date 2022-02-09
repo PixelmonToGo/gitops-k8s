@@ -49,6 +49,7 @@ spec:
       limits:
         memory: 25Gi
     extraEnv:
+      FORCE_GENERIC_PACK_UPDATE: "TRUE"
       GENERIC_PACKS_SUFFIX: "forge-v9.1.0.zip"
       REPLACE_ENV_VARIABLES: "TRUE"
       REPLACE_ENV_VARIABLES_EXCLUDE_PATHS: "/data/pixelmon /data/config/aquadaycare/decorations"
