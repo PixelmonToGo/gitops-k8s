@@ -59,7 +59,6 @@ spec:
       CFG_WONDERTRADE_DB: "pikachuwondertrade"
       OVERRIDE_SERVER_PROPERTIES: "TRUE"
       NETWORK_COMPRESSION_THRESHOLD: "-1"
-      SPAWN_PROTECTION: "0"
       ALLOW_FLIGHT: "true"
     livenessProbe:
       initialDelaySeconds: 360
@@ -79,6 +78,7 @@ spec:
       difficulty: "0"
       levelType: DEFAULT
       playerIdleTimeout: 300
+      spawnProtection: 0
       maxWorldSize: 29999984
       maxPlayers: 120
       viewDistance: 4
