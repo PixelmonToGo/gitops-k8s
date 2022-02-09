@@ -5,6 +5,5 @@ auto_approve_usernames = ["renovate"]
 
 [merge]
 automerge_label = ["automerge", "renovate/helm-release", "renovate/image-release", "flux/update"]
-blocking_labels = ["dependency/major", "minecraft"]
+blocking_labels = ["dependency/major", "renovate/minecraft", "renovate/minecraft-dev"]
 notify_on_conflict = false
-

@@ -11,9 +11,7 @@
   "requireConfig": false,
   "gitAuthor": "Solar <ptgbot@users.noreply.github.com>",
   "timezone": "UTC",
-  "schedule": "after 5pm and before 10pm",
   "dependencyDashboard": true,
-  "prCreation": "not-pending",
   "stabilityDays": 1,
   "commitMessageSuffix": "[ci-skip]",
   "commitBody": "Signed-off-by: Solar <ptgbot@users.noreply.github.com>",
@@ -74,7 +72,7 @@
     // Discriminate dev environment
     {
       "groupName": "minecraft-dev",
-      "labels": ["minecraft"],
+      "labels": ["renovate/minecraft-dev"],
       "matchPaths": ["minecraft-dev/**"],
       "excludePackagePatterns": ["minecraft-config"],
       "stabilityDays": 3,
@@ -82,14 +80,14 @@
     {
       "automerge": false,
       "groupName": "minecraft",
-      "labels": ["minecraft"],
+      "labels": ["renovate/minecraft"],
       "matchPaths": ["minecraft/**"],
       "excludePackagePatterns": ["minecraft-config"],
       "stabilityDays": 7,
     },
     {
       "automerge": false,
-      "labels": ["minecraft"],
+      "labels": ["renovate/minecraft-dev"],
       "groupName": "minecraft-config-dev",
       "matchDatasources": ["github-releases"],
       "matchPaths": ["minecraft-dev/**"],
@@ -100,7 +98,7 @@
     },
     {
       "automerge": false,
-      "labels": ["minecraft"],
+      "labels": ["renovate/minecraft"],
       "groupName": "minecraft-config",
       "matchDatasources": ["github-releases"],
       "matchPaths": ["minecraft/**"],

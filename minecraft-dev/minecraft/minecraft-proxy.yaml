@@ -25,7 +25,7 @@ spec:
   values:
     nameOverride: dev
     image: itzg/bungeecord
-    imageTag: java8-2022.1.0
+    imageTag: java11-2022.1.0
     persistence:
       storageClass: longhorn
       dataDir:
@@ -33,6 +33,7 @@ spec:
     serviceAnnotations:
       external-dns.alpha.kubernetes.io/hostname: proxy-dev.pixelmonreforged.com
       metallb.universe.tf/address-pool: canada
+    strategyType: Recreate
     minecraftProxy:
       type: VELOCITY
       velocityVersion: 3.1.1
