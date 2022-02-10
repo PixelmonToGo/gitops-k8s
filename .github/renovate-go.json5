@@ -9,7 +9,7 @@
   "repositories": ["PixelmonToGo/gitops-k8s"],
   "onboarding": false,
   "requireConfig": false,
-  "gitAuthor": "Solar <ptgbot@users.noreply.github.com>",
+  "gitAuthor": "Solar <90571000+ptgbot@users.noreply.github.com>",
   "timezone": "UTC",
   "dependencyDashboard": true,
   "stabilityDays": 1,
