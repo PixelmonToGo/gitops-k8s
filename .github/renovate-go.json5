@@ -37,7 +37,7 @@
     {
       "fileMatch": ["./.*\\.yaml$"],
       "matchStrings": [
-        "GENERIC_PACKS_SUFFIX: \"?forge-(?<currentValue>.*).zip\"?\n"
+        "GENERIC_PACKS_SUFFIX: \"?forge-(?<currentValue>.+)\\+[a-z]{2}.zip\"?\n"
       ],
       "depNameTemplate": "PixelmonToGo/minecraft-config",
       "datasourceTemplate": "github-releases"
