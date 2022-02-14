@@ -77,7 +77,7 @@ spec:
       pvp: false
       forceReDownload: true
       difficulty: "0"
-      levelType: DEFAULT
+      levelType: OTG
       playerIdleTimeout: 300
       spawnProtection: 0
       maxWorldSize: 29999984
