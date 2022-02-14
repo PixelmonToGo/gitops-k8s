@@ -47,17 +47,6 @@ spec:
                       - germany
                       - france
                       - england
-      podAffinity:
-        preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 100
-            podAffinityTerm:
-              labelSelector:
-                matchExpressions:
-                  - key: app
-                    operator: In
-                    values:
-                      - minecraft-forge-charmander-prod
-              topologyKey: kubernetes.io/hostname
       extraFlags: "--max_connections=500"
       persistence:
         enabled: true
