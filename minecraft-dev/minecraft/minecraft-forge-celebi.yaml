@@ -50,7 +50,7 @@ spec:
         memory: 25Gi
     extraEnv:
       FORCE_GENERIC_PACK_UPDATE: "TRUE"
-      GENERIC_PACKS_SUFFIX: "forge-v10.0.0+es.zip"
+      GENERIC_PACKS_SUFFIX: "forge-v10.1.0+es.zip"
       REPLACE_ENV_VARIABLES: "TRUE"
       REPLACE_ENV_VARIABLES_EXCLUDE_PATHS: "/data/pixelmon /data/config/aquadaycare/decorations"
       CFG_VC_HOST: "celebi-vc-dev.pixelmonreforged.com"
