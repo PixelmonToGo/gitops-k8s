@@ -23,11 +23,6 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    metrics:
-      enabled: true
-      serviceMonitor:
-        enabled: true
-        namespace: monitoring
     # image:
     #   repository: bitnami/mariadb
     #   tag: 10.5.12-debian-10-r74
