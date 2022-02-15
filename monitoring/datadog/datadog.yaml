@@ -51,6 +51,15 @@ spec:
               tls_ca_cert: /host/etc/kubernetes/pki/etcd/server-ca.crt
               tls_cert: /host/etc/kubernetes/pki/etcd/server-client.crt
               tls_private_key: /host/etc/kubernetes/pki/etcd/server-client.key
+        jmx.yaml: |-
+          ad_identifiers:
+            - minecraft-server
+          init_config:
+            is_jmx: true
+            collect_default_metrics: true
+          instances:
+            - host: "%%host%%"
+              port: "7091"
         kube_scheduler.yaml: |-
           ad_identifiers:
             - kube-scheduler

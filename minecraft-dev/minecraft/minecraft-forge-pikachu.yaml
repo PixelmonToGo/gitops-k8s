@@ -54,6 +54,7 @@ spec:
       DD_VERSION: "10.1.0"
       DD_PROFILING_ENABLED: "true"
       DD_LOGS_INJECTION: "true"
+      ENABLE_JMX: "true"
       FORCE_GENERIC_PACK_UPDATE: "TRUE"
       GENERIC_PACKS_SUFFIX: "forge-v10.1.0+en.zip"
       REPLACE_ENV_VARIABLES: "TRUE"
@@ -65,6 +66,10 @@ spec:
       CFG_WONDERTRADE_DB: "pikachuwondertrade"
       NETWORK_COMPRESSION_THRESHOLD: "-1"
       ALLOW_FLIGHT: "true"
+      JMX_HOST:
+        valueFrom:
+          fieldRef:
+            fieldPath: status.podIP
       DD_AGENT_HOST:
         valueFrom:
           fieldRef:
@@ -73,6 +78,8 @@ spec:
       initialDelaySeconds: 360
     readinessProbe:
       initialDelaySeconds: 200
+    podAnnotations:
+      ad.datadoghq.com/tolerate-unready: "true"
     minecraftServer:
       eula: "TRUE"
       onlineMode: false
@@ -100,6 +107,15 @@ spec:
         enabled: true
         serviceType: ClusterIP
       extraPorts:
+        - name: jmx
+          containerPort: 7091
+          service:
+            enabled: true
+            annotations: {}
+            type: ClusterIP
+            port: 7091
+          ingress:
+            enabled: false
         - name: prometheus
           containerPort: 9225
           service:
