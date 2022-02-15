@@ -78,7 +78,7 @@ spec:
         enabled: true
         processCollection: true
       prometheusScrape:
-        enabled: true
+        enabled: false
       site: datadoghq.eu
     kubeStateMetricsEnabled: false
     targetSystem: linux
