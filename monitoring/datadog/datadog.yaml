@@ -18,6 +18,9 @@ spec:
       interval: 5m
   values:
     agents:
+      image:
+        name: agent
+        tag: 7.33.1-jmx
       volumes:
         - hostPath:
             path: /var/lib/rancher/k3s/server/tls/etcd
