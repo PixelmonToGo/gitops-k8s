@@ -37,7 +37,6 @@ spec:
       limits:
         memory: 16Gi
     extraEnv:
-      OVERRIDE_SERVER_PROPERTIES: "TRUE"
       NETWORK_COMPRESSION_THRESHOLD: "-1"
       TUNE_NURSERY_SIZES: "TRUE"
       TUNE_VIRTUALIZED: "TRUE"
@@ -61,6 +60,7 @@ spec:
       maxTickTime: -1
       memory: 8G
       motd: "lobby-kanto"
+      overrideServerProperties: true
       serviceType: ClusterIP
       rcon:
         enabled: true

@@ -63,7 +63,6 @@ spec:
       CFG_ECONOMY_DB: "pikachueconomylite"
       CFG_REFORGED_GTS_DB: "pikachureforgedgts"
       CFG_WONDERTRADE_DB: "pikachuwondertrade"
-      OVERRIDE_SERVER_PROPERTIES: "TRUE"
       NETWORK_COMPRESSION_THRESHOLD: "-1"
       ALLOW_FLIGHT: "true"
       DD_AGENT_HOST:
@@ -95,6 +94,7 @@ spec:
       maxTickTime: -1
       memory: 14G
       motd: "forge-pikachu"
+      overrideServerProperties: true
       serviceType: ClusterIP
       rcon:
         enabled: true
