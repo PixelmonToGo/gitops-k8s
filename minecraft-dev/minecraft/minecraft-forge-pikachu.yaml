@@ -49,6 +49,11 @@ spec:
       limits:
         memory: 25Gi
     extraEnv:
+      DD_ENV: "dev"
+      DD_SERVICE: "pikachu"
+      DD_VERSION: "10.1.0"
+      DD_PROFILING_ENABLED: "true"
+      DD_LOGS_INJECTION: "true"
       FORCE_GENERIC_PACK_UPDATE: "TRUE"
       GENERIC_PACKS_SUFFIX: "forge-v10.1.0+en.zip"
       REPLACE_ENV_VARIABLES: "TRUE"
@@ -61,6 +66,10 @@ spec:
       OVERRIDE_SERVER_PROPERTIES: "TRUE"
       NETWORK_COMPRESSION_THRESHOLD: "-1"
       ALLOW_FLIGHT: "true"
+      DD_AGENT_HOST:
+        valueFrom:
+          fieldRef:
+            fieldPath: status.hostIP
     livenessProbe:
       initialDelaySeconds: 360
     readinessProbe:
@@ -69,7 +78,7 @@ spec:
       eula: "TRUE"
       onlineMode: false
       version: "1.12.2"
-      jvmOpts: "-Xmns3G -Xmnx7G -Xgcpolicy:balanced -Xdisableexplicitgc -Dfml.readTimeout=300 -Dmixin.debug=true"
+      jvmOpts: "-Xmns3G -Xmnx7G -Xgcpolicy:balanced -Xdisableexplicitgc -Dfml.readTimeout=300 -Dmixin.debug=true -javaagent:dd-java-agent.jar -XX:FlightRecorderOptions=stackdepth=256"
       forgeVersion: "14.23.5.2860"
       gameMode: "0"
       forcegameMode: false

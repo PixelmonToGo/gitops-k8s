@@ -27,12 +27,13 @@ spec:
           mountPath: /host/etc/kubernetes/pki/etcd
           readOnly: true
       tolerations:
-      - effect: NoSchedule
-        key: node-role.kubernetes.io/master
-        operator: Exists
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/master
+          operator: Exists
     datadog:
       apm:
         enabled: true
+        portEnabled: true
       clusterAgent:
         enabled: true
         metricsProvider:
@@ -63,9 +64,9 @@ spec:
               bearer_token_auth: true
       criSocketPath: /var/run/k3s/containerd/containerd.sock
       ignoreAutoConfig:
-      - etcd
-      - kube_scheduler
-      - kube_controller_manager
+        - etcd
+        - kube_scheduler
+        - kube_controller_manager
       kubelet:
         tlsVerify: false
       logs:
