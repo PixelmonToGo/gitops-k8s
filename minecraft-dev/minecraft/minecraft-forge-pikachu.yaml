@@ -56,7 +56,7 @@ spec:
       DD_LOGS_INJECTION: "true"
       ENABLE_JMX: "true"
       FORCE_GENERIC_PACK_UPDATE: "TRUE"
-      GENERIC_PACKS_SUFFIX: "forge-v10.1.0+en.zip"
+      GENERIC_PACKS_SUFFIX: "forge-v10.1.1+en.zip"
       REPLACE_ENV_VARIABLES: "TRUE"
       REPLACE_ENV_VARIABLES_EXCLUDE_PATHS: "/data/pixelmon /data/config/aquadaycare/decorations"
       CFG_VC_HOST: "pikachu-vc-dev.pixelmonreforged.com"
