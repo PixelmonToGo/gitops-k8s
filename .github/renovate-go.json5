@@ -13,7 +13,7 @@
   "timezone": "UTC",
   "dependencyDashboard": true,
   "stabilityDays": 1,
-  "commitMessageSuffix": "[ci-skip]",
+  "prCreation": "not-pending",
   "commitBody": "Signed-off-by: Solar <ptgbot@users.noreply.github.com>",
   // Do not notify on closed unmerged PRs
   "suppressNotifications": ["prIgnoreNotification"],
@@ -37,7 +37,8 @@
     {
       "fileMatch": ["./.*\\.yaml$"],
       "matchStrings": [
-        "GENERIC_PACKS_SUFFIX: \"?forge-(?<currentValue>.+)\\+[a-z]{2}.zip\"?\n"
+        "DD_VERSION: \"(?<currentValue>.*)\"",
+        "GENERIC_PACKS_SUFFIX: \"?forge-(?<currentValue>.+)\\+[a-z]{2}.zip\"?\n",
       ],
       "depNameTemplate": "PixelmonToGo/minecraft-config",
       "datasourceTemplate": "github-releases"
@@ -66,82 +67,57 @@
     // Automerge updates
     {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-      "labels": ["automerge"],
       "automerge": true,
     },
-    // Discriminate dev environment
+    // Send major updates to pullrequest.com
     {
-      "groupName": "minecraft-dev",
-      "labels": ["renovate/minecraft-dev"],
-      "matchPaths": ["minecraft-dev/**"],
-      "excludePackagePatterns": ["minecraft-config"],
-      "stabilityDays": 3,
+      "matchUpdateTypes": ["major"],
+      "commitMessageSuffix": "[pr]",
     },
+    // Add label for Minecraft changes and block automerge
     {
       "automerge": false,
-      "groupName": "minecraft",
       "labels": ["renovate/minecraft"],
       "matchPaths": ["minecraft/**"],
-      "excludePackagePatterns": ["minecraft-config"],
       "stabilityDays": 7,
     },
     {
       "automerge": false,
       "labels": ["renovate/minecraft-dev"],
-      "groupName": "minecraft-config-dev",
-      "matchDatasources": ["github-releases"],
       "matchPaths": ["minecraft-dev/**"],
+      "stabilityDays": 3,
+    },
+    // Add labels according to package and update types
+    {
+      "updateTypes": ["major"],
+      "addLabels": ["dependency/major"],
+    },
+    {
+      "updateTypes": ["minor"],
+      "addLabels": ["dependency/minor"],
+    },
+    {
+      "updateTypes": ["patch"],
+      "addLabels": ["dependency/patch"],
+    },
+    {
+      "datasources": ["helm"],
+      "addLabels": ["renovate/helm-release"],
+    },
+    {
+      "datasources": ["docker"],
+      "addLabels": ["renovate/image-release"],
+    },
+    // Isolation for GitHub releases
+    {
+      "additionalBranchPrefix": "{{{packageFile}}}",
+      "addLabels": ["renovate/github-release"],
+      "datasources": ["github-releases"],
+      "prCreation": "immediate",
       "separateMajorMinor": true,
       "separateMinorPatch": true,
       "separateMultipleMajor": true,
       "stabilityDays": 0,
-    },
-    {
-      "automerge": false,
-      "labels": ["renovate/minecraft"],
-      "groupName": "minecraft-config",
-      "matchDatasources": ["github-releases"],
-      "matchPaths": ["minecraft/**"],
-      "separateMajorMinor": true,
-      "separateMinorPatch": true,
-      "separateMultipleMajor": true,
-      "stabilityDays": 0
-    },
-    // Send major updates to pullrequest.com
-    {
-      "matchUpdateTypes": ["major"],
-      "commitMessageSuffix": "[pr][ci-skip]",
-    },
-    // Add labels according to package and update types
-    {
-      "datasources": ["docker"],
-      "updateTypes": ["major"],
-      "labels": ["renovate/image-release", "dependency/major"],
-    },
-    {
-      "datasources": ["docker"],
-      "updateTypes": ["minor"],
-      "labels": ["renovate/image-release", "dependency/minor"],
-    },
-    {
-      "datasources": ["docker"],
-      "updateTypes": ["patch"],
-      "labels": ["renovate/image-release", "dependency/patch"],
-    },
-    {
-      "datasources": ["helm"],
-      "updateTypes": ["major"],
-      "labels": ["renovate/helm-release", "dependency/major"],
-    },
-    {
-      "datasources": ["helm"],
-      "updateTypes": ["minor"],
-      "labels": ["renovate/helm-release", "dependency/minor"],
-    },
-    {
-      "datasources": ["helm"],
-      "updateTypes": ["patch"],
-      "labels": ["renovate/helm-release", "dependency/patch"],
-    },
+    }
   ],
 }
