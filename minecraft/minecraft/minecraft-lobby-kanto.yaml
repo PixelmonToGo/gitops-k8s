@@ -38,7 +38,7 @@ spec:
                     - germany
     nameOverride: prod
     image: itzg/minecraft-server
-    imageTag: 2022.3.0-java8-openj9
+    imageTag: 2022.4.1-java8-openj9
     persistence:
       storageClass: longhorn
       dataDir:
