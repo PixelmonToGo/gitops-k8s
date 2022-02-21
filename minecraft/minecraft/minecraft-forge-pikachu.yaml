@@ -68,7 +68,7 @@ spec:
       eula: "TRUE"
       onlineMode: false
       version: "1.12.2"
-      jvmOpts: "-Xmns3G -Xmnx7G -Xgcpolicy:balanced -Xdisableexplicitgc -Dfml.readTimeout=300 -Dmixin.debug=true"
+      jvmOpts: "-Xmns3G -Xmnx7G -Xgcpolicy:balanced -Xdisableexplicitgc -Dfml.readTimeout=300"
       forgeVersion: "14.23.5.2860"
       gameMode: "0"
       forcegameMode: false
