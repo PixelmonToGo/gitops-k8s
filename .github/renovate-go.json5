@@ -110,7 +110,7 @@
     },
     // Isolation for GitHub releases
     {
-      "additionalBranchPrefix": "{{{packageFile}}}",
+      "additionalBranchPrefix": "{{{packageFile}}}-",
       "addLabels": ["renovate/github-release"],
       "datasources": ["github-releases"],
       "prCreation": "immediate",
