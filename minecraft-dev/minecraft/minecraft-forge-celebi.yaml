@@ -37,7 +37,7 @@ spec:
                 - france
                 - germany
     image: itzg/minecraft-server
-    imageTag: 2022.4.1-java8-openj9
+    imageTag: 2022.4.1-java8-multiarch
     persistence:
       storageClass: longhorn-emea
       dataDir:
@@ -49,6 +49,12 @@ spec:
       limits:
         memory: 25Gi
     extraEnv:
+      DD_ENV: "dev"
+      DD_SERVICE: "celebi"
+      DD_VERSION: "10.1.1"
+      DD_PROFILING_ENABLED: "true"
+      DD_LOGS_INJECTION: "true"
+      ENABLE_JMX: "true"
       FORCE_GENERIC_PACK_UPDATE: "TRUE"
       GENERIC_PACKS_SUFFIX: "forge-v10.1.1+es.zip"
       REPLACE_ENV_VARIABLES: "TRUE"
@@ -60,6 +66,14 @@ spec:
       CFG_WONDERTRADE_DB: "celebiwondertrade"
       NETWORK_COMPRESSION_THRESHOLD: "-1"
       ALLOW_FLIGHT: "true"
+      JMX_HOST:
+        valueFrom:
+          fieldRef:
+            fieldPath: status.podIP
+      DD_AGENT_HOST:
+        valueFrom:
+          fieldRef:
+            fieldPath: status.hostIP
     livenessProbe:
       initialDelaySeconds: 360
     readinessProbe:
@@ -68,7 +82,8 @@ spec:
       eula: "TRUE"
       onlineMode: false
       version: "1.12.2"
-      jvmOpts: "-Xmns3G -Xmnx7G -Xgcpolicy:balanced -Xdisableexplicitgc -Dfml.readTimeout=300 -Dmixin.debug=true"
+      jvmOpts: "-Dfml.readTimeout=300 -Dmixin.debug=true -javaagent:dd-java-agent.jar"
+      jvmXXOpts: "-XX:FlightRecorderOptions=stackdepth=256"
       forgeVersion: "14.23.5.2860"
       gameMode: "0"
       forcegameMode: false
@@ -91,6 +106,15 @@ spec:
         enabled: true
         serviceType: ClusterIP
       extraPorts:
+        - name: jmx
+          containerPort: 7091
+          service:
+            enabled: true
+            annotations: {}
+            type: ClusterIP
+            port: 7091
+          ingress:
+            enabled: false
         - name: prometheus
           containerPort: 9225
           service:
