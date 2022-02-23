@@ -91,6 +91,11 @@ spec:
         processCollection: true
       prometheusScrape:
         enabled: false
+      securityAgent:
+        compliance:
+          enabled: true
+        runtime:
+          enabled: true
       site: datadoghq.eu
     kubeStateMetricsEnabled: false
     targetSystem: linux
