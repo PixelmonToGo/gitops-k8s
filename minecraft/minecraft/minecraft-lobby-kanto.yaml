@@ -55,6 +55,7 @@ spec:
       DD_VERSION: "1.0.0"
       DD_PROFILING_ENABLED: "true"
       DD_LOGS_INJECTION: "true"
+      DD_APPSEC_ENABLED: "true"
       ENABLE_JMX: "true"
       NETWORK_COMPRESSION_THRESHOLD: "-1"
       TUNE_NURSERY_SIZES: "TRUE"

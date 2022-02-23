@@ -54,6 +54,7 @@ spec:
       DD_VERSION: "v10.2.0"
       DD_PROFILING_ENABLED: "true"
       DD_LOGS_INJECTION: "true"
+      DD_APPSEC_ENABLED: "true"
       ENABLE_JMX: "true"
       FORCE_GENERIC_PACK_UPDATE: "TRUE"
       GENERIC_PACKS_SUFFIX: "forge-v10.2.0+en.zip"
