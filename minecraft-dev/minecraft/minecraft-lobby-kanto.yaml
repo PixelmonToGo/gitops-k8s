@@ -48,7 +48,6 @@ spec:
       TUNE_VIRTUALIZED: "TRUE"
       STOP_SERVER_ANNOUNCE_DELAY: "15"
       ENABLE_ROLLING_LOGS: "TRUE"
-      ENABLE_JMX: "TRUE"
     minecraftServer:
       eula: "TRUE"
       onlineMode: false
