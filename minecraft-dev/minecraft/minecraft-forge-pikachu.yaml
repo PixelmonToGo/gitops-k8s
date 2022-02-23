@@ -37,7 +37,7 @@ spec:
                 - france
                 - germany
     image: itzg/minecraft-server
-    imageTag: 2022.4.1-java8-openj9
+    imageTag: 2022.4.1-java8-multiarch
     persistence:
       storageClass: longhorn-emea
       dataDir:
@@ -51,7 +51,7 @@ spec:
     extraEnv:
       DD_ENV: "dev"
       DD_SERVICE: "pikachu"
-      DD_VERSION: "10.1.0"
+      DD_VERSION: "10.1.1"
       DD_PROFILING_ENABLED: "true"
       DD_LOGS_INJECTION: "true"
       ENABLE_JMX: "true"
@@ -84,7 +84,8 @@ spec:
       eula: "TRUE"
       onlineMode: false
       version: "1.12.2"
-      jvmOpts: "-Xmns3G -Xmnx7G -Xgcpolicy:balanced -Xdisableexplicitgc -Dfml.readTimeout=300 -Dmixin.debug=true -javaagent:dd-java-agent.jar -XX:FlightRecorderOptions=stackdepth=256"
+      jvmOpts: "-Dfml.readTimeout=300 -Dmixin.debug=true -javaagent:dd-java-agent.jar"
+      jvmXXOpts: "-XX:FlightRecorderOptions=stackdepth=256"
       forgeVersion: "14.23.5.2860"
       gameMode: "0"
       forcegameMode: false

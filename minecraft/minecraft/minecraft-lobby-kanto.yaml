@@ -38,7 +38,7 @@ spec:
                     - germany
     nameOverride: prod
     image: itzg/minecraft-server
-    imageTag: 2022.4.1-java8-openj9
+    imageTag: 2022.4.1-java8-multiarch
     persistence:
       storageClass: longhorn
       dataDir:
@@ -50,6 +50,12 @@ spec:
       limits:
         memory: 16Gi
     extraEnv:
+      DD_ENV: "prod"
+      DD_SERVICE: "kanto"
+      DD_VERSION: "1.0.0"
+      DD_PROFILING_ENABLED: "true"
+      DD_LOGS_INJECTION: "true"
+      ENABLE_JMX: "true"
       NETWORK_COMPRESSION_THRESHOLD: "-1"
       TUNE_NURSERY_SIZES: "TRUE"
       TUNE_VIRTUALIZED: "TRUE"
@@ -57,6 +63,8 @@ spec:
       eula: "TRUE"
       onlineMode: false
       version: "1.12.2"
+      jvmOpts: "-javaagent:dd-java-agent.jar"
+      jvmXXOpts: "-XX:FlightRecorderOptions=stackdepth=256"
       mode: "2"
       forcegameMode: true
       type: PAPER
@@ -76,6 +84,15 @@ spec:
         enabled: true
         serviceType: ClusterIP
       extraPorts:
+        - name: jmx
+          containerPort: 7091
+          service:
+            enabled: true
+            annotations: {}
+            type: ClusterIP
+            port: 7091
+          ingress:
+            enabled: false
         - name: prometheus
           containerPort: 9225
           service:
