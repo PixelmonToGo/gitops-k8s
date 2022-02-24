@@ -49,6 +49,7 @@ spec:
       TUNE_VIRTUALIZED: "TRUE"
       STOP_SERVER_ANNOUNCE_DELAY: "15"
       ENABLE_ROLLING_LOGS: "TRUE"
+      STOP_SERVER_ANNOUNCE_DELAY: "true"
     minecraftServer:
       eula: "TRUE"
       onlineMode: false
