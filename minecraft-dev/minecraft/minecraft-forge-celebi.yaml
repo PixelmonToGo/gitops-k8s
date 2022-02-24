@@ -67,6 +67,7 @@ spec:
       CFG_WONDERTRADE_DB: "celebiwondertrade"
       NETWORK_COMPRESSION_THRESHOLD: "-1"
       ALLOW_FLIGHT: "true"
+      STOP_SERVER_ANNOUNCE_DELAY: "true"
       JMX_HOST:
         valueFrom:
           fieldRef:

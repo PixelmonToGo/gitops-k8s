@@ -60,6 +60,7 @@ spec:
       NETWORK_COMPRESSION_THRESHOLD: "-1"
       TUNE_NURSERY_SIZES: "TRUE"
       TUNE_VIRTUALIZED: "TRUE"
+      STOP_SERVER_ANNOUNCE_DELAY: "true"
     minecraftServer:
       eula: "TRUE"
       onlineMode: false
