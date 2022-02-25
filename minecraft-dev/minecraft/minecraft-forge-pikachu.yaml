@@ -65,6 +65,7 @@ spec:
       CFG_ECONOMY_DB: "pikachueconomylite"
       CFG_REFORGED_GTS_DB: "pikachureforgedgts"
       CFG_WONDERTRADE_DB: "pikachuwondertrade"
+      CFG_DEX_DB: "pikachudex"
       NETWORK_COMPRESSION_THRESHOLD: "-1"
       ALLOW_FLIGHT: "true"
       JMX_HOST:
