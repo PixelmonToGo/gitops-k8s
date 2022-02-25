@@ -65,6 +65,7 @@ spec:
       CFG_ECONOMY_DB: "celebieconomylite"
       CFG_REFORGED_GTS_DB: "celebireforgedgts"
       CFG_WONDERTRADE_DB: "celebiwondertrade"
+      CFG_DEX_DB: "celebidex"
       NETWORK_COMPRESSION_THRESHOLD: "-1"
       ALLOW_FLIGHT: "true"
       JMX_HOST:
