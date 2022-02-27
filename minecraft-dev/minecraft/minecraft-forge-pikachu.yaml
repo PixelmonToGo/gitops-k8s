@@ -68,6 +68,7 @@ spec:
       CFG_DEX_DB: "pikachudex"
       NETWORK_COMPRESSION_THRESHOLD: "-1"
       ALLOW_FLIGHT: "true"
+      STOP_SERVER_ANNOUNCE_DELAY: "15"
       JMX_HOST:
         valueFrom:
           fieldRef:
