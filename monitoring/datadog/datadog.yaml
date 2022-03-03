@@ -21,18 +21,21 @@ spec:
       image:
         name: agent
         tag: 7.33.1-jmx
-      volumes:
-        - hostPath:
-            path: /var/lib/rancher/k3s/server/tls/etcd
-          name: etcd-certs
-      volumeMounts:
-        - name: etcd-certs
-          mountPath: /host/etc/kubernetes/pki/etcd
-          readOnly: true
+      podAnnotations:
+        container.apparmor.security.beta.kubernetes.io/agent: localhost/datadog-agent
+        container.apparmor.security.beta.kubernetes.io/process-agent: localhost/datadog-agent
       tolerations:
         - effect: NoSchedule
           key: node-role.kubernetes.io/master
           operator: Exists
+      volumeMounts:
+        - name: etcd-certs
+          mountPath: /host/etc/kubernetes/pki/etcd
+          readOnly: true
+      volumes:
+        - hostPath:
+            path: /var/lib/rancher/k3s/server/tls/etcd
+          name: etcd-certs
     datadog:
       apm:
         enabled: true
