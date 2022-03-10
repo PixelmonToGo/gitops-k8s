@@ -77,12 +77,15 @@
     // Add label for Minecraft changes and block automerge
     {
       "automerge": false,
+      "matchPaths": ["minecraft/**", "minecraft-dev/**"],
+      "additionalBranchPrefix": "{{{packageFile}}}-",
+    },
+    {
       "labels": ["renovate/minecraft"],
       "matchPaths": ["minecraft/**"],
       "stabilityDays": 7,
     },
     {
-      "automerge": false,
       "labels": ["renovate/minecraft-dev"],
       "matchPaths": ["minecraft-dev/**"],
       "stabilityDays": 3,
@@ -110,9 +113,9 @@
     },
     // Isolation for GitHub releases
     {
-      "additionalBranchPrefix": "{{{packageFile}}}-",
       "addLabels": ["renovate/github-release"],
       "datasources": ["github-releases"],
+      "commitMessageSuffix": "",
       "prCreation": "immediate",
       "separateMajorMinor": true,
       "separateMinorPatch": true,
