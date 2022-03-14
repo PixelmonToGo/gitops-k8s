@@ -76,11 +76,12 @@
     },
     // Add label for Minecraft changes and block automerge
     {
-      "automerge": false,
       "matchPaths": ["minecraft/**", "minecraft-dev/**"],
       "additionalBranchPrefix": "{{{packageFile}}}-",
+      "commitMessageSuffix": "[{{replace '(minecraft(|-dev)/minecraft/minecraft-(forge-|lobby-|)|.yaml)' '' packageFile}}]",
     },
     {
+      "automerge": false,
       "labels": ["renovate/minecraft"],
       "matchPaths": ["minecraft/**"],
       "stabilityDays": 7,
@@ -113,9 +114,10 @@
     },
     // Isolation for GitHub releases
     {
+      "automerge": false,
       "addLabels": ["renovate/github-release"],
-      "datasources": ["github-releases"],
       "commitMessageSuffix": "",
+      "datasources": ["github-releases"],
       "prCreation": "immediate",
       "separateMajorMinor": true,
       "separateMinorPatch": true,
