@@ -52,7 +52,7 @@ spec:
     extraEnv:
       DD_ENV: "prod"
       DD_SERVICE: "kanto"
-      DD_VERSION: "1.0.0"
+      DD_VERSION: "v6.1.0"
       DD_PROFILING_ENABLED: "true"
       DD_LOGS_INJECTION: "true"
       DD_APPSEC_ENABLED: "true"
