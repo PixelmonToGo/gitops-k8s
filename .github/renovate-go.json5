@@ -79,6 +79,7 @@
       "automerge": false,
       "matchPaths": ["minecraft/**", "minecraft-dev/**"],
       "additionalBranchPrefix": "{{{packageFile}}}-",
+      "commitMessageSuffix": "[{{replace '(minecraft(|-dev)/minecraft/minecraft-(forge-|lobby-|)|.yaml)' '' packageFile}}]",
     },
     {
       "labels": ["renovate/minecraft"],
