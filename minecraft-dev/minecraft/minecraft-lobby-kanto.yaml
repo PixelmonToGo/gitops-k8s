@@ -16,7 +16,7 @@ spec:
     spec:
       # renovate: registryUrl=https://itzg.github.io/minecraft-server-charts/
       chart: minecraft
-      version: 3.8.0
+      version: 3.8.2
       sourceRef:
         kind: HelmRepository
         name: minecraft-server-charts
@@ -39,7 +39,6 @@ spec:
     extraEnv:
       DD_ENV: "dev"
       DD_SERVICE: "kanto"
-      DD_VERSION: "1.0.0"
       DD_PROFILING_ENABLED: "true"
       DD_LOGS_INJECTION: "true"
       DD_APPSEC_ENABLED: "true"
