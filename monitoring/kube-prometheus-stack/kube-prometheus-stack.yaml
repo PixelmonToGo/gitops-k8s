@@ -16,7 +16,6 @@ spec:
       retries: 3
   chart:
     spec:
-      # renovate: registryUrl=https://prometheus-community.github.io/helm-charts
       chart: kube-prometheus-stack
       version: 33.2.1
       sourceRef:

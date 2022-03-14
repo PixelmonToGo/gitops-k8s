@@ -19,6 +19,9 @@
   "suppressNotifications": ["prIgnoreNotification"],
   // Do not rebase PRs
   "rebaseWhen": "conflicted",
+  "flux": {
+    "fileMatch": ["\\.yaml$"]
+  },
   "helm-values": {
     "fileMatch": ["./.+\\.yaml$"],
   },
@@ -27,13 +30,6 @@
     "ignorePaths": ["flux-system/", ".github"],
   },
   "regexManagers": [
-    {
-      "fileMatch": ["./.+\\.yaml$"],
-      "matchStrings": [
-        "registryUrl=(?<registryUrl>.*?)\n *chart: (?<depName>.*?)\n *version: (?<currentValue>.*)\n",
-      ],
-      "datasourceTemplate": "helm",
-    },
     {
       "fileMatch": ["./.*\\.yaml$"],
       "matchStrings": [

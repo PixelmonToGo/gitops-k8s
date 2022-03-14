@@ -8,7 +8,6 @@
 #   interval: 5m
 #   chart:
 #     spec:
-#       # renovate: registryUrl=https://charts.enix.io/
 #       chart: kube-router
 #       version: 1.4.1
 #       sourceRef:

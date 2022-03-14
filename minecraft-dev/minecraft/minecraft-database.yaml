@@ -14,7 +14,6 @@ spec:
       retries: 3
   chart:
     spec:
-      # renovate: registryUrl=https://charts.bitnami.com/bitnami
       chart: mariadb
       version: 10.3.5
       sourceRef:
