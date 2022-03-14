@@ -1,9 +1,9 @@
 version = 1
 
 [approve]
-auto_approve_usernames = ["renovate"]
+auto_approve_usernames = ["ptgbot", "renovate"]
 
 [merge]
 automerge_label = ["automerge", "renovate/helm-release", "renovate/image-release", "flux/update"]
-blocking_labels = ["dependency/major", "renovate/minecraft", "renovate/minecraft-dev"]
+blocking_labels = ["dependency/major", "renovate/minecraft"]
 notify_on_conflict = false
