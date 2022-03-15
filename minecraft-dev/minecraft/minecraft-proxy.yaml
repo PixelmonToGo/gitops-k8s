@@ -24,7 +24,7 @@ spec:
   values:
     nameOverride: dev
     image: itzg/bungeecord
-    imageTag: java11-2022.1.0
+    imageTag: java17-2022.1.0
     persistence:
       storageClass: longhorn
       dataDir:
