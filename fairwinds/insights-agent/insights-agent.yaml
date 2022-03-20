@@ -30,6 +30,7 @@ spec:
       enabled: true
     resourcemetrics:
       enabled: true
+      address: "http://thanos-query.monitoring"
     trivy:
       enabled: true
   valuesFrom:
