@@ -23,7 +23,7 @@ spec:
     goldilocks:
       enabled: true
     kubebench:
-      enabled: true
+      enabled: false # TODO: k3s support
     kubesec:
       enabled: true
     polaris:
