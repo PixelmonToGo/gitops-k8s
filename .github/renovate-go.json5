@@ -112,7 +112,6 @@
     {
       "automerge": false,
       "addLabels": ["renovate/github-release"],
-      "commitMessageSuffix": "",
       "datasources": ["github-releases"],
       "prCreation": "immediate",
       "separateMajorMinor": true,

@@ -23,13 +23,14 @@ spec:
     goldilocks:
       enabled: true
     kubebench:
-      enabled: true
+      enabled: false # TODO: k3s support
     kubesec:
       enabled: true
     polaris:
       enabled: true
     resourcemetrics:
       enabled: true
+      address: "http://thanos-query.monitoring"
     trivy:
       enabled: true
   valuesFrom:
