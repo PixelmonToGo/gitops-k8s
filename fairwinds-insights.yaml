@@ -1,0 +1,7 @@
+options:
+  organization: wolf
+  baseBranch: main
+
+manifests:
+  yaml:
+    - ./

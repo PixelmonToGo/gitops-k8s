@@ -1,0 +1,2 @@
+insights:
+  base64token: "$FAIRWINDS_INSIGHTS_AGENT_BASE64_TOKEN"

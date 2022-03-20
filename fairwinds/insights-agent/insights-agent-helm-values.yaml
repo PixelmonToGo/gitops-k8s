@@ -1,0 +1,11 @@
+---
+apiVersion: ricoberger.de/v1alpha1
+kind: VaultSecret
+metadata:
+  name: insights-agent-helm-values
+  namespace: fairwinds
+spec:
+  keys:
+    - values.yaml
+  path: secrets/fairwinds/insights-agent/insights-agent-helm-values
+  type: Opaque
