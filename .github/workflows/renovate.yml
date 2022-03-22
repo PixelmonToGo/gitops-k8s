@@ -25,10 +25,6 @@ env:
   LOG_LEVEL: info
   DRY_RUN: false
 
-concurrency:
-  group: ${{ github.workflow }}
-  cancel-in-progress: true
-
 jobs:
   renovate:
     name: Renovate
