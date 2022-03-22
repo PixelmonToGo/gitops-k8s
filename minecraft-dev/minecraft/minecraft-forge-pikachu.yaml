@@ -56,7 +56,7 @@ spec:
       DD_APPSEC_ENABLED: "true"
       ENABLE_JMX: "true"
       FORCE_GENERIC_PACK_UPDATE: "TRUE"
-      GENERIC_PACKS_SUFFIX: "forge-v10.3.0+en.zip"
+      GENERIC_PACKS: "forge-v10.3.0+en.zip"
       REPLACE_ENV_VARIABLES: "TRUE"
       REPLACE_ENV_VARIABLES_EXCLUDE_PATHS: "/data/atlantis/players /data/config/aquadaycare/decorations /data/config/aquadaycare/players /data/config/aquagyms/players /data/config/gts/players /data/nucleus/userdata /data/pixelmon /data/world"
       CFG_VC_HOST: "pikachu-vc-dev.pixelmonreforged.com"
@@ -142,4 +142,4 @@ spec:
             enabled: false
   valuesFrom:
     - kind: Secret
-      name: "minecraft-forge-pikachu-helm-values"
+      name: "minecraft-helm-values"

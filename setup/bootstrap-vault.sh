@@ -181,9 +181,8 @@ loadSecretsToVault() {
   # helm chart values
   #################### 
   kvault "kube-system/oauth2-proxy/oauth2-proxy-helm-values.txt"
-  kvault "minecraft/minecraft/minecraft-forge-charmeleon-helm-values.txt"
-  kvault "minecraft/minecraft/minecraft-forge-squirtle-helm-values.txt"
-  kvault "minecraft-dev/minecraft/minecraft-forge-squirtle-helm-values.txt"
+  kvault "minecraft/minecraft/minecraft-forge-pikachu-helm-values.txt"
+  kvault "minecraft-dev/minecraft/minecraft-helm-values.txt"
   kvault "monitoring/datadog/datadog-helm-values.txt"
   kvault "monitoring/grafana/grafana-helm-values.txt"
   kvault "monitoring/kube-prometheus-stack/kube-prometheus-stack-helm-values.txt"
