@@ -29,24 +29,6 @@
     "fileMatch": ["\\.yaml$"],
     "ignorePaths": ["flux-system/", ".github"],
   },
-  "regexManagers": [
-    {
-      "fileMatch": ["./.*\\.yaml$"],
-      "matchStrings": [
-        "DD_VERSION: \"(?<currentValue>.*)\"",
-        "GENERIC_PACKS?(_SUFFIX)?: \"?forge-(?<currentValue>.+)\\+[a-z]{2}.zip\"?\n",
-      ],
-      "depNameTemplate": "PixelmonToGo/minecraft-config",
-      "datasourceTemplate": "github-releases"
-    },
-    {
-      "fileMatch": ["./.+\\.yaml$"],
-      "matchStrings": [
-        "image: (?<depName>.*?)\n *imageTag: (?<currentValue>.*)\n",
-      ],
-      "datasourceTemplate": "docker",
-    },
-  ],
   "packageRules": [
     // Setup datasources
     {
@@ -73,7 +55,8 @@
     // Add label for Minecraft changes and block automerge
     {
       "additionalBranchPrefix": "{{{packageFile}}}-",
-      "commitMessageSuffix": "[{{replace '(minecraft(|-dev)/minecraft/minecraft-(forge-|lobby-|)|.yaml)' '' packageFile}}]",
+      "groupName": "{{replace '(minecraft(|-dev)/minecraft/minecraft-(forge-|lobby-|)|.yaml)' '' packageFile}}",
+      "groupSlug": "group",
       "matchPaths": ["minecraft/**", "minecraft-dev/**"],
       "stabilityDays": 3,
     },
@@ -83,6 +66,7 @@
       "matchPaths": ["minecraft/**"],
     },
     {
+      "automerge": false,
       "labels": ["renovate/minecraft-dev"],
       "matchPaths": ["minecraft-dev/**"],
 
@@ -113,11 +97,29 @@
       "automerge": false,
       "addLabels": ["renovate/github-release"],
       "datasources": ["github-releases"],
+      "extractVersion": "^(?<depName>.+?)-(?<version>v[0-9].*)",
       "prCreation": "immediate",
       "separateMajorMinor": true,
       "separateMinorPatch": true,
       "separateMultipleMajor": true,
       "stabilityDays": 0,
     }
+  ],
+  "regexManagers": [
+    {
+      "fileMatch": ["./.*\\.yaml$"],
+      "matchStrings": [
+        "(?:\"|,)(?<depName>.+?)-(?<currentValue>v[0-9].+?)(?:\.zip|\\+)",
+      ],
+      "depNameTemplate": "PixelmonToGo/minecraft-config",
+      "datasourceTemplate": "github-releases"
+    },
+    {
+      "fileMatch": ["./.+\\.yaml$"],
+      "matchStrings": [
+        "image: (?<depName>.*?)\n *imageTag: (?<currentValue>.*)\n",
+      ],
+      "datasourceTemplate": "docker",
+    },
   ],
 }
