@@ -50,7 +50,7 @@ spec:
     extraEnv:
       DD_ENV: "dev"
       DD_SERVICE: "celebi"
-      DD_VERSION: "v10.2.0"
+      DD_VERSION: "forge-v10.2.0+es.zip"
       DD_PROFILING_ENABLED: "true"
       DD_LOGS_INJECTION: "true"
       DD_APPSEC_ENABLED: "true"
