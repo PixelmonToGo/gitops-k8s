@@ -5,16 +5,17 @@
     ":enablePreCommit"
   ],
   "platform": "github",
-  "username": "ptgbot",
+  "username": "ptgbot[bot]",
   "repositories": ["PixelmonToGo/gitops-k8s"],
   "onboarding": false,
   "requireConfig": false,
-  "gitAuthor": "Solar <90571000+ptgbot@users.noreply.github.com>",
+  "gitAuthor": "Solar <102522362+ptgbot[bot]@users.noreply.github.com>",
   "timezone": "UTC",
   "dependencyDashboard": true,
   "stabilityDays": 1,
+  "platformCommit": true,
   "prCreation": "not-pending",
-  "commitBody": "Signed-off-by: Solar <ptgbot@users.noreply.github.com>",
+  "commitBody": "Signed-off-by: Solar <102522362+ptgbot[bot]@users.noreply.github.com>",
   // Do not notify on closed unmerged PRs
   "suppressNotifications": ["prIgnoreNotification"],
   // Do not rebase PRs
@@ -46,6 +47,7 @@
     {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "automerge": true,
+      "platformAutomerge": true,
     },
     // Send major updates to pullrequest.com
     {
@@ -98,8 +100,9 @@
       "automerge": false,
       "addLabels": ["renovate/github-release"],
       "datasources": ["github-releases"],
+      "managers": ["regex"],
       "prCreation": "immediate",
-      "separateMajorMinor": "true",
+      "separateMajorMinor": true,
       "stabilityDays": 0,
       "versioning": "regex:^(?<compatibility>.*)-v(?<major>\\d+)(\\.(?<minor>\\d+))(\\.(?<patch>\\d+))$",
     }
