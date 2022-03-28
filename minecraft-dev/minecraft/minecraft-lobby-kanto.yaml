@@ -50,7 +50,7 @@ spec:
     minecraftServer:
       eula: "TRUE"
       onlineMode: false
-      version: "1.12.2"
+      version: "v10.4.1"
       jvmOpts: "-javaagent:dd-java-agent.jar"
       jvmXXOpts: "-XX:FlightRecorderOptions=stackdepth=256"
       mode: "2"
