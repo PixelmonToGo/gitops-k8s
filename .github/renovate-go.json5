@@ -13,7 +13,7 @@
   "timezone": "UTC",
   "dependencyDashboard": true,
   "stabilityDays": 1,
-  "platformCommit": true,
+  "platformCommit": false,
   "prCreation": "not-pending",
   "commitBody": "Signed-off-by: Solar <102522362+ptgbot[bot]@users.noreply.github.com>",
   // Do not notify on closed unmerged PRs
