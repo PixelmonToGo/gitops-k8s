@@ -50,7 +50,7 @@ spec:
     extraEnv:
       DD_ENV: "prod"
       DD_SERVICE: "pikachu"
-      DD_VERSION: "v10.4.0-v1.1.1"
+      DD_VERSION: "v10.4.0-v1.1.2"
       DD_PROFILING_ENABLED: "true"
       DD_LOGS_INJECTION: "true"
       DD_APPSEC_ENABLED: "true"
