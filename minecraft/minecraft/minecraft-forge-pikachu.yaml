@@ -15,7 +15,7 @@ spec:
   chart:
     spec:
       chart: minecraft
-      version: 3.8.3
+      version: 3.8.4
       sourceRef:
         kind: HelmRepository
         name: minecraft-server-charts
@@ -83,7 +83,7 @@ spec:
     minecraftServer:
       eula: "TRUE"
       onlineMode: false
-      version: "1.12.2"
+      version: "v10.4.1"
       jvmOpts: "-Dfml.readTimeout=300 -javaagent:dd-java-agent.jar"
       jvmXXOpts: "-XX:FlightRecorderOptions=stackdepth=256"
       forgeVersion: "14.23.5.2860"
