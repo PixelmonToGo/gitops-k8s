@@ -4,6 +4,7 @@ apiVersion: storage.k8s.io/v1
 metadata:
   name: longhorn-amer
 provisioner: driver.longhorn.io
+allowVolumeExpansion: true
 parameters:
   numberOfReplicas: "3"
   staleReplicaTimeout: "480"
@@ -14,6 +15,7 @@ apiVersion: storage.k8s.io/v1
 metadata:
   name: longhorn-emea
 provisioner: driver.longhorn.io
+allowVolumeExpansion: true
 parameters:
   numberOfReplicas: "3"
   staleReplicaTimeout: "480"
