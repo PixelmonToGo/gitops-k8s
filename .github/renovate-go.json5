@@ -54,38 +54,18 @@
       "matchUpdateTypes": ["major"],
       "commitMessageSuffix": "[pr]",
     },
-    // Add label for Minecraft changes and block automerge
-    {
-      "additionalBranchPrefix": "{{{packageFile}}}-",
-      "commitMessageSuffix": "[{{replace '(minecraft(|-dev)/minecraft/minecraft-(forge-|lobby-|)|.yaml)' '' packageFile}}]",
-      "groupName": "{{replace '(minecraft(|-dev)/minecraft/minecraft-(forge-|lobby-|)|.yaml)' '' packageFile}}",
-      "groupSlug": "group",
-      "matchPaths": ["minecraft/**", "minecraft-dev/**"],
-      "stabilityDays": 3,
-    },
-    {
-      "automerge": false,
-      "labels": ["renovate/minecraft"],
-      "matchPaths": ["minecraft/**"],
-    },
-    {
-      "automerge": false,
-      "labels": ["renovate/minecraft-dev"],
-      "matchPaths": ["minecraft-dev/**"],
-
-    },
     // Add labels according to package and update types
     {
-      "updateTypes": ["major"],
-      "addLabels": ["dependency/major"],
+      "updateTypes": ["patch"],
+      "labels": ["dependency/patch"],
     },
     {
       "updateTypes": ["minor"],
-      "addLabels": ["dependency/minor"],
+      "labels": ["dependency/minor"],
     },
     {
-      "updateTypes": ["patch"],
-      "addLabels": ["dependency/patch"],
+      "updateTypes": ["major"],
+      "labels": ["dependency/major"],
     },
     {
       "datasources": ["helm"],
@@ -95,7 +75,24 @@
       "datasources": ["docker"],
       "addLabels": ["renovate/image-release"],
     },
-    // Isolation for GitHub releases
+    {
+      "automerge": false,
+      "addLabels": ["renovate/minecraft"],
+      "matchPaths": ["minecraft/**"],
+    },
+    {
+      "addLabels": ["renovate/minecraft-dev"],
+      "matchPaths": ["minecraft-dev/**"],
+    },
+    // Isolate and blend Minecraft releases
+    {
+      "additionalBranchPrefix": "{{{packageFile}}}-",
+      "commitMessageSuffix": "[{{replace '(minecraft(|-dev)/minecraft/minecraft-(forge-|lobby-|)|.yaml)' '' packageFile}}]",
+      "groupName": "{{replace '(minecraft(|-dev)/minecraft/minecraft-(forge-|lobby-|)|.yaml)' '' packageFile}}",
+      "groupSlug": "group",
+      "matchPaths": ["minecraft/**", "minecraft-dev/**"],
+      "stabilityDays": 3,
+    },
     {
       "automerge": false,
       "addLabels": ["renovate/github-release"],
