@@ -17,7 +17,7 @@ on: # yamllint disable-line rule:truthy
   schedule:
     - cron: "0 */6 * * *"
 
-concurrency: 
+concurrency:
   group: ${{ github.workflow }}
 
 env:
