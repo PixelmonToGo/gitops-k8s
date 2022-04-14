@@ -32,9 +32,7 @@ spec:
             - key: pixelmontogo.com/region
               operator: In
               values:
-                - england
-                - france
-                - germany
+                - canada
     image: itzg/minecraft-server
     imageTag: 2022.5.0-java8-multiarch
     persistence:
