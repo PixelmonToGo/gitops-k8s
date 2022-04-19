@@ -141,3 +141,5 @@ spec:
   valuesFrom:
     - kind: Secret
       name: "minecraft-helm-values"
+    - kind: Secret
+      name: "minecraft-helm-values-celebi"
