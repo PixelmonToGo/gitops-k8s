@@ -1,0 +1,2 @@
+extraEnv:
+  CFG_TEBEX_KEY: "$MC_CELEBI_TEBEX_KEY"
