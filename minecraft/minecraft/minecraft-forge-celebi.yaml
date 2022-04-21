@@ -1,0 +1,143 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: minecraft-forge-celebi
+  namespace: minecraft
+spec:
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  chart:
+    spec:
+      chart: minecraft
+      version: 3.9.0
+      sourceRef:
+        kind: HelmRepository
+        name: minecraft-server-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    # ref: https://github.com/itzg/minecraft-server-charts/blob/master/charts/minecraft/values.yaml
+    nameOverride: prod
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: pixelmontogo.com/region
+              operator: In
+              values:
+                - canada
+    image: itzg/minecraft-server
+    imageTag: 2022.6.0-java8-multiarch
+    persistence:
+      storageClass: longhorn-emea
+      dataDir:
+        enabled: true
+        Size: 175Gi
+    resources:
+      requests:
+        memory: 21Gi
+      limits:
+        memory: 25Gi
+    extraEnv:
+      DD_ENV: "prod"
+      DD_SERVICE: "celebi"
+      DD_VERSION: "forge-base-v10.4.7+ko.zip,forge-includes-v1.4.0.zip"
+      DD_PROFILING_ENABLED: "true"
+      DD_LOGS_INJECTION: "true"
+      DD_APPSEC_ENABLED: "true"
+      ENABLE_JMX: "true"
+      FORCE_GENERIC_PACK_UPDATE: "TRUE"
+      GENERIC_PACKS: "forge-base-v10.4.7+ko.zip,forge-includes-v1.4.0.zip"
+      REPLACE_ENV_VARIABLES: "TRUE"
+      REPLACE_ENV_VARIABLES_EXCLUDE_PATHS: "/data/atlantis/players /data/config/aquadaycare/decorations /data/config/aquadaycare/players /data/config/aquagyms/players /data/config/gts/players /data/nucleus/userdata /data/pixelmon /data/world"
+      CFG_VC_HOST: "celebi-vc.pixelmonreforged.com"
+      CFG_GTS_DB: "celebiglobaltrade"
+      CFG_ECONOMY_DB: "celebieconomylite"
+      CFG_REFORGED_GTS_DB: "celebireforgedgts"
+      CFG_WONDERTRADE_DB: "celebiwondertrade"
+      CFG_DEX_DB: "celebidex"
+      NETWORK_COMPRESSION_THRESHOLD: "-1"
+      ALLOW_FLIGHT: "true"
+      STOP_SERVER_ANNOUNCE_DELAY: "15"
+      JMX_HOST:
+        valueFrom:
+          fieldRef:
+            fieldPath: status.podIP
+      DD_AGENT_HOST:
+        valueFrom:
+          fieldRef:
+            fieldPath: status.hostIP
+    livenessProbe:
+      initialDelaySeconds: 360
+    readinessProbe:
+      initialDelaySeconds: 200
+    minecraftServer:
+      eula: "TRUE"
+      onlineMode: false
+      version: "1.12.2"
+      jvmOpts: "-Dfml.readTimeout=300 -Dmixin.debug=true -javaagent:dd-java-agent.jar"
+      jvmXXOpts: "-XX:FlightRecorderOptions=stackdepth=256"
+      forgeVersion: "14.23.5.2860"
+      gameMode: "0"
+      forcegameMode: false
+      type: FORGE
+      pvp: false
+      forceReDownload: true
+      difficulty: "0"
+      levelType: OTG
+      playerIdleTimeout: 300
+      spawnProtection: 0
+      maxWorldSize: 29999984
+      maxPlayers: 120
+      viewDistance: 4
+      maxTickTime: -1
+      memory: 14G
+      motd: "forge-celebi"
+      overrideServerProperties: true
+      serviceType: ClusterIP
+      rcon:
+        enabled: true
+        serviceType: ClusterIP
+      extraPorts:
+        - name: jmx
+          containerPort: 7091
+          service:
+            enabled: true
+            annotations: {}
+            type: ClusterIP
+            port: 7091
+          ingress:
+            enabled: false
+        - name: prometheus
+          containerPort: 9225
+          service:
+            enabled: true
+            annotations: {}
+            type: ClusterIP
+            port: 9225
+          ingress:
+            enabled: false
+        - name: voice
+          containerPort: 24454
+          protocol: UDP
+          service:
+            enabled: true
+            annotations:
+              external-dns.alpha.kubernetes.io/hostname: celebi-vc.pixelmonreforged.com
+              # metallb.universe.tf/address-pool: germany
+            type: LoadBalancer
+            port: 24454
+          ingress:
+            enabled: false
+  valuesFrom:
+    - kind: Secret
+      name: "minecraft-helm-values"
+    - kind: Secret
+      name: "minecraft-helm-values-celebi"
