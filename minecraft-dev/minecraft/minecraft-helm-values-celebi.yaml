@@ -1,0 +1,11 @@
+---
+apiVersion: ricoberger.de/v1alpha1
+kind: VaultSecret
+metadata:
+  name: minecraft-helm-values-celebi
+  namespace: minecraft-dev
+spec:
+  keys:
+    - values.yaml
+  path: secrets/minecraft-dev/minecraft/minecraft-helm-values-celebi
+  type: Opaque
