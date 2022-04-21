@@ -36,7 +36,7 @@ spec:
     image: itzg/minecraft-server
     imageTag: 2022.6.0-java8-multiarch
     persistence:
-      storageClass: longhorn-emea
+      storageClass: longhorn-amer
       dataDir:
         enabled: true
         Size: 175Gi
@@ -131,7 +131,7 @@ spec:
             enabled: true
             annotations:
               external-dns.alpha.kubernetes.io/hostname: celebi-vc.pixelmonreforged.com
-              # metallb.universe.tf/address-pool: germany
+              metallb.universe.tf/address-pool: canada
             type: LoadBalancer
             port: 24454
           ingress:
