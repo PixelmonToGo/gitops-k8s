@@ -1,0 +1,73 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: minecraft-proxy
+  namespace: minecraft
+spec:
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  chart:
+    spec:
+      chart: minecraft-proxy
+      version: 2.5.0
+      sourceRef:
+        kind: HelmRepository
+        name: minecraft-server-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    affinity:
+      nodeAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            preference:
+              matchExpressions:
+                - key: pixelmontogo.com/region
+                  operator: In
+                  values:
+                    - canada
+    nameOverride: prod
+    image: itzg/bungeecord
+    imageTag: java17-2022.1.0
+    persistence:
+      storageClass: longhorn
+      dataDir:
+        enabled: true
+    resources:
+      requests:
+        memory: 2Gi
+        cpu: 1000m
+    serviceAnnotations:
+      external-dns.alpha.kubernetes.io/hostname: proxy-ca.pixelmonreforged.com
+      metallb.universe.tf/address-pool: canada
+    strategyType: Recreate
+    minecraftProxy:
+      type: VELOCITY
+      velocityVersion: 3.1.1
+      serviceType: LoadBalancer
+      externalTrafficPolicy: Local
+      jvmOpts: "--add-exports=java.base/sun.nio.ch=ALL-UNNAMED -Dlog4j2.formatMsgNoLookups=true"
+      memory: 2G
+      extraPorts:
+        - name: vote
+          containerPort: 8192
+          service:
+            enabled: true
+            embedded: true
+            port: 8192
+          ingress:
+            enabled: false
+        - name: prometheus
+          containerPort: 9100
+          service:
+            enabled: true
+            port: 9100
+            type: ClusterIP
+          ingress:
+            enabled: false
