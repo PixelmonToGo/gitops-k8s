@@ -24,6 +24,15 @@ spec:
   values:
     affinity:
       nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: pixelmontogo.com/region
+              operator: In
+              values:
+              - germany
+              - france
+              - england
         preferredDuringSchedulingIgnoredDuringExecution:
           - weight: 1
             preference:
@@ -31,9 +40,7 @@ spec:
                 - key: pixelmontogo.com/region
                   operator: In
                   values:
-                    - germany
                     - france
-                    - england
     nameOverride: prod
     image: itzg/bungeecord
     imageTag: java17-2022.1.0
