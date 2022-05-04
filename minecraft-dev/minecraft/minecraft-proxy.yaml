@@ -30,7 +30,7 @@ spec:
       dataDir:
         enabled: true
     serviceAnnotations:
-      external-dns.alpha.kubernetes.io/hostname: proxy-dev.pixelmonreforged.com
+      external-dns.alpha.kubernetes.io/hostname: proxy-dev.pixelmonreforged.com,pikachu-dev.pixelmonreforged.com,celebi-dev.pixelmonreforged.com
       metallb.universe.tf/address-pool: canada
     strategyType: Recreate
     minecraftProxy:
