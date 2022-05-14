@@ -124,16 +124,19 @@ spec:
     datasources:
       datasources.yaml:
         apiVersion: 1
-        datasources:
-          - name: Prometheus
-            type: prometheus
-            access: proxy
-            url: http://thanos-query:9090/
-            isDefault: true
+        deleteDatasources:
           - name: Loki
-            type: loki
-            access: proxy
-            url: http://loki:3100
+            orgId: 1
+        datasources:
+        - name: Prometheus
+          type: prometheus
+          access: proxy
+          url: http://thanos-query:9090/
+          isDefault: true
+        - name: loki
+          type: loki
+          access: proxy
+          url: http://loki:3100
     grafana.ini:
       server:
         root_url: "https://grafana.pixelmonreforged.com"
