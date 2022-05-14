@@ -40,7 +40,7 @@ spec:
                 - key: pixelmontogo.com/region
                   operator: In
                   values:
-                    - france
+                    - england
     nameOverride: prod
     image: itzg/bungeecord
     imageTag: java17-2022.1.0
