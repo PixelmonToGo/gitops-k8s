@@ -91,6 +91,7 @@
       "groupName": "{{replace '(minecraft(|-dev)/minecraft/minecraft-(forge-|lobby-|)|.yaml)' '' packageFile}}",
       "groupSlug": "group",
       "matchPaths": ["minecraft/**", "minecraft-dev/**"],
+      "separateMajorMinor": false,
       "stabilityDays": 3,
     },
     {
@@ -99,7 +100,6 @@
       "datasources": ["github-releases"],
       "managers": ["regex"],
       "prCreation": "immediate",
-      "separateMajorMinor": true,
       "stabilityDays": 0,
       "versioning": "regex:^(?<compatibility>.*)-v(?<major>\\d+)(\\.(?<minor>\\d+))(\\.(?<patch>\\d+))$",
     }
