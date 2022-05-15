@@ -15,7 +15,7 @@ spec:
   chart:
     spec:
       chart: minecraft-proxy
-      version: 2.6.0
+      version: 3.0.0
       sourceRef:
         kind: HelmRepository
         name: minecraft-server-charts
@@ -23,8 +23,9 @@ spec:
       interval: 5m
   values:
     nameOverride: dev
-    image: itzg/bungeecord
-    imageTag: java17-2022.1.0
+    image:
+      repository: itzg/bungeecord
+      tag: java17-2022.1.0
     persistence:
       storageClass: longhorn
       dataDir:
