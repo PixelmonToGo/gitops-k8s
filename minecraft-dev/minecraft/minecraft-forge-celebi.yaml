@@ -136,9 +136,10 @@ spec:
           service:
             enabled: true
             annotations:
-              external-dns.alpha.kubernetes.io/hostname: celebi-vc-dev.pixelmonreforged.com
+              # external-dns.alpha.kubernetes.io/hostname: celebi-vc-dev.pixelmonreforged.com
               # metallb.universe.tf/address-pool: germany
-            type: LoadBalancer
+            # type: LoadBalancer
+            type: ClusterIP
             port: 24454
           ingress:
             enabled: false
