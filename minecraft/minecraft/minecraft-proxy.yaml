@@ -42,8 +42,9 @@ spec:
                   values:
                     - france
     nameOverride: prod
-    image: itzg/bungeecord
-    imageTag: java17-2022.1.0
+    image:
+      repository: itzg/bungeecord
+      tag: java17-2022.1.0
     persistence:
       storageClass: longhorn
       dataDir:
