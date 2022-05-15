@@ -34,9 +34,11 @@ spec:
       external-dns.alpha.kubernetes.io/hostname: proxy-dev.pixelmonreforged.com,pikachu-dev.pixelmonreforged.com,celebi-dev.pixelmonreforged.com
       metallb.universe.tf/address-pool: canada
     strategyType: Recreate
+    extraEnv:
+      VELOCITY_BUILD_ID: 138
     minecraftProxy:
       type: VELOCITY
-      velocityVersion: 3.1.1
+      velocityVersion: 3.1.2-SNAPSHOT
       serviceType: LoadBalancer
       externalTrafficPolicy: Local
       memory: 512M
