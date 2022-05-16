@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: minecraft-forge-pikachu
+  name: minecraft-forge-raichu
   namespace: minecraft
 spec:
   interval: 5m
@@ -15,7 +15,7 @@ spec:
   chart:
     spec:
       chart: minecraft
-      version: 3.9.0
+      version: 4.0.0
       sourceRef:
         kind: HelmRepository
         name: minecraft-server-charts
@@ -32,16 +32,16 @@ spec:
             - key: pixelmontogo.com/region
               operator: In
               values:
-                - england
                 - france
                 - germany
-    image: itzg/minecraft-server
-    imageTag: 2022.6.0-java8-multiarch
+    image:
+      repository: itzg/minecraft-server
+      tag: 2022.6.0-java8-multiarch
     persistence:
       storageClass: longhorn-emea
       dataDir:
         enabled: true
-        Size: 100Gi
+        Size: 175Gi
     resources:
       requests:
         memory: 21Gi
@@ -49,17 +49,17 @@ spec:
         memory: 25Gi
     extraEnv:
       DD_ENV: "prod"
-      DD_SERVICE: "pikachu"
-      DD_VERSION: "forge-base-v10.4.7+en.zip,forge-includes-v1.4.0.zip"
+      DD_SERVICE: "raichu"
+      DD_VERSION: "forge-base-v11.0.0+en.zip,forge-includes-v1.5.0.zip"
       DD_PROFILING_ENABLED: "true"
       DD_LOGS_INJECTION: "true"
       DD_APPSEC_ENABLED: "true"
       ENABLE_JMX: "true"
       FORCE_GENERIC_PACK_UPDATE: "TRUE"
-      GENERIC_PACKS: "forge-base-v10.4.7+en.zip,forge-includes-v1.4.0.zip"
+      GENERIC_PACKS: "forge-base-v11.0.0+en.zip,forge-includes-v1.5.0.zip"
       REPLACE_ENV_VARIABLES: "TRUE"
       REPLACE_ENV_VARIABLES_EXCLUDE_PATHS: "/data/atlantis/players /data/config/aquadaycare/decorations /data/config/aquadaycare/players /data/config/aquagyms/players /data/config/gts/players /data/nucleus/userdata /data/pixelmon /data/world"
-      CFG_VC_HOST: "pikachu-vc.pixelmonreforged.com"
+      CFG_VC_HOST: "raichu-vc.pixelmonreforged.com"
       CFG_GTS_DB: "pikachuglobaltrade"
       CFG_ECONOMY_DB: "pikachueconomylite"
       CFG_REFORGED_GTS_DB: "pikachureforgedgts"
@@ -104,7 +104,7 @@ spec:
       viewDistance: 4
       maxTickTime: -1
       memory: 14G
-      motd: "forge-pikachu"
+      motd: "forge-raichu"
       overrideServerProperties: true
       serviceType: ClusterIP
       rcon:
@@ -135,9 +135,9 @@ spec:
           service:
             enabled: true
             annotations:
-              # external-dns.alpha.kubernetes.io/hostname: pikachu-vc.pixelmonreforged.com
+              external-dns.alpha.kubernetes.io/hostname: raichu-vc.pixelmonreforged.com
               # metallb.universe.tf/address-pool: germany
-            type: ClusterIP
+            type: LoadBalancer
             port: 24454
           ingress:
             enabled: false
