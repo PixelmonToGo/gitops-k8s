@@ -146,7 +146,7 @@ spec:
             annotations:
               external-dns.alpha.kubernetes.io/hostname: shiny-celebi-vc.pixelmonreforged.com
               metallb.universe.tf/address-pool: germany
-            type: LoadBalancer
+            type: ClusterIP
             port: 24454
           ingress:
             enabled: false
