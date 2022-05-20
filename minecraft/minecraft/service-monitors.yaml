@@ -20,12 +20,12 @@ spec:
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: minecraft-forge-pikachu
+  name: minecraft-forge-raichu
   namespace: minecraft
 spec:
   selector:
     matchLabels:
-      app: minecraft-forge-pikachu-prod-prometheus
+      app: minecraft-forge-raichu-prod-prometheus
   namespaceSelector:
     matchNames:
       - minecraft
