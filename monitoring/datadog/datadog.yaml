@@ -50,6 +50,18 @@ spec:
               tls_ca_cert: /host/etc/kubernetes/pki/etcd/server-ca.crt
               tls_cert: /host/etc/kubernetes/pki/etcd/server-client.crt
               tls_private_key: /host/etc/kubernetes/pki/etcd/server-client.key
+        mysql.yaml: |-
+          ad_identifiers:
+            - mariadb
+          instances:
+            - server: "%%host%%"
+              user: "root"
+              password: "pixelmontogo"
+              port: "3306"
+              options:
+                extra_status_metrics: true
+                extra_innodb_metrics: true
+                extra_performance_metrics: true
         jmx.yaml: |-
           ad_identifiers:
             - minecraft-server
