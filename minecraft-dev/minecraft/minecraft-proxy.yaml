@@ -35,7 +35,13 @@ spec:
       metallb.universe.tf/address-pool: canada
     strategyType: Recreate
     extraEnv:
-      VELOCITY_BUILD_ID: 138
+      DD_ENV: "dev"
+      DD_SERVICE: "velocity"
+      DD_VERSION: "$(VELOCITY_VERSION)#$(VELOCITY_BUILD_ID)"
+      DD_PROFILING_ENABLED: "true"
+      DD_LOGS_INJECTION: "true"
+      DD_APPSEC_ENABLED: "true"
+      JVM_XX_OPTS: "-XX:FlightRecorderOptions=stackdepth=256 -javaagent:dd-java-agent.jar -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.port=7091 -Dcom.sun.management.jmxremote.rmi.port=7091 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.host=0.0.0.0 -Djava.rmi.server.hostname=$(JMX_HOST)"
     minecraftProxy:
       type: VELOCITY
       velocityVersion: 3.1.2-SNAPSHOT
@@ -60,3 +66,32 @@ spec:
             type: ClusterIP
           ingress:
             enabled: false
+  postRenderers:
+    - kustomize:
+        patchesJson6902:
+          - target:
+              version: v1
+              kind: Deployment
+              name: minecraft-proxy-dev 
+            patch:
+              - op: add
+                path: /spec/template/spec/containers/0/env/0
+                value:
+                  name: DD_AGENT_HOST
+                  valueFrom:
+                    fieldRef:
+                      apiVersion: v1
+                      fieldPath: status.hostIP
+              - op: add
+                path: /spec/template/spec/containers/0/env/0
+                value:
+                  name: JMX_HOST
+                  valueFrom:
+                    fieldRef:
+                      apiVersion: v1
+                      fieldPath: status.podIP
+              - op: add
+                path: /spec/template/spec/containers/0/env/0
+                value:
+                  name: VELOCITY_BUILD_ID
+                  value: '138'
