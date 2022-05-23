@@ -37,7 +37,7 @@ spec:
                 - germany
     image:
       repository: itzg/minecraft-server
-      tag: 2022.6.0-java8-multiarch
+      tag: 2022.7.0-java8-multiarch
     persistence:
       storageClass: longhorn-emea
       dataDir:
