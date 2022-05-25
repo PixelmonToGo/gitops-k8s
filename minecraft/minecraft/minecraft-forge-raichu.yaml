@@ -49,7 +49,7 @@ spec:
         memory: 25Gi
     extraEnv:
       DD_ENV: "prod"
-      DD_SERVICE: "raichu"
+      DD_SERVICE: "pikachu"
       DD_VERSION: "forge-base-v11.0.1+en.zip,forge-includes-v1.5.2.zip"
       DD_PROFILING_ENABLED: "true"
       DD_LOGS_INJECTION: "true"

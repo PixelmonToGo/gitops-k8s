@@ -58,7 +58,7 @@ spec:
         memory: 25Gi
     extraEnv:
       DD_ENV: "prod"
-      DD_SERVICE: "shiny-celebi"
+      DD_SERVICE: "celebi"
       DD_VERSION: "forge-base-v11.0.1+ko.zip,forge-includes-v1.5.2.zip"
       DD_PROFILING_ENABLED: "true"
       DD_LOGS_INJECTION: "true"
