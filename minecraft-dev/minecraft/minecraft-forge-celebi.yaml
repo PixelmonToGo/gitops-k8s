@@ -69,6 +69,7 @@ spec:
       CFG_SHOWDOWN_DB: "celebishowdown"
       CFG_BATTLEPASS_DB: "celebibattlepass"
       CFG_GRIEFDEFENDER_DB: "celebigriefdefender"
+      CFG_TOTALECONOMY_DB: "celebitotaleconomy"
       NETWORK_COMPRESSION_THRESHOLD: "-1"
       ALLOW_FLIGHT: "true"
       STOP_SERVER_ANNOUNCE_DELAY: "15"
