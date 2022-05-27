@@ -68,6 +68,7 @@ spec:
       CFG_SHOWDOWN_DB: "pikachushowdown"
       CFG_BATTLEPASS_DB: "pikachubattlepass"
       CFG_GRIEFDEFENDER_DB: "pikachugriefdefender"
+      CFG_TOTALECONOMY_DB: "pikachutotaleconomy"
       NETWORK_COMPRESSION_THRESHOLD: "-1"
       ALLOW_FLIGHT: "true"
       STOP_SERVER_ANNOUNCE_DELAY: "15"
