@@ -107,7 +107,7 @@ spec:
       memory: 14G
       motd: "forge-raichu"
       overrideServerProperties: true
-      serviceType: ClusterIP
+      serviceType: LoadBalancer
       rcon:
         enabled: true
         serviceType: ClusterIP
