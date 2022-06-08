@@ -30,9 +30,6 @@ spec:
       storageClass: longhorn
       dataDir:
         enabled: true
-    serviceAnnotations:
-      external-dns.alpha.kubernetes.io/hostname: proxy-dev.pixelmonreforged.com,pikachu-dev.pixelmonreforged.com,celebi-dev.pixelmonreforged.com
-      metallb.universe.tf/address-pool: canada
     strategyType: Recreate
     extraEnv:
       DD_ENV: "dev"
@@ -72,7 +69,7 @@ spec:
           - target:
               version: v1
               kind: Deployment
-              name: minecraft-proxy-dev 
+              name: minecraft-proxy-dev
             patch:
               - op: add
                 path: /spec/template/spec/containers/0/env/0
