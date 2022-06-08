@@ -48,6 +48,9 @@ spec:
         memory: 21Gi
       limits:
         memory: 25Gi
+    serviceAnnotations:
+      external-dns.alpha.kubernetes.io/hostname: proxy-dev.pixelmonreforged.com,pikachu-dev.pixelmonreforged.com
+      metallb.universe.tf/address-pool: canada
     extraEnv:
       DD_ENV: "dev"
       DD_SERVICE: "pikachu"
@@ -89,7 +92,7 @@ spec:
       ad.datadoghq.com/tolerate-unready: "true"
     minecraftServer:
       eula: "TRUE"
-      onlineMode: false
+      onlineMode: true
       version: "1.12.2"
       jvmOpts: "-Dfml.readTimeout=300 -Dmixin.debug=true -javaagent:dd-java-agent.jar"
       jvmXXOpts: "-XX:FlightRecorderOptions=stackdepth=256"
