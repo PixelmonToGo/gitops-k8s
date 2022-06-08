@@ -136,7 +136,7 @@ spec:
           service:
             enabled: true
             annotations:
-              external-dns.alpha.kubernetes.io/hostname: raichu-vc.pixelmonreforged.com
+              external-dns.alpha.kubernetes.io/hostname: raichu-vc.pixelmonreforged.com,proxy.pixelmonreforged.com,pikachu.pixelmonreforged.com
               # metallb.universe.tf/address-pool: germany
             type: LoadBalancer
             port: 24454
