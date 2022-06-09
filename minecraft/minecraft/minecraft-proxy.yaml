@@ -52,6 +52,9 @@ spec:
       requests:
         memory: 2Gi
         cpu: 1000m
+    serviceAnnotations:
+      external-dns.alpha.kubernetes.io/hostname: proxy.pixelmonreforged.com,pikachu.pixelmonreforged.com,celebi.pixelmonreforged.com
+      metallb.universe.tf/address-pool: germany
     strategyType: Recreate
     extraEnv:
       DD_ENV: "prod"
@@ -64,7 +67,7 @@ spec:
     minecraftProxy:
       type: VELOCITY
       velocityVersion: 3.1.2-SNAPSHOT
-      serviceType: ClusterIP
+      serviceType: LoadBalancer
       externalTrafficPolicy: Local
       jvmOpts: "--add-exports=java.base/sun.nio.ch=ALL-UNNAMED -Dlog4j2.formatMsgNoLookups=true -Dvelocity.natives-disabled=true -Dvelocity.disable-native-transport=true"
       memory: 2G

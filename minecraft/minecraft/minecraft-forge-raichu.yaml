@@ -47,19 +47,16 @@ spec:
         memory: 21Gi
       limits:
         memory: 25Gi
-    serviceAnnotations:
-      external-dns.alpha.kubernetes.io/hostname: proxy.pixelmonreforged.com,pikachu.pixelmonreforged.com
-      metallb.universe.tf/address-pool: germany
     extraEnv:
       DD_ENV: "prod"
       DD_SERVICE: "pikachu"
-      DD_VERSION: "forge-base-v12.1.9+en.zip,forge-includes-v2.5.0.zip"
+      DD_VERSION: "forge-base-v12.1.3+en.zip,forge-includes-v2.5.0.zip"
       DD_PROFILING_ENABLED: "true"
       DD_LOGS_INJECTION: "true"
       DD_APPSEC_ENABLED: "true"
       ENABLE_JMX: "true"
       FORCE_GENERIC_PACK_UPDATE: "TRUE"
-      GENERIC_PACKS: "forge-base-v12.1.9+en.zip,forge-includes-v2.5.0.zip"
+      GENERIC_PACKS: "forge-base-v12.1.3+en.zip,forge-includes-v2.5.0.zip"
       REPLACE_ENV_VARIABLES: "TRUE"
       REPLACE_ENV_VARIABLES_EXCLUDE_PATHS: "/data/atlantis/players /data/config/aquadaycare/decorations /data/config/aquadaycare/players /data/config/aquagyms/players /data/config/gts/players /data/nucleus/userdata /data/pixelmon /data/world"
       CFG_VC_HOST: "raichu-vc.pixelmonreforged.com"
@@ -89,7 +86,7 @@ spec:
       initialDelaySeconds: 200
     minecraftServer:
       eula: "TRUE"
-      onlineMode: true
+      onlineMode: false
       version: "1.12.2"
       jvmOpts: "-Dfml.readTimeout=300 -javaagent:dd-java-agent.jar"
       jvmXXOpts: "-XX:FlightRecorderOptions=stackdepth=256"
@@ -110,7 +107,7 @@ spec:
       memory: 14G
       motd: "forge-raichu"
       overrideServerProperties: true
-      serviceType: LoadBalancer
+      serviceType: ClusterIP
       rcon:
         enabled: true
         serviceType: ClusterIP
