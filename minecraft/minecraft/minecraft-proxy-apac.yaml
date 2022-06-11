@@ -1,0 +1,109 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: minecraft-proxy-apac
+  namespace: minecraft
+spec:
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  chart:
+    spec:
+      chart: minecraft-proxy
+      version: 2.5.0
+      sourceRef:
+        kind: HelmRepository
+        name: minecraft-server-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: pixelmontogo.com/region
+              operator: In
+              values:
+              - singapore
+    nameOverride: prod
+    image: itzg/bungeecord
+    imageTag: java17-2022.1.0
+    persistence:
+      storageClass: longhorn-apac
+      dataDir:
+        enabled: true
+    resources:
+      requests:
+        memory: 2Gi
+        cpu: 1000m
+    serviceAnnotations:
+      external-dns.alpha.kubernetes.io/hostname: proxy-apac.pixelmonreforged.com,celebi.pixelmonreforged.com
+      metallb.universe.tf/address-pool: singapore
+    strategyType: Recreate
+    extraEnv:
+      DD_ENV: "prod"
+      DD_SERVICE: "velocity"
+      DD_VERSION: "$(VELOCITY_VERSION)#$(VELOCITY_BUILD_ID)"
+      DD_PROFILING_ENABLED: "true"
+      DD_LOGS_INJECTION: "true"
+      DD_APPSEC_ENABLED: "true"
+      JVM_XX_OPTS: "-XX:FlightRecorderOptions=stackdepth=256 -javaagent:dd-java-agent.jar -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.port=7091 -Dcom.sun.management.jmxremote.rmi.port=7091 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.host=0.0.0.0 -Djava.rmi.server.hostname=$(JMX_HOST)"
+    minecraftProxy:
+      type: VELOCITY
+      velocityVersion: 3.1.2-SNAPSHOT
+      serviceType: LoadBalancer
+      externalTrafficPolicy: Local
+      jvmOpts: "--add-exports=java.base/sun.nio.ch=ALL-UNNAMED -Dlog4j2.formatMsgNoLookups=true"
+      memory: 2G
+      extraPorts:
+        - name: vote
+          containerPort: 8192
+          service:
+            enabled: true
+            embedded: true
+            port: 8192
+          ingress:
+            enabled: false
+        - name: prometheus
+          containerPort: 9100
+          service:
+            enabled: true
+            port: 9100
+            type: ClusterIP
+          ingress:
+            enabled: false
+  postRenderers:
+    - kustomize:
+        patchesJson6902:
+          - target:
+              version: v1
+              kind: Deployment
+              name: minecraft-proxy-prod
+            patch:
+              - op: add
+                path: /spec/template/spec/containers/0/env/0
+                value:
+                  name: DD_AGENT_HOST
+                  valueFrom:
+                    fieldRef:
+                      apiVersion: v1
+                      fieldPath: status.hostIP
+              - op: add
+                path: /spec/template/spec/containers/0/env/0
+                value:
+                  name: JMX_HOST
+                  valueFrom:
+                    fieldRef:
+                      apiVersion: v1
+                      fieldPath: status.podIP
+              - op: add
+                path: /spec/template/spec/containers/0/env/0
+                value:
+                  name: VELOCITY_BUILD_ID
+                  value: '153'
