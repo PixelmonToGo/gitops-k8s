@@ -21,11 +21,24 @@ spec:
         - name: canada
           protocol: layer2
           addresses:
+            - 51.222.234.145
             - 51.222.234.147-51.222.234.149
+        - name: england
+          protocol: layer2
+          addresses:
+            - 51.68.223.178-51.68.223.181
+        - name: france
+          protocol: layer2
+          addresses:
+            - 54.36.241.26-54.36.241.29
         - name: germany
           protocol: layer2
           addresses:
-            - 141.95.31.91-141.95.31.93
+            - 141.95.31.90-141.95.31.93
+        - name: singapore
+          protocol: layer2
+          addresses:
+            - 139.99.35.137-139.99.35.141
     networkPolicy:
       enabled: true
     prometheusRule:
