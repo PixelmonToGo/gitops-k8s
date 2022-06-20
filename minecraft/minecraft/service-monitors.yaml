@@ -2,12 +2,12 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: minecraft-forge-shiny-celebi
+  name: minecraft-forge-mega-celebi
   namespace: minecraft
 spec:
   selector:
     matchLabels:
-      app: minecraft-forge-shiny-celebi-prod-prometheus
+      app: minecraft-forge-mega-celebi-prod-prometheus
   namespaceSelector:
     matchNames:
       - minecraft
