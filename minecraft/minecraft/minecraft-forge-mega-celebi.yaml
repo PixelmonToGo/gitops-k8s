@@ -70,6 +70,7 @@ spec:
       CFG_TOTALECONOMY_DB: "celebitotaleconomy"
       NETWORK_COMPRESSION_THRESHOLD: "-1"
       ALLOW_FLIGHT: "true"
+      SNOOPER_ENABLED: "false"
       STOP_SERVER_ANNOUNCE_DELAY: "15"
       JMX_HOST:
         valueFrom:
