@@ -4,6 +4,12 @@
 
 Leverages [Flux2](https://github.com/fluxcd/flux2) to automate cluster state sync with this repository
 
+## :technologist: [PullRequest.com](https://pullrequest.com)
+
+[PullRequest](https://pullrequest.com) is a platform that provides on-demand code review from a network of expert software engineers.
+
+We proudly make use of their awesome service in our organisation; they make managing contributions a breeze, check them out!
+
 ## :gear:&nbsp; Setup
 
 See [setup](setup/README.md) for more details about setup & bootstrapping a new cluster
