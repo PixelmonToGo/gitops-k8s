@@ -172,19 +172,19 @@ loadSecretsToVault() {
   #vault kv put secrets/flux-system/discord-webhook address="$DISCORD_FLUX_WEBHOOK_URL"
   vault kv put secrets/cert-manager/cloudflare-api-key api-key="$CLOUDFLARE_API_KEY"
   vault kv put secrets/flux-system/discord-webhook address="$DISCORD_FLUX_WEBHOOK_URL"
+  vault kv put secrets/flux-system/github-api-token token="$GITHUB_TOKEN"
+  vault kv put secrets/flux-system/github-webhook-token token="$GITHUB_FLUX_RECEIVER_TOKEN"
   vault kv put secrets/kube-system/external-dns/cloudflare-api-key cloudflare_api_token="$CLOUDFLARE_API_KEY"
   vault kv put secrets/longhorn-system/longhorn/minio-secret AWS_ACCESS_KEY_ID="$MINIO_ACCESS_KEY" AWS_SECRET_ACCESS_KEY="$MINIO_SECRET_KEY" AWS_ENDPOINTS="$MINIO_URL"
-  vault kv put secrets/flux-system/github-webhook-token token="$GITHUB_FLUX_RECEIVER_TOKEN"
-  vault kv put secrets/flux-system/github-api-token token="$GITHUB_TOKEN"
 
   ####################
   # helm chart values
   ####################
   kvault "kube-system/oauth2-proxy/oauth2-proxy-helm-values.txt"
-  kvault "minecraft-dev/minecraft/minecraft-helm-values-celebi.txt"
-  kvault "minecraft-dev/minecraft/minecraft-helm-values.txt"
-  kvault "minecraft/minecraft/minecraft-forge-pikachu-helm-values.txt"
+  kvault "minecraft/minecraft/minecraft-helm-values.txt"
   kvault "minecraft/minecraft/minecraft-helm-values-celebi.txt"
+  kvault "minecraft-dev/minecraft/minecraft-helm-values.txt"
+  kvault "minecraft-dev/minecraft/minecraft-helm-values-celebi.txt"
   kvault "monitoring/datadog/datadog-helm-values.txt"
   kvault "monitoring/grafana/grafana-helm-values.txt"
   kvault "monitoring/kube-prometheus-stack/kube-prometheus-stack-helm-values.txt"

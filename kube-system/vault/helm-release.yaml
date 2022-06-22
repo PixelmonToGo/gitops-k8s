@@ -37,7 +37,7 @@ spec:
       standalone:
         enabled: "false"
       ha:
-        enabled: "true"
+        enabled: true
         replicas: 1
         raft:
           enabled: true

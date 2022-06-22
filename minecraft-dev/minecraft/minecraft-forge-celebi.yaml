@@ -60,6 +60,7 @@ spec:
       GENERIC_PACKS: "forge-base-v12.1.14+ko.zip,forge-includes-v2.5.1.zip"
       REPLACE_ENV_VARIABLES: "TRUE"
       REPLACE_ENV_VARIABLES_EXCLUDE_PATHS: "/data/atlantis/players /data/config/aquadaycare/decorations /data/config/aquadaycare/players /data/config/aquagyms/players /data/config/gts/players /data/nucleus/userdata /data/pixelmon /data/world"
+      CFG_AQUAGYMS_DIMENSION: "3" # TODO: tech debt
       CFG_VC_HOST: "celebi-vc-dev.pixelmonreforged.com"
       CFG_GTS_DB: "celebiglobaltrade"
       CFG_ECONOMY_DB: "celebieconomylite"
