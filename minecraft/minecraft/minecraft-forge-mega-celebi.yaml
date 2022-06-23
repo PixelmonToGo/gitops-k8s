@@ -56,12 +56,15 @@ spec:
       ENABLE_JMX: "true"
       FORCE_GENERIC_PACK_UPDATE: "TRUE"
       GENERIC_PACKS: "forge-base-v12.1.17+ko.zip,forge-includes-v2.6.1.zip"
+      REPLACE_ENV_SUFFIXES: "conf,json,properties,yml,xml"
       REPLACE_ENV_VARIABLES: "TRUE"
       REPLACE_ENV_VARIABLES_EXCLUDE_PATHS: "/data/atlantis/players /data/config/aquadaycare/decorations /data/config/aquadaycare/players /data/config/aquagyms/players /data/config/gts/players /data/nucleus/userdata /data/pixelmon /data/world"
       CFG_AQUAGYMS_DIMENSION: "3" # TODO: tech debt
       CFG_VC_HOST: "mega-celebi-vc.pixelmonreforged.com"
       CFG_GTS_DB: "celebiglobaltrade"
       CFG_ECONOMY_DB: "celebieconomylite"
+      CFG_FORGE_LOGLEVEL: "{sys:forge.logging.console.level:-info}"
+      CFG_FORGE_LOGPACKETS: "DENY"
       CFG_REFORGED_GTS_DB: "celebireforgedgts"
       CFG_WONDERTRADE_DB: "celebiwondertrade"
       CFG_DEX_DB: "celebidex"
@@ -89,8 +92,14 @@ spec:
       eula: "TRUE"
       onlineMode: false
       version: "1.12.2"
-      jvmOpts: "-Dfml.readTimeout=300 -Dmixin.debug=true -javaagent:dd-java-agent.jar"
-      jvmXXOpts: "-XX:FlightRecorderOptions=stackdepth=256"
+      jvmOpts: >-
+        -Dlog4j.configurationFile=log4j2.xml
+        -Dfml.readTimeout=300
+        -Dmixin.debug=false
+        -javaagent:dd-java-agent.jar
+      jvmXXOpts: >-
+        -Xbootclasspath/a:/data/libraries/com/fasterxml/jackson/jackson-annotations-2.13.1.jar:/data/libraries/com/fasterxml/jackson/jackson-core-2.13.1.jar:/data/libraries/com/fasterxml/jackson/jackson-databind-2.13.1.jar
+        -XX:FlightRecorderOptions=stackdepth=256"
       forgeVersion: "14.23.5.2860"
       gameMode: "0"
       forcegameMode: false
