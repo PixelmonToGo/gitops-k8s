@@ -91,8 +91,16 @@ spec:
       eula: "TRUE"
       onlineMode: false
       version: "1.12.2"
-      jvmOpts: "-Dfml.readTimeout=300 -Dmixin.debug=true -javaagent:dd-java-agent.jar"
-      jvmXXOpts: "-Xbootclasspath/a:/data/libraries/com/fasterxml/jackson/ -XX:FlightRecorderOptions=stackdepth=256"
+      jvmOpts: >-
+        -Dlog4j.configurationFile=log4j2.xml
+        -Dfml.readTimeout=300
+        -Dmixin.debug=true
+        -javaagent:dd-java-agent.jar
+      jvmXXOpts: "-Xbootclasspath/a
+        :/data/libraries/com/fasterxml/jackson/jackson-annotations-2.13.1.jar
+        :/data/libraries/com/fasterxml/jackson/jackson-core-2.13.1.jar
+        :/data/libraries/com/fasterxml/jackson/jackson-databind-2.13.1.jar
+        -XX:FlightRecorderOptions=stackdepth=256"
       forgeVersion: "14.23.5.2860"
       gameMode: "0"
       forcegameMode: false
