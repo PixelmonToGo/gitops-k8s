@@ -97,7 +97,7 @@ spec:
       jvmOpts: >-
         -Dlog4j.configurationFile=log4j2.xml
         -Dfml.readTimeout=300
-        -Dmixin.debug=true
+        -Dmixin.debug=false
         -javaagent:dd-java-agent.jar
       jvmXXOpts: >-
         -Xbootclasspath/a:/data/libraries/com/fasterxml/jackson/jackson-annotations-2.13.1.jar:/data/libraries/com/fasterxml/jackson/jackson-core-2.13.1.jar:/data/libraries/com/fasterxml/jackson/jackson-databind-2.13.1.jar
