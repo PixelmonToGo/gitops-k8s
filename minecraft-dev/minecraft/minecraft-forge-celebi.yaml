@@ -99,6 +99,7 @@ spec:
         -Dfml.readTimeout=300
         -Dmixin.debug=false
         -javaagent:dd-java-agent.jar
+        -Ddd.appsec.enabled=true
       jvmXXOpts: >-
         -Xbootclasspath/a:/data/libraries/com/fasterxml/jackson/jackson-annotations-2.13.1.jar:/data/libraries/com/fasterxml/jackson/jackson-core-2.13.1.jar:/data/libraries/com/fasterxml/jackson/jackson-databind-2.13.1.jar
         -XX:FlightRecorderOptions=stackdepth=256"
