@@ -37,7 +37,7 @@ spec:
                 - germany
     image:
       repository: itzg/minecraft-server
-      tag: 2022.8.0-java8-multiarch
+      tag: 2022.9.0-java8-multiarch
     persistence:
       storageClass: longhorn-emea
       dataDir:
@@ -51,13 +51,13 @@ spec:
     extraEnv:
       DD_ENV: "dev"
       DD_SERVICE: "pikachu"
-      DD_VERSION: "forge-base-v12.1.17+en.zip,forge-includes-v2.6.1.zip"
+      DD_VERSION: "forge-base-v12.1.18+en.zip,forge-includes-v2.6.1.zip"
       DD_PROFILING_ENABLED: "true"
       DD_LOGS_INJECTION: "true"
       DD_APPSEC_ENABLED: "true"
       ENABLE_JMX: "true"
       FORCE_GENERIC_PACK_UPDATE: "TRUE"
-      GENERIC_PACKS: "forge-base-v12.1.17+en.zip,forge-includes-v2.6.1.zip"
+      GENERIC_PACKS: "forge-base-v12.1.18+en.zip,forge-includes-v2.6.1.zip"
       REPLACE_ENV_SUFFIXES: "conf,json,properties,yml,xml"
       REPLACE_ENV_VARIABLES: "TRUE"
       REPLACE_ENV_VARIABLES_EXCLUDE_PATHS: "/data/atlantis/players /data/config/aquadaycare/decorations /data/config/aquadaycare/players /data/config/aquagyms/players /data/config/gts/players /data/nucleus/userdata /data/pixelmon /data/world"
