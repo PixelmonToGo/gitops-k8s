@@ -110,7 +110,7 @@ spec:
       pvp: false
       forceReDownload: true
       difficulty: "0"
-      levelType: OTG
+      levelType: LARGEBIOMES
       playerIdleTimeout: 300
       spawnProtection: 0
       maxWorldSize: 29999984
