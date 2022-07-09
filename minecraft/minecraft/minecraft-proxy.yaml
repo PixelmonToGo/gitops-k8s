@@ -69,7 +69,7 @@ spec:
       velocityVersion: 3.1.2-SNAPSHOT
       serviceType: LoadBalancer
       externalTrafficPolicy: Local
-      jvmOpts: "--add-exports=java.base/sun.nio.ch=ALL-UNNAMED -Dlog4j2.formatMsgNoLookups=true -Dvelocity.natives-disabled=true -Dvelocity.disable-native-transport=true"
+      jvmOpts: "--add-exports=java.base/sun.nio.ch=ALL-UNNAMED -Dlog4j2.formatMsgNoLookups=true -Dvelocity.natives-disabled=true -Dvelocity.disable-native-transport=true -Djava.util.concurrent.ForkJoinPool.common.parallelism=1"
       memory: 6G
       extraPorts:
         - name: vote
