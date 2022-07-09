@@ -63,6 +63,7 @@ spec:
         -Dlog4j2.formatMsgNoLookups=true
         -Dvelocity.natives-disabled=true
         -Dvelocity.disable-native-transport=true
+        -Djava.util.concurrent.ForkJoinPool.common.parallelism=1
       extraPorts:
         - name: vote
           containerPort: 8192
