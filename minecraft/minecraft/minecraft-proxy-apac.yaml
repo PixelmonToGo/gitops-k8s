@@ -53,7 +53,7 @@ spec:
       DD_PROFILING_ENABLED: "true"
       DD_LOGS_INJECTION: "true"
       DD_APPSEC_ENABLED: "true"
-      JVM_XX_OPTS: "-XX:FlightRecorderOptions=stackdepth=256 -javaagent:dd-java-agent.jar -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.port=7091 -Dcom.sun.management.jmxremote.rmi.port=7091 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.host=0.0.0.0 -Djava.rmi.server.hostname=$(JMX_HOST)"
+      JVM_XX_OPTS: "-XX:FlightRecorderOptions=stackdepth=256 -javaagent:dd-java-agent.jar -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.port=7091 -Dcom.sun.management.jmxremote.rmi.port=7091 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.host=0.0.0.0 -Djava.rmi.server.hostname=$(JMX_HOST) -Djava.util.concurrent.ForkJoinPool.common.parallelism=1"
     minecraftProxy:
       type: VELOCITY
       velocityVersion: 3.1.2-SNAPSHOT
