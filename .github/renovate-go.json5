@@ -102,6 +102,10 @@
       "prCreation": "immediate",
       "stabilityDays": 0,
       "versioning": "regex:^(?<compatibility>.*)-v(?<major>\\d+)(\\.(?<minor>\\d+))(\\.(?<patch>\\d+))$",
+    },
+    {
+      "matchPackageNames": ["itzg/bungeecord"],
+      "versioning": "regex:^(?<compatibility>.*)-(?<major>\\d+)(\\.(?<minor>\\d+))(\\.(?<patch>\\d+))$",
     }
   ],
   "regexManagers": [
