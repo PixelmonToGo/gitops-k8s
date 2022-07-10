@@ -117,6 +117,7 @@
       "fileMatch": ["./.+\\.yaml$"],
       "matchStrings": [
         "image: (?<depName>.*?)\n *imageTag: (?<currentValue>.*)\n",
+        "repository: (?<depName>.*?)\n *tag: (?<currentValue>.*)\n",
       ],
       "datasourceTemplate": "docker",
     },
