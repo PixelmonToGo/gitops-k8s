@@ -15,7 +15,7 @@ spec:
   chart:
     spec:
       chart: minecraft-proxy
-      version: 2.5.0
+      version: 3.1.0
       sourceRef:
         kind: HelmRepository
         name: minecraft-server-charts
@@ -42,8 +42,9 @@ spec:
                   values:
                     - england
     nameOverride: prod
-    image: itzg/bungeecord
-    imageTag: java17-2022.1.0
+    image:
+      repository: itzg/bungeecord
+      tag: java17-2022.1.0
     persistence:
       storageClass: longhorn
       dataDir:
@@ -63,14 +64,26 @@ spec:
       DD_PROFILING_ENABLED: "true"
       DD_LOGS_INJECTION: "true"
       DD_APPSEC_ENABLED: "true"
-      JVM_XX_OPTS: "-XX:FlightRecorderOptions=stackdepth=256 -javaagent:dd-java-agent.jar -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.port=7091 -Dcom.sun.management.jmxremote.rmi.port=7091 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.host=0.0.0.0 -Djava.rmi.server.hostname=$(JMX_HOST)"
+      JVM_XX_OPTS: >-
+        -XX:FlightRecorderOptions=stackdepth=256
+        -javaagent:dd-java-agent.jar
+        -Ddd.appsec.enabled=true
+        -Dcom.sun.management.jmxremote.local.only=false
+        -Dcom.sun.management.jmxremote.port=7091
+        -Dcom.sun.management.jmxremote.rmi.port=7091
+        -Dcom.sun.management.jmxremote.authenticate=false
+        -Dcom.sun.management.jmxremote.ssl=false
+        -Dcom.sun.management.jmxremote.host=0.0.0.0
+        -Djava.rmi.server.hostname=$(JMX_HOST)
     minecraftProxy:
       type: VELOCITY
       velocityVersion: 3.1.2-SNAPSHOT
       serviceType: LoadBalancer
       externalTrafficPolicy: Local
-      jvmOpts: "--add-exports=java.base/sun.nio.ch=ALL-UNNAMED -Dlog4j2.formatMsgNoLookups=true -Dvelocity.natives-disabled=true -Dvelocity.disable-native-transport=true"
       memory: 6G
+      jvmOpts: >-
+        --add-exports=java.base/sun.nio.ch=ALL-UNNAMED
+        -Dlog4j2.formatMsgNoLookups=true
       extraPorts:
         - name: vote
           containerPort: 8192
@@ -94,7 +107,7 @@ spec:
           - target:
               version: v1
               kind: Deployment
-              name: minecraft-proxy-prod
+              name: minecraft-proxy-prod 
             patch:
               - op: add
                 path: /spec/template/spec/containers/0/env/0
