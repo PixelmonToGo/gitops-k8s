@@ -44,7 +44,7 @@ spec:
     nameOverride: prod
     image:
       repository: itzg/bungeecord
-      tag: java17-2022.1.0
+      tag: java17-2022.4.1
     persistence:
       storageClass: longhorn
       dataDir:
