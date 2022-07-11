@@ -97,7 +97,7 @@ spec:
           - target:
               version: v1
               kind: Deployment
-              name: minecraft-proxy-prod 
+              name: minecraft-proxy-prod
             patch:
               - op: add
                 path: /spec/template/spec/containers/0/env/0
