@@ -50,10 +50,19 @@ spec:
     extraEnv:
       DD_ENV: "prod"
       DD_SERVICE: "velocity"
+      VELOCITY_BUILD_ID: "153"
       DD_VERSION: "$(VELOCITY_VERSION)#$(VELOCITY_BUILD_ID)"
       DD_PROFILING_ENABLED: "true"
       DD_LOGS_INJECTION: "true"
       DD_APPSEC_ENABLED: "true"
+      DD_AGENT_HOST:
+        valueFrom:
+          fieldRef:
+            fieldPath: status.hostIP
+      JMX_HOST:
+        valueFrom:
+          fieldRef:
+            fieldPath: status.podIP
       JVM_XX_OPTS: >-
         -XX:FlightRecorderOptions=stackdepth=256
         -javaagent:dd-java-agent.jar
@@ -91,32 +100,3 @@ spec:
             type: ClusterIP
           ingress:
             enabled: false
-  postRenderers:
-    - kustomize:
-        patchesJson6902:
-          - target:
-              version: v1
-              kind: Deployment
-              name: minecraft-proxy-prod 
-            patch:
-              - op: add
-                path: /spec/template/spec/containers/0/env/0
-                value:
-                  name: DD_AGENT_HOST
-                  valueFrom:
-                    fieldRef:
-                      apiVersion: v1
-                      fieldPath: status.hostIP
-              - op: add
-                path: /spec/template/spec/containers/0/env/0
-                value:
-                  name: JMX_HOST
-                  valueFrom:
-                    fieldRef:
-                      apiVersion: v1
-                      fieldPath: status.podIP
-              - op: add
-                path: /spec/template/spec/containers/0/env/0
-                value:
-                  name: VELOCITY_BUILD_ID
-                  value: '153'
