@@ -65,7 +65,6 @@ spec:
       jvmOpts: >-
         --add-exports=java.base/sun.nio.ch=ALL-UNNAMED
         -Dlog4j2.formatMsgNoLookups=true
-        -Djava.util.concurrent.ForkJoinPool.common.parallelism=1
       extraPorts:
         - name: vote
           containerPort: 8192
@@ -89,7 +88,7 @@ spec:
           - target:
               version: v1
               kind: Deployment
-              name: minecraft-proxy-dev 
+              name: minecraft-proxy-dev
             patch:
               - op: add
                 path: /spec/template/spec/containers/0/env/0
