@@ -1,25 +1,25 @@
-# ---
-# apiVersion: helm.toolkit.fluxcd.io/v2beta1
-# kind: HelmRelease
-# metadata:
-#   name: minecraft-redis
-#   namespace: minecraft-dev
-# spec:
-#   interval: 5m
-#   chart:
-#     spec:
-#       chart: redis
-#       version: 16.3.1
-#       sourceRef:
-#         kind: HelmRepository
-#         name: bitnami-charts
-#         namespace: flux-system
-#       interval: 5m
-#   values:
-#     # image:
-#     #  repository: bitnami/redis
-#     #  tag: 6.2.5-debian-10-r32
-#     auth:
-#       enabled: false
-#     replica:
-#       replicaCount: 1
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: minecraft-redis
+  namespace: minecraft-dev
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: redis
+      version: 16.3.1
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    # image:
+    #  repository: bitnami/redis
+    #  tag: 6.2.5-debian-10-r32
+    auth:
+      enabled: false
+    replica:
+      replicaCount: 1
