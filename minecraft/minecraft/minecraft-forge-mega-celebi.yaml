@@ -76,6 +76,7 @@ spec:
       ALLOW_FLIGHT: "true"
       SNOOPER_ENABLED: "false"
       STOP_SERVER_ANNOUNCE_DELAY: "15"
+      USE_AIKAR_FLAGS: "true"
       JMX_HOST:
         valueFrom:
           fieldRef:
