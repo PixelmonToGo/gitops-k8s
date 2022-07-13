@@ -65,6 +65,12 @@ spec:
       DD_LOGS_INJECTION: "true"
       DD_APPSEC_ENABLED: "true"
       JVM_XX_OPTS: >-
+        -XX:+UseG1GC
+        -XX:G1HeapRegionSize=4M
+        -XX:+UnlockExperimentalVMOptions
+        -XX:+ParallelRefProcEnabled
+        -XX:+AlwaysPreTouch
+        -XX:MaxInlineLevel=15
         -XX:FlightRecorderOptions=stackdepth=256
         -javaagent:dd-java-agent.jar
         -Ddd.appsec.enabled=true
