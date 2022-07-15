@@ -55,7 +55,7 @@ spec:
       enabled: false
     metrics:
       serviceMonitor:
-        enabled: true
+        enabled: false
     nasgateway:
       enabled: true
       # Number of parallel instances
