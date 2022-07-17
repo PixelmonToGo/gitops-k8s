@@ -1,5 +1,9 @@
 # monitoring
 
+## datadog
+
+We're using datadog for pretty much everything now, below is mostly disabled at the moment.
+
 ## grafana
 
 ![grafana](https://i.imgur.com/hTo49Uo.png)

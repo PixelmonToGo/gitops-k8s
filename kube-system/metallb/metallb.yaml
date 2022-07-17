@@ -50,7 +50,7 @@ spec:
         tag: v0.12.1
       prometheus:
         serviceMonitor:
-          enabled: true
+          enabled: false
     speaker:
       image:
         registry: docker.io
@@ -58,4 +58,4 @@ spec:
         tag: v0.12.1
       prometheus:
         serviceMonitor:
-          enabled: true
+          enabled: false
