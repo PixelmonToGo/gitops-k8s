@@ -23,3 +23,5 @@ spec:
       tls:
         - hosts: [tebex.pixelmonreforged.com]
       hosts: [tebex.pixelmonreforged.com]
+    serviceAnnotations:
+      external-dns.alpha.kubernetes.io/hostname: tracking.pixelmonreforged.com,tebex.pixelmonreforged.com
