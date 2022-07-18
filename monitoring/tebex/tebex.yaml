@@ -21,5 +21,9 @@ spec:
       annotations:
         kubernetes.io/ingress.class: nginx
       tls:
-        - hosts: [tebex.pixelmonreforged.com]
-      hosts: [tebex.pixelmonreforged.com]
+        - hosts:
+            - tebex.pixelmonreforged.com
+            - tracking.pixelmonreforged.com
+      hosts:
+        - tebex.pixelmonreforged.com
+        - tracking.pixelmonreforged.com
