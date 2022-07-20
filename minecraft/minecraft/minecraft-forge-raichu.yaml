@@ -44,9 +44,9 @@ spec:
         Size: 175Gi
     resources:
       requests:
-        memory: 21Gi
+        memory: 36Gi
       limits:
-        memory: 25Gi
+        memory: 43Gi
     extraEnv:
       DD_ENV: "prod"
       DD_SERVICE: "pikachu"
@@ -116,7 +116,7 @@ spec:
       maxPlayers: 120
       viewDistance: 4
       maxTickTime: -1
-      memory: 14G
+      memory: 24G
       motd: "forge-raichu"
       overrideServerProperties: true
       serviceType: ClusterIP
