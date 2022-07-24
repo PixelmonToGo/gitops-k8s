@@ -103,7 +103,9 @@ spec:
         -Ddd.appsec.enabled=true
       jvmXXOpts: >-
         -Xbootclasspath/a:/data/libraries/com/fasterxml/jackson/jackson-annotations-2.13.1.jar:/data/libraries/com/fasterxml/jackson/jackson-core-2.13.1.jar:/data/libraries/com/fasterxml/jackson/jackson-databind-2.13.1.jar
-        -XX:FlightRecorderOptions=stackdepth=256"
+        -XX:FlightRecorderOptions=stackdepth=256
+        -XX:+UseLargePagesInMetaspace
+        -XX:+UseTransparentHugePage
       forgeVersion: "14.23.5.2860"
       gameMode: "0"
       forcegameMode: false
