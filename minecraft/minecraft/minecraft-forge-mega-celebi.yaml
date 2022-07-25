@@ -35,7 +35,7 @@ spec:
               - singapore
     image:
       repository: itzg/minecraft-server
-      tag: 2022.9.0-java8-multiarch
+      tag: 2022.10.1-java8-multiarch
     persistence:
       storageClass: longhorn-apac
       dataDir:
